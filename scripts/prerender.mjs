@@ -5,7 +5,12 @@ import { pathToFileURL } from 'node:url'
 import { loadEnv } from 'vite'
 
 const dist = resolve('dist')
-const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
+let template = readFileSync(resolve(dist, 'index.html'), 'utf8')
+// Rendimiento: el CSS (pequeño) va en línea para que el primer pintado no espere a otra descarga.
+template = template.replace(/<link rel="stylesheet"[^>]*href="\/(assets\/[^"]+\.css)"[^>]*>/, (tag, file) => {
+  const css = readFileSync(resolve(dist, file), 'utf8').replace(/<\/style/gi, '<\/style')
+  return `<style>${css}</style>`
+})
 const { render, routes, siteUrl } = await import(pathToFileURL(resolve('dist-ssr/entry-server.js')).href)
 
 // AdSense: el script solo se inyecta si hay ID de cliente configurado.
