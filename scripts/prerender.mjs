@@ -2,15 +2,18 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { loadEnv } from 'vite'
 
 const dist = resolve('dist')
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 const { render, routes, siteUrl } = await import(pathToFileURL(resolve('dist-ssr/entry-server.js')).href)
 
 // AdSense: el script solo se inyecta si hay ID de cliente configurado.
-const client = process.env.VITE_ADSENSE_CLIENT
+const env = loadEnv('production', process.cwd(), 'VITE_')
+const client = process.env.VITE_ADSENSE_CLIENT || env.VITE_ADSENSE_CLIENT
 const adsense = client
-  ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}" crossorigin="anonymous"></script>`
+  ? `<meta name="google-adsense-account" content="${client}" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}" crossorigin="anonymous"></script>`
   : ''
 
 const page = (url) => {

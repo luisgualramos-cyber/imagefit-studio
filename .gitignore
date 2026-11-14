@@ -10,3 +10,5 @@ public/mediapipe
 .DS_Store
 test-output
 .wrangler
+
+!.env.production
