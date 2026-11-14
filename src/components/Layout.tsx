@@ -103,6 +103,7 @@ function Footer() {
           <ul className="space-y-2 text-sm">
             <li><Link to="/privacidad" className="hover:text-white">Privacidad y cookies</Link></li>
             <li><Link to="/#preguntas" className="hover:text-white">Preguntas frecuentes</Link></li>
+            <li><a href="/imagefit-studio-codigo-fuente.zip" download className="hover:text-white">Código fuente (AGPL-3.0)</a></li>
           </ul>
         </div>
       </div>

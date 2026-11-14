@@ -68,5 +68,5 @@ También funciona en Vercel (`vercel.json` + `api/outpaint.ts`): `npx vercel --p
 
 ## Licencias a tener en cuenta
 
-- `@imgly/background-removal` se distribuye bajo **AGPL-3.0**: si el sitio se publica, su código fuente debe estar disponible (p. ej., repositorio público) o adquirirse una licencia comercial de IMG.LY.
+- ImageFit Studio se distribuye bajo **AGPL-3.0** (ver `LICENSE.md`), porque usa `@imgly/background-removal` (AGPL-3.0). La AGPL permite el uso comercial y la publicidad; exige que el código de la versión publicada esté disponible. Por eso `npm run build` genera `dist/imagefit-studio-codigo-fuente.zip` (del último commit), enlazado en el pie de la web. **Haz commit antes de publicar.** Si algún día se quiere cerrar el código, hay que sustituir esa librería o comprar una licencia comercial de IMG.LY.
 - MediaPipe (Apache-2.0), smartcrop.js (MIT), JSZip (MIT/GPLv3), UPNG.js (MIT), @jsquash/avif (Apache-2.0).

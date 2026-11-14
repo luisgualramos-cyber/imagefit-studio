@@ -142,6 +142,10 @@ export function Privacy() {
         <p>
           Actualmente ImageFit Studio no usa cookies propias. En el futuro la web podrá mostrar anuncios de Google AdSense, que utilizan cookies para mostrar y medir anuncios. Antes de activarlos se mostrará un aviso de consentimiento que te permitirá aceptar o rechazar las cookies no necesarias. Puedes obtener más información sobre cómo usa Google los datos en policies.google.com/technologies/ads.
         </p>
+        <h2>Código abierto</h2>
+        <p>
+          ImageFit Studio se distribuye bajo la licencia AGPL-3.0. Puedes descargar el código fuente completo de la versión publicada desde el enlace «Código fuente» del pie de página.
+        </p>
         <h2>Metadatos</h2>
         <p>Las imágenes generadas no conservan los metadatos EXIF del original, como la ubicación GPS o el modelo de cámara.</p>
       </article>

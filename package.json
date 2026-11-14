@@ -7,7 +7,7 @@
     "predev": "node scripts/copy-mediapipe.mjs",
     "dev": "vite",
     "prebuild": "node scripts/copy-mediapipe.mjs",
-    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/source-zip.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "deploy:cf": "npm run build && wrangler pages deploy"
@@ -38,5 +38,6 @@
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "license": "AGPL-3.0-or-later"
 }
