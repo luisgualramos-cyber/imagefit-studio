@@ -1,10 +1,11 @@
 import { Link } from 'react-router'
 
 /** Datos del titular (LSSI-CE, art. 10). */
+/** Se leen de .env.production.local (privado, fuera del repositorio). */
 export const OWNER = {
-  name: '',
-  nif: '',
-  address: '',
+  name: (import.meta.env.VITE_OWNER_NAME as string | undefined) ?? '',
+  nif: (import.meta.env.VITE_OWNER_NIF as string | undefined) ?? '',
+  address: (import.meta.env.VITE_OWNER_ADDRESS as string | undefined) ?? '',
   email: 'contacto@imagefitstudio.com',
   site: 'imagefitstudio.com',
 }

@@ -11,6 +11,13 @@ const { render, routes, siteUrl } = await import(pathToFileURL(resolve('dist-ssr
 // AdSense: el script solo se inyecta si hay ID de cliente configurado.
 const env = loadEnv('production', process.cwd(), 'VITE_')
 const client = process.env.VITE_ADSENSE_CLIENT || env.VITE_ADSENSE_CLIENT
+
+// El aviso legal es obligatorio (LSSI): no se publica sin los datos del titular.
+const missing = ['VITE_OWNER_NAME', 'VITE_OWNER_NIF', 'VITE_OWNER_ADDRESS'].filter((k) => !(process.env[k] || env[k]))
+if (missing.length) {
+  console.error(`[prerender] Faltan datos del titular (${missing.join(', ')}). Crea .env.production.local (ver .env.example).`)
+  process.exit(1)
+}
 const adsense = client
   ? `<meta name="google-adsense-account" content="${client}" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}" crossorigin="anonymous"></script>`

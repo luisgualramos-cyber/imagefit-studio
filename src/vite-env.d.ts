@@ -7,6 +7,9 @@ interface ImportMetaEnv {
   readonly VITE_ADSENSE_SLOT_AFTER_TOOLS?: string
   readonly VITE_ADSENSE_SLOT_BOTTOM?: string
   readonly VITE_ADSENSE_SLOT_SIDEBAR?: string
+  readonly VITE_OWNER_NAME?: string
+  readonly VITE_OWNER_NIF?: string
+  readonly VITE_OWNER_ADDRESS?: string
 }
 interface ImportMeta {
   readonly env: ImportMetaEnv
