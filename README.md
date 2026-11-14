@@ -36,7 +36,7 @@ npm run preview    # sirve dist/
 
 Ver `.env.example`. Todas son opcionales:
 
-- `VITE_SITE_URL`: URL pública (canonical, sitemap, OG). **Cámbiala por el dominio real** (por defecto `imagefit-studio.pages.dev`) y vuelve a desplegar.
+- `VITE_SITE_URL`: URL pública (canonical, sitemap, OG). Por defecto `https://imagefitstudio.com`; cámbiala si cambias de dominio y vuelve a desplegar.
 - `VITE_ADSENSE_CLIENT` y `VITE_ADSENSE_SLOT_*`: al definirlas, los huecos «ANUNCIO» pasan a ser bloques de AdSense y se inyecta el script en el HTML y `ads.txt`.
 - `OUTPAINT_ENABLED=true` + `STABILITY_API_KEY`: activan la ampliación generativa. **Servicio de pago** (créditos de Stability AI). `OUTPAINT_ALLOWED_ORIGIN` restringe las peticiones a tu dominio.
 
@@ -58,7 +58,7 @@ Incluye `wrangler.toml`, `public/_headers` (caché y seguridad) y la función `f
 
 ```bash
 npx wrangler login       # una vez, autoriza en el navegador
-npm run deploy:cf        # build + despliegue en https://imagefit-studio.pages.dev
+npm run deploy:cf        # build + despliegue en https://imagefitstudio.com
 ```
 
 Variables (Ajustes del proyecto → Variables y secretos): `VITE_*` en el build; `STABILITY_API_KEY` como **secreto** y `OUTPAINT_ENABLED=true` solo si se quiere activar la IA generativa (de pago).

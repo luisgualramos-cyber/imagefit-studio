@@ -1,5 +1,5 @@
 export const SITE_NAME = 'ImageFit Studio'
-export const SITE_URL = ((import.meta.env.VITE_SITE_URL as string | undefined) || 'https://imagefit-studio.pages.dev').replace(/\/$/, '')
+export const SITE_URL = ((import.meta.env.VITE_SITE_URL as string | undefined) || 'https://imagefitstudio.com').replace(/\/$/, '')
 
 export interface RouteMeta {
   path: string
