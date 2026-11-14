@@ -12,6 +12,7 @@ Plataforma web de herramientas de imágenes: redimensionar, comprimir, convertir
 | Compresión JPG / WEBP | Navegador | Codificadores nativos + búsqueda binaria de calidad para «peso máximo» |
 | Compresión PNG | Navegador | UPNG.js (deflate optimizado / cuantización a paleta) |
 | AVIF | Navegador | Codificador nativo o libavif en WASM (`@jsquash/avif`) |
+| Abrir fotos HEIC del iPhone | Navegador | Nativo (Safari) o libheif en WASM (`heic-to`, LGPL-3.0) |
 | Procesamiento por lotes y ZIP | Navegador | Pool de Web Workers + JSZip |
 | Encuadre inteligente | Navegador | MediaPipe Tasks (BlazeFace + EfficientDet-Lite0) + nitidez + smartcrop.js como respaldo |
 | Eliminar fondo (tiendas) | Navegador | `@imgly/background-removal` (modelo IS-Net fp16, ONNX Runtime Web) |
@@ -69,4 +70,4 @@ También funciona en Vercel (`vercel.json` + `api/outpaint.ts`): `npx vercel --p
 ## Licencias a tener en cuenta
 
 - ImageFit Studio se distribuye bajo **AGPL-3.0** (ver `LICENSE.md`), porque usa `@imgly/background-removal` (AGPL-3.0). La AGPL permite el uso comercial y la publicidad; exige que el código de la versión publicada esté disponible. Por eso `npm run build` genera `dist/imagefit-studio-codigo-fuente.zip` (del último commit), enlazado en el pie de la web. **Haz commit antes de publicar.** Si algún día se quiere cerrar el código, hay que sustituir esa librería o comprar una licencia comercial de IMG.LY.
-- MediaPipe (Apache-2.0), smartcrop.js (MIT), JSZip (MIT/GPLv3), UPNG.js (MIT), @jsquash/avif (Apache-2.0).
+- MediaPipe (Apache-2.0), smartcrop.js (MIT), heic-to/libheif (LGPL-3.0), JSZip (MIT/GPLv3), UPNG.js (MIT), @jsquash/avif (Apache-2.0).

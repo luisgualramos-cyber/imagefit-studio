@@ -28,24 +28,59 @@ export function formatBytes(n: number) {
 let uid = 0
 export const newId = () => `${Date.now().toString(36)}-${(uid++).toString(36)}`
 
-/** Lee una imagen y obtiene sus dimensiones reales (con la orientación EXIF aplicada). */
-export async function readImage(file: File): Promise<{ width: number; height: number }> {
+const HEIC_BRANDS = ['heic', 'heix', 'hevc', 'hevx', 'heim', 'heis', 'mif1', 'msf1']
+
+/** Detecta HEIC/HEIF por la cabecera del archivo (las fotos del iPhone), aunque no tenga extensión o tipo. */
+export async function isHeicFile(file: Blob & { name?: string }): Promise<boolean> {
+  if (/\.(heic|heif)$/i.test(file.name ?? '') || /heic|heif/i.test(file.type)) return true
+  const head = new Uint8Array(await file.slice(0, 12).arrayBuffer())
+  const box = String.fromCharCode(...head.slice(4, 8))
+  const brand = String.fromCharCode(...head.slice(8, 12))
+  return box === 'ftyp' && HEIC_BRANDS.includes(brand)
+}
+
+/**
+ * Convierte una foto HEIC/HEIF a PNG (sin pérdida) en el navegador con libheif (WebAssembly).
+ * Se usa solo cuando el navegador no sabe abrir HEIC por sí mismo (Chrome, Edge, Firefox).
+ */
+async function decodeHeic(file: File): Promise<File> {
+  const { heicTo } = await import('heic-to')
+  const png = await heicTo({ blob: file, type: 'image/png' })
+  // Se conserva el nombre original (.HEIC) para que «formato original» se trate como JPG.
+  return new File([png], file.name, { type: 'image/png', lastModified: file.lastModified })
+}
+
+/**
+ * Lee una imagen y obtiene sus dimensiones reales (con la orientación EXIF aplicada).
+ * Si es HEIC y el navegador no la abre, la convierte antes; devuelve el archivo listo para procesar.
+ */
+export async function readImage(file: File): Promise<{ width: number; height: number; file: File }> {
   if (file.size > MAX_FILE_BYTES) throw new Error(`El archivo supera el máximo de ${formatBytes(MAX_FILE_BYTES)}.`)
-  const looksHeic = /\.(heic|heif)$/i.test(file.name) || /heic|heif/i.test(file.type)
+  let usable = file
   let bmp: ImageBitmap
   try {
     bmp = await createImageBitmap(file)
   } catch {
-    if (looksHeic) throw new Error('Tu navegador no puede abrir fotos HEIC. Expórtala como JPG desde el móvil o usa Safari.')
-    throw new Error('No se pudo leer el archivo. ¿Es una imagen válida (JPG, PNG, WEBP, AVIF, GIF o BMP)?')
+    if (!(await isHeicFile(file))) {
+      throw new Error('No se pudo leer el archivo. ¿Es una imagen válida (JPG, PNG, WEBP, AVIF, HEIC, GIF o BMP)?')
+    }
+    try {
+      usable = await decodeHeic(file)
+      bmp = await createImageBitmap(usable)
+    } catch (e) {
+      console.warn('HEIC no decodificable:', e)
+      throw new Error('No se pudo abrir esta foto HEIC. Puede estar dañada o usar una variante no compatible.')
+    }
   }
   const { width, height } = bmp
   bmp.close()
   if (width * height > MAX_PIXELS) throw new Error('La imagen es demasiado grande (más de 120 megapíxeles).')
-  return { width, height }
+  return { width, height, file: usable }
 }
 
 export function sourceFormat(file: File): OutputFormat {
+  // Las fotos HEIC se entregan como JPG (el formato equivalente más compatible).
+  if (/\.(heic|heif)$/i.test(file.name)) return 'image/jpeg'
   const t = file.type as OutputFormat
   if (t in FORMAT_LABEL) return t
   return 'image/png'

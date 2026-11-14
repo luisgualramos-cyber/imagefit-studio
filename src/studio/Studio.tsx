@@ -204,7 +204,9 @@ export default function Studio({ initial, presetFilter = 'all', dropTitle, dropH
                 )}
                 {selected.result!.size > selected.size && (
                   <p className="text-xs text-muted">
-                    El resultado pesa más que el original: suele pasar si la foto ya estaba muy optimizada, si se amplía o si conviertes a PNG. Prueba a bajar la calidad o usar WEBP.
+                    {/\.(heic|heif)$/i.test(selected.name)
+                      ? 'Es normal que el JPG pese algo más que el HEIC: HEIC es un formato más eficiente. Si necesitas menos peso, baja la calidad o reduce las dimensiones.'
+                      : 'El resultado pesa más que el original: suele pasar si la foto ya estaba muy optimizada, si se amplía o si conviertes a PNG. Prueba a bajar la calidad o usar WEBP.'}
                   </p>
                 )}
               </div>

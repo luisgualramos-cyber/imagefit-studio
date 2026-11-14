@@ -67,7 +67,7 @@ export default function Dropzone({ onFiles, multiple = true, compact = false, ti
           <span className="text-sm text-muted">
             {hint ?? (
               <>
-                o <span className="font-semibold text-accent-dark underline underline-offset-2">selecciónalas desde tu dispositivo</span> · JPG, PNG, WEBP, AVIF, GIF, BMP
+                o <span className="font-semibold text-accent-dark underline underline-offset-2">selecciónalas desde tu dispositivo</span> · JPG, PNG, WEBP, AVIF, HEIC, GIF, BMP
               </>
             )}
           </span>

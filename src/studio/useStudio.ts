@@ -88,7 +88,14 @@ export function useStudio(initial?: Partial<Settings>) {
       setSelectedId((cur) => cur ?? fresh[0].id)
       for (const it of fresh) {
         readImage(it.file)
-          .then(({ width, height }) => patch(it.id, { width, height, status: 'ready' }))
+          .then(({ width, height, file }) =>
+            patch(it.id, (cur) => {
+              // Si la foto se convirtió (HEIC), la vista previa pasa a usar el archivo convertido.
+              if (file === cur.file) return { width, height, status: 'ready' }
+              URL.revokeObjectURL(cur.url)
+              return { width, height, file, url: URL.createObjectURL(file), status: 'ready' }
+            }),
+          )
           .catch((e: Error) => patch(it.id, { status: 'error', error: e.message }))
       }
     },

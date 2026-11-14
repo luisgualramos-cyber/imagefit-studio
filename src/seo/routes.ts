@@ -159,6 +159,15 @@ export const ROUTES: RouteMeta[] = [
     tool: true,
   },
   {
+    path: '/convertir-heic-a-jpg',
+    name: 'HEIC a JPG',
+    title: 'Convertir HEIC a JPG online · Fotos de iPhone en Windows y Android | ImageFit Studio',
+    description:
+      'Convierte fotos HEIC del iPhone a JPG en tu navegador, sin instalar nada ni subirlas a ningún servidor. Varias a la vez y descarga en ZIP. Funciona en Windows, Android y Mac.',
+    priority: 0.8,
+    tool: true,
+  },
+  {
     path: '/privacidad',
     name: 'Privacidad',
     title: 'Privacidad y cookies | ImageFit Studio',

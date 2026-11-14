@@ -46,7 +46,7 @@ export default function ShopTool() {
 
   const addFiles = (files: File[]) => {
     setError(null)
-    const imgs = files.filter((f) => f.type.startsWith('image/')).slice(0, 50 - itemsRef.current.length)
+    const imgs = files.filter((f) => f.type.startsWith('image/') || /\.(heic|heif)$/i.test(f.name)).slice(0, 50 - itemsRef.current.length)
     if (!imgs.length) {
       setError('Selecciona archivos de imagen (JPG, PNG, WEBP…).')
       return
@@ -56,7 +56,16 @@ export default function ShopTool() {
     setSelId((c) => c ?? fresh[0].id)
     fresh.forEach((it) =>
       readImage(it.file)
-        .then((d) => patch(it.id, { ...d, status: 'ready' }))
+        .then((d) =>
+          setItems((l) =>
+            l.map((x) => {
+              if (x.id !== it.id) return x
+              if (d.file === x.file) return { ...x, width: d.width, height: d.height, status: 'ready' }
+              URL.revokeObjectURL(x.url)
+              return { ...x, width: d.width, height: d.height, file: d.file, url: URL.createObjectURL(d.file), status: 'ready' }
+            }),
+          ),
+        )
         .catch((e: Error) => patch(it.id, { status: 'error', error: e.message })),
     )
   }

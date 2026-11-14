@@ -70,6 +70,7 @@ export const QUICK_PAGES = [
   { to: '/redimensionar-foto-whatsapp', label: 'Foto de perfil de WhatsApp' },
   { to: '/miniatura-youtube', label: 'Miniatura de YouTube' },
   { to: '/reducir-fotos-para-email', label: 'Reducir fotos para email' },
+  { to: '/convertir-heic-a-jpg', label: 'Convertir HEIC a JPG' },
   { to: '/convertir-jpg-a-png', label: 'Convertir JPG a PNG' },
   { to: '/convertir-png-a-webp', label: 'Convertir PNG a WEBP' },
 ]
@@ -153,6 +154,35 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <h2>Cómo funciona la conversión</h2>
         <p>
           El navegador decodifica tu imagen (aplicando la orientación EXIF) y la dibuja en un lienzo. Después la codifica en el nuevo formato con la calidad elegida. Todo ocurre en procesos en segundo plano para que la página no se bloquee aunque conviertas decenas de fotos.
+        </p>
+      </>
+    ),
+  },
+  '/convertir-heic-a-jpg': {
+    h1: 'Convertir HEIC a JPG',
+    lead: 'Pasa las fotos HEIC de tu iPhone a JPG en cualquier navegador, sin instalar nada y sin subirlas a ningún servidor.',
+    tool: <Studio initial={{ format: 'image/jpeg', quality: 92 }} dropTitle="Arrastra tus fotos HEIC del iPhone" />,
+    body: (
+      <>
+        <h2>Por qué tus fotos del iPhone son HEIC</h2>
+        <p>
+          Desde iOS 11, el iPhone guarda las fotos en formato HEIC (High Efficiency Image Container) cuando la cámara está en «Alta eficiencia», que es la opción por defecto. Ocupan aproximadamente la mitad que un JPG, pero Windows sin extensiones, muchas webs, formularios de la Administración y programas de edición no las abren.
+        </p>
+        <h2>Cómo convertirlas</h2>
+        <ul>
+          <li>Arrastra las fotos .HEIC (puedes subir muchas a la vez).</li>
+          <li>La salida ya está configurada en JPG con calidad 92. Si las necesitas más ligeras, baja la calidad o cambia el tamaño en el paso 1.</li>
+          <li>Pulsa «Procesar» y descarga cada foto o todas juntas en un ZIP.</li>
+        </ul>
+        <p>
+          Si tu navegador sabe abrir HEIC (Safari en iPhone y Mac), se usa directamente. En Chrome, Edge o Firefox, la foto se decodifica con <b>libheif</b>, la librería de referencia del formato, compilada a WebAssembly y ejecutada en tu dispositivo. La orientación de la foto se respeta y los datos de ubicación GPS se eliminan del JPG resultante.
+        </p>
+        <h2>Pasar las fotos del iPhone al PC sin que cambien de formato</h2>
+        <p>
+          Al conectar el iPhone por cable, iOS puede convertir las fotos a JPG automáticamente. Si quieres conservar los originales HEIC (más ligeros), ve a <b>Ajustes → Fotos → Transferir a Mac o PC</b> y elige «Mantener originales». Si prefieres que el iPhone haga directamente fotos JPG, cambia <b>Ajustes → Cámara → Formatos</b> a «Más compatible».
+        </p>
+        <p>
+          ¿Necesitas además reducir el peso para un formulario? Mira <Link to="/comprimir-foto-a-100kb">comprimir foto a 100 KB</Link>.
         </p>
       </>
     ),

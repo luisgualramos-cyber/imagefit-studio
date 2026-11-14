@@ -11,7 +11,7 @@ export const HOME_FAQS: FaqItem[] = [
   },
   {
     q: '¿Qué formatos de imagen puedo usar?',
-    a: 'Puedes abrir JPG, PNG, WEBP, AVIF, GIF (primer fotograma) y BMP. Puedes exportar a JPG, PNG, WEBP y AVIF. Las fotos HEIC del iPhone se abren en Safari; en otros navegadores conviene exportarlas antes como JPG.',
+    a: 'Puedes abrir JPG, PNG, WEBP, AVIF, HEIC (fotos de iPhone), GIF (primer fotograma) y BMP. Puedes exportar a JPG, PNG, WEBP y AVIF.',
   },
   {
     q: '¿Pierdo calidad al comprimir o cambiar el tamaño?',
@@ -83,7 +83,7 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
     },
     {
       q: '¿Puedo convertir HEIC a JPG?',
-      a: 'Solo si tu navegador puede abrir HEIC (Safari en iPhone y Mac). En Chrome o Firefox, configura la cámara del móvil en «Más compatible» o exporta la foto como JPG antes.',
+      a: 'Sí. Las fotos HEIC del iPhone se abren en cualquier navegador: si el tuyo no las admite, se decodifican con libheif en WebAssembly dentro de tu dispositivo. Tienes una página específica en «Convertir HEIC a JPG».',
     },
   ],
   '/convertir-jpg-a-png': [
@@ -260,6 +260,24 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
     {
       q: '¿Puedo reducir muchas fotos a la vez?',
       a: 'Sí. Arrástralas todas, pulsa procesar y descarga un ZIP. Puedes adjuntar el ZIP directamente o descomprimirlo y adjuntar las fotos.',
+    },
+  ],
+  '/convertir-heic-a-jpg': [
+    {
+      q: '¿Qué es un archivo HEIC?',
+      a: 'Es el formato en el que el iPhone guarda las fotos desde iOS 11 (opción «Alta eficiencia» de la cámara). Ocupa aproximadamente la mitad que un JPG con la misma calidad, pero muchos programas de Windows, webs y formularios no lo aceptan.',
+    },
+    {
+      q: '¿Se suben mis fotos a algún servidor para convertirlas?',
+      a: 'No. La conversión se hace en tu navegador con libheif compilado a WebAssembly. Las fotos nunca salen de tu ordenador o tu móvil.',
+    },
+    {
+      q: '¿Se pierde calidad al pasar de HEIC a JPG?',
+      a: 'Con la calidad 92 que viene configurada la diferencia no se aprecia. El JPG ocupará algo más que el HEIC original, porque es un formato menos eficiente.',
+    },
+    {
+      q: '¿Cómo hago que el iPhone haga las fotos directamente en JPG?',
+      a: 'En el iPhone ve a Ajustes → Cámara → Formatos y elige «Más compatible». Para que al pasarlas al ordenador se conviertan solas, ve a Ajustes → Fotos y marca «Automático» en «Transferir a Mac o PC».',
     },
   ],
 }

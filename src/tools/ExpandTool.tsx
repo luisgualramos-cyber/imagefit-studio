@@ -48,13 +48,13 @@ export default function ExpandTool() {
     setErr(null)
     try {
       const d = await readImage(f)
-      const bmp = await createImageBitmap(f)
+      const bmp = await createImageBitmap(d.file)
       if (src) {
         URL.revokeObjectURL(src.url)
         src.bmp.close()
       }
       setFile(f)
-      setSrc({ url: URL.createObjectURL(f), w: d.width, h: d.height, bmp })
+      setSrc({ url: URL.createObjectURL(d.file), w: d.width, h: d.height, bmp })
       // Por defecto: pasar a 16:9 (o a 1:1 si ya es muy horizontal) sin reducir el original.
       const r = d.width / d.height < 1.5 ? 16 / 9 : 1
       applyRatio(r, d.width, d.height)
