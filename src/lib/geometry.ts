@@ -36,13 +36,20 @@ export function getTarget(item: Pick<ImageItem, 'width' | 'height'>, s: Settings
       const h = typeof s.height === 'number' && s.height > 0 ? s.height : null
       if (s.lockRatio) {
         // Proporción bloqueada: cada imagen conserva su propia proporción.
+        const cap = (k: number) => (s.noUpscale ? Math.min(1, k) : k)
         if (w && h) {
           // Encaja dentro de la caja W×H sin deformar.
-          const k = Math.min(w / sw, h / sh)
+          const k = cap(Math.min(w / sw, h / sh))
           return fix(sw * k, sh * k, 'scale')
         }
-        if (w) return fix(w, (sh * w) / sw, 'scale')
-        if (h) return fix((sw * h) / sh, h, 'scale')
+        if (w) {
+          const k = cap(w / sw)
+          return fix(sw * k, sh * k, 'scale')
+        }
+        if (h) {
+          const k = cap(h / sh)
+          return fix(sw * k, sh * k, 'scale')
+        }
         return fix(sw, sh, 'scale')
       }
       if (w && h) return fix(w, h, 'exact')

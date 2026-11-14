@@ -114,6 +114,51 @@ export const ROUTES: RouteMeta[] = [
     tool: true,
   },
   {
+    path: '/comprimir-foto-a-100kb',
+    name: 'Comprimir foto a 100 KB',
+    title: 'Comprimir foto a 100 KB online (o 50, 200, 500 KB) | ImageFit Studio',
+    description:
+      'Reduce una foto a menos de 100 KB para formularios, sedes electrónicas y webs. Elige el límite exacto en KB y la herramienta busca la mejor calidad posible. Gratis y sin subir nada.',
+    priority: 0.8,
+    tool: true,
+  },
+  {
+    path: '/foto-carnet-dni-pasaporte',
+    name: 'Foto para DNI y pasaporte',
+    title: 'Foto de carné para DNI, pasaporte o visado online · Tamaño exacto | ImageFit Studio',
+    description:
+      'Recorta tu foto al tamaño del DNI y pasaporte español (26×32 mm), carné internacional 35×45 mm o EE. UU. 2×2", centrada en tu cara automáticamente. Lista para imprimir o subir.',
+    priority: 0.8,
+    tool: true,
+  },
+  {
+    path: '/redimensionar-foto-whatsapp',
+    name: 'Foto para WhatsApp',
+    title: 'Foto de perfil y estados de WhatsApp sin que se corte | ImageFit Studio',
+    description:
+      'Ajusta tu foto de perfil de WhatsApp para que no se corte en el círculo y prepara estados 9:16 a pantalla completa. Encuadre automático de la cara, gratis y privado.',
+    priority: 0.75,
+    tool: true,
+  },
+  {
+    path: '/miniatura-youtube',
+    name: 'Miniatura de YouTube',
+    title: 'Miniatura de YouTube 1280×720 y menos de 2 MB · Redimensionar online | ImageFit Studio',
+    description:
+      'Convierte cualquier imagen en una miniatura de YouTube válida: 1280×720 px, proporción 16:9 y por debajo del límite de 2 MB, sin perder nitidez.',
+    priority: 0.75,
+    tool: true,
+  },
+  {
+    path: '/reducir-fotos-para-email',
+    name: 'Reducir fotos para email',
+    title: 'Reducir el tamaño de fotos para enviar por email | ImageFit Studio',
+    description:
+      'Reduce el peso de varias fotos a la vez para enviarlas por correo sin superar el límite de adjuntos. De 5 MB a unos 300 KB por foto, con calidad de sobra para verlas.',
+    priority: 0.75,
+    tool: true,
+  },
+  {
     path: '/privacidad',
     name: 'Privacidad',
     title: 'Privacidad y cookies | ImageFit Studio',

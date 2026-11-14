@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router'
 import AdSlot from './AdSlot'
 import { IconMenu, IconX } from './Icons'
 import { TOOLS } from './Sections'
+import { QUICK_PAGES } from '../content/pages'
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
@@ -93,11 +94,15 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <h2 className="mb-3 text-sm font-bold tracking-wide text-white uppercase">Conversiones</h2>
+          <h2 className="mb-3 text-sm font-bold tracking-wide text-white uppercase">Usos populares</h2>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/convertir-jpg-a-png" className="hover:text-white">Convertir JPG a PNG</Link></li>
-            <li><Link to="/convertir-png-a-webp" className="hover:text-white">Convertir PNG a WEBP</Link></li>
-            <li><Link to="/convertir-imagenes" className="hover:text-white">JPG, PNG, WEBP y AVIF</Link></li>
+            {QUICK_PAGES.map((q) => (
+              <li key={q.to}>
+                <Link to={q.to} className="hover:text-white">
+                  {q.label}
+                </Link>
+              </li>
+            ))}
           </ul>
           <h2 className="mt-6 mb-3 text-sm font-bold tracking-wide text-white uppercase">Información</h2>
           <ul className="space-y-2 text-sm">

@@ -63,6 +63,17 @@ function FormatTable() {
   )
 }
 
+/** Páginas para búsquedas concretas (enlazadas desde inicio y pie). */
+export const QUICK_PAGES = [
+  { to: '/comprimir-foto-a-100kb', label: 'Comprimir foto a 100 KB' },
+  { to: '/foto-carnet-dni-pasaporte', label: 'Foto para DNI y pasaporte' },
+  { to: '/redimensionar-foto-whatsapp', label: 'Foto de perfil de WhatsApp' },
+  { to: '/miniatura-youtube', label: 'Miniatura de YouTube' },
+  { to: '/reducir-fotos-para-email', label: 'Reducir fotos para email' },
+  { to: '/convertir-jpg-a-png', label: 'Convertir JPG a PNG' },
+  { to: '/convertir-png-a-webp', label: 'Convertir PNG a WEBP' },
+]
+
 export const TOOL_PAGES: Record<string, ToolPageContent> = {
   '/redimensionar-imagenes': {
     h1: 'Redimensionar imágenes online',
@@ -244,7 +255,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
     lead: 'Aplica el mismo tamaño, formato y compresión a decenas de fotos y descárgalas juntas en un ZIP.',
     tool: (
       <Studio
-        initial={{ sizeMode: 'custom', lockRatio: true, width: 1600, height: 1600, format: 'image/jpeg', quality: 82 }}
+        initial={{ sizeMode: 'custom', lockRatio: true, noUpscale: true, width: 1600, height: 1600, format: 'image/jpeg', quality: 82 }}
         dropTitle="Arrastra todas tus imágenes a la vez"
       />
     ),
@@ -311,6 +322,175 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <h2>Privacidad</h2>
         <p>
           Los rellenos desenfocado, espejo y color se calculan en tu navegador. La ampliación con IA envía una copia reducida de la imagen a Stability AI a través de nuestro servidor, sin almacenarla, y solo después de que lo confirmes.
+        </p>
+      </>
+    ),
+  },
+  '/comprimir-foto-a-100kb': {
+    h1: 'Comprimir foto a 100 KB',
+    lead: 'Reduce una foto a menos de 100 KB, o al límite que te pidan, para formularios, sedes electrónicas, solicitudes de empleo o tu web.',
+    tool: <Studio initial={{ sizeMode: 'custom', lockRatio: true, noUpscale: true, width: 1280, height: 1280, format: 'image/jpeg', quality: 85, maxKB: 100, suffix: '-100kb' }} />,
+    body: (
+      <>
+        <h2>Para qué sirve reducir una foto a 100 KB</h2>
+        <p>
+          Muchos formularios online limitan el tamaño de las imágenes: sedes electrónicas de la Administración, portales de empleo, matrículas, oposiciones o plataformas de alquiler. Los límites más habituales son 50 KB, 100 KB, 200 KB, 500 KB y 1 MB. Una foto hecha con el móvil ocupa entre 2 y 8 MB, entre 20 y 80 veces más de lo permitido.
+        </p>
+        <h2>Cómo lo consigue sin estropear la foto</h2>
+        <p>La herramienta combina los dos ajustes que más peso ahorran:</p>
+        <ul>
+          <li><b>Reduce las dimensiones</b> a 1280 px en el lado mayor. Es suficiente para ver la foto con nitidez en cualquier pantalla y elimina el 80-90 % de los píxeles.</li>
+          <li><b>Ajusta la calidad automáticamente</b>. Prueba varias calidades JPG y se queda con la más alta que no supera el límite, en lugar de usar una calidad fija que podría quedarse corta o pasarse.</li>
+        </ul>
+        <h2>Otros límites habituales</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Límite</th>
+              <th>Escribe en «Peso máximo (KB)»</th>
+              <th>Ancho recomendado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>50 KB</td><td>50</td><td>800-1000 px</td></tr>
+            <tr><td>100 KB</td><td>100</td><td>1280 px</td></tr>
+            <tr><td>200 KB</td><td>200</td><td>1600 px</td></tr>
+            <tr><td>500 KB</td><td>500</td><td>2000-2500 px</td></tr>
+            <tr><td>1 MB</td><td>1000</td><td>3000 px o tamaño original</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Si el formulario también exige unas medidas concretas en píxeles, ajústalas en el paso 1. Para fotos de documentos oficiales, mira la herramienta de <Link to="/foto-carnet-dni-pasaporte">foto para DNI y pasaporte</Link>.
+        </p>
+      </>
+    ),
+  },
+  '/foto-carnet-dni-pasaporte': {
+    h1: 'Foto de carné para DNI, pasaporte o visado',
+    lead: 'Recorta tu foto al tamaño oficial, centrada automáticamente en tu cara, lista para imprimir o subir a un trámite online.',
+    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('docs', 'DNI / pasaporte España 26×32 mm'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 95, suffix: '-carne' }} />,
+    body: (
+      <>
+        <h2>Tamaños de foto de carné</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Documento</th>
+              <th>Medidas</th>
+              <th>Píxeles (300 ppp)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>DNI y pasaporte (España)</td><td>26 × 32 mm</td><td>307 × 378 px</td></tr>
+            <tr><td>Visado Schengen y la mayoría de países de la UE</td><td>35 × 45 mm</td><td>413 × 531 px</td></tr>
+            <tr><td>Pasaporte y visado de EE. UU.</td><td>2 × 2 pulgadas (51 × 51 mm)</td><td>600 × 600 px</td></tr>
+          </tbody>
+        </table>
+        <p>Los tres formatos están en el paso 1, dentro de «Formatos» → «Documentos».</p>
+        <h2>Cómo hacer la foto para que sirva</h2>
+        <ul>
+          <li><b>Fondo liso, blanco o muy claro</b>, sin sombras. Esta herramienta no cambia el fondo, así que conviene hacerse la foto delante de una pared clara.</li>
+          <li><b>Luz de frente y uniforme</b>, mejor junto a una ventana que con flash directo.</li>
+          <li><b>Mirada a la cámara</b>, expresión neutra, boca cerrada y sin gafas de sol ni gorra.</li>
+          <li><b>Cámara a la altura de los ojos</b> y a 1-1,5 metros. Si la haces desde muy cerca, la cara se deforma.</li>
+        </ul>
+        <h2>Cómo encuadra tu cara</h2>
+        <p>
+          El <Link to="/encuadre-inteligente">encuadre inteligente</Link> detecta tu cara con IA dentro de tu navegador y centra el recorte en ella, dejando aire por encima de la cabeza. Puedes arrastrar el marco y ajustar el zoom para que la cabeza ocupe la proporción que pide cada organismo, normalmente entre el 70 % y el 80 % del alto de la foto.
+        </p>
+        <h2>Importante</h2>
+        <p>
+          Para tramitar el DNI o el pasaporte en España se suele pedir la foto impresa en papel fotográfico, y cada organismo puede tener requisitos propios. Consulta siempre los requisitos oficiales de tu trámite. Para imprimirla, descarga la imagen y encárgala en una tienda de revelado indicando el tamaño en milímetros.
+        </p>
+      </>
+    ),
+  },
+  '/redimensionar-foto-whatsapp': {
+    h1: 'Foto para WhatsApp: perfil y estados',
+    lead: 'Haz que tu foto de perfil no se corte en el círculo y prepara estados a pantalla completa, con la cara siempre en el encuadre.',
+    tool: <Studio presetFilter="social" initial={{ sizeMode: 'preset', presetId: preset('whatsapp', 'Foto de perfil'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 90, suffix: '-whatsapp' }} />,
+    body: (
+      <>
+        <h2>Foto de perfil de WhatsApp</h2>
+        <p>
+          WhatsApp guarda la foto de perfil como un cuadrado y la muestra recortada en un círculo. Si subes una foto vertical, la app te obliga a elegir un recorte, y a menudo la cara queda descentrada o se pierde parte de la cabeza. Aquí se recorta a 640×640 píxeles centrado en tu cara, y puedes ajustar el marco antes de descargarla.
+        </p>
+        <p>
+          Consejo: deja algo de margen alrededor de la cara. Las esquinas del cuadrado no se ven en el círculo, así que lo importante debe quedar en el centro.
+        </p>
+        <h2>Estados de WhatsApp</h2>
+        <p>
+          Los estados se ven a pantalla completa en vertical: 1080×1920 píxeles (9:16). Selecciona «Estado» en el grupo WhatsApp del paso 1. Si tu foto es horizontal tienes dos opciones:
+        </p>
+        <ul>
+          <li><b>Recortar:</b> rellena toda la pantalla y mantiene a las personas en el encuadre.</li>
+          <li><b>Encajar:</b> la foto se ve entera y el espacio sobrante se rellena con la misma foto desenfocada.</li>
+        </ul>
+        <h2>Fotos para enviar por chat</h2>
+        <p>
+          Si solo quieres que tus fotos ocupen menos al enviarlas, reduce su tamaño con la herramienta de <Link to="/reducir-fotos-para-email">reducir fotos</Link>: lo que funciona para el correo también sirve para WhatsApp o Telegram.
+        </p>
+      </>
+    ),
+  },
+  '/miniatura-youtube': {
+    h1: 'Miniatura de YouTube a 1280×720',
+    lead: 'Convierte cualquier imagen en una miniatura válida para YouTube: 16:9, 1280×720 píxeles y siempre por debajo de 2 MB.',
+    tool: <Studio presetFilter="social" initial={{ sizeMode: 'preset', presetId: preset('youtube', 'Miniatura'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 92, maxKB: 1950, suffix: '-miniatura' }} />,
+    body: (
+      <>
+        <h2>Requisitos de las miniaturas de YouTube</h2>
+        <ul>
+          <li><b>Tamaño:</b> 1280×720 píxeles, con un ancho mínimo de 640 px.</li>
+          <li><b>Proporción:</b> 16:9, la misma que el reproductor.</li>
+          <li><b>Peso máximo:</b> 2 MB.</li>
+          <li><b>Formatos:</b> JPG, PNG o GIF.</li>
+        </ul>
+        <p>
+          La herramienta ya viene configurada para cumplirlos: JPG con calidad alta y un límite de 1950 KB para quedar siempre por debajo de los 2 MB. Si diseñas la miniatura en PNG con mucho detalle, suele superar ese límite; conviértela aquí a JPG sin pérdida visible.
+        </p>
+        <h2>Consejos para que tu miniatura destaque</h2>
+        <ul>
+          <li><b>Pocas palabras y grandes.</b> En el móvil la miniatura mide unos 2-3 cm; un texto pequeño no se lee.</li>
+          <li><b>Una cara expresiva</b> suele atraer más clics que un plano general.</li>
+          <li><b>Deja libre la esquina inferior derecha:</b> ahí YouTube muestra la duración del vídeo.</li>
+          <li><b>Contraste alto</b> entre el sujeto y el fondo para que se distinga en el modo claro y en el oscuro.</li>
+        </ul>
+        <h2>Banner del canal</h2>
+        <p>
+          El banner se sube a 2560×1440 px, pero en móviles solo se ve la franja central de 1546×423 px. Lo encontrarás en el grupo YouTube del paso 1, y más formatos en <Link to="/imagenes-para-redes-sociales">imágenes para redes sociales</Link>.
+        </p>
+      </>
+    ),
+  },
+  '/reducir-fotos-para-email': {
+    h1: 'Reducir fotos para enviar por email',
+    lead: 'Reduce el peso de muchas fotos a la vez para que quepan en un correo, sin que se note al verlas en pantalla.',
+    tool: (
+      <Studio
+        initial={{ sizeMode: 'custom', lockRatio: true, noUpscale: true, width: 1600, height: 1600, format: 'image/jpeg', quality: 80, maxKB: 400, suffix: '-email' }}
+        dropTitle="Arrastra las fotos que quieres enviar"
+      />
+    ),
+    body: (
+      <>
+        <h2>El problema: los adjuntos tienen límite</h2>
+        <p>
+          Gmail y Outlook permiten adjuntar unos 20-25 MB por correo, y muchos servidores de empresa todavía menos. Una foto de un móvil actual ocupa entre 3 y 8 MB, así que con cuatro o cinco fotos el correo ya no se envía o el destinatario no lo recibe.
+        </p>
+        <h2>La solución: 1600 px y menos de 400 KB por foto</h2>
+        <p>
+          A 1600 píxeles en el lado mayor una foto se ve perfectamente en un ordenador o un móvil, y con calidad JPG alta pesa entre 250 y 400 KB. Así caben más de 50 fotos en un solo correo. Las fotos verticales y horizontales conservan su proporción.
+        </p>
+        <h2>Paso a paso</h2>
+        <ul>
+          <li>Arrastra todas las fotos a la vez (hasta 100).</li>
+          <li>Pulsa «Procesar» y espera a que termine la barra de progreso.</li>
+          <li>Pulsa «Descargar todo (ZIP)» y adjunta el ZIP o las fotos sueltas al correo.</li>
+        </ul>
+        <h2>¿Y si las quieren imprimir?</h2>
+        <p>
+          Para imprimir conviene enviar más resolución. Sube el ancho a 3000 px y quita el límite de peso, o comparte los originales con un servicio de almacenamiento. Para enviarlas solo para verlas, la configuración de esta página es ideal. Más opciones en <Link to="/redimensionar-varias-imagenes">procesar varias imágenes</Link>.
         </p>
       </>
     ),

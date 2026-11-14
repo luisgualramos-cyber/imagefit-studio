@@ -54,6 +54,10 @@ export const PRESET_GROUPS: PresetGroup[] = [
     { name: 'Publicación cuadrada', width: 1080, height: 1080, note: '1:1' },
     { name: 'Banner de perfil', width: 1584, height: 396, note: '4:1' },
   ]),
+  g('whatsapp', 'WhatsApp', 'social', [
+    { name: 'Foto de perfil', width: 640, height: 640, note: '1:1 · se muestra en círculo' },
+    { name: 'Estado', width: 1080, height: 1920, note: '9:16' },
+  ]),
   g('pinterest', 'Pinterest', 'social', [{ name: 'Pin vertical', width: 1000, height: 1500, note: '2:3' }]),
   g('web', 'Web y blog', 'web', [
     { name: 'Imagen destacada de blog', width: 1200, height: 675, note: '16:9' },
@@ -71,7 +75,9 @@ export const PRESET_GROUPS: PresetGroup[] = [
   g('docs', 'Documentos', 'docs', [
     { name: 'A4 vertical (300 ppp)', width: 2480, height: 3508, note: 'impresión' },
     { name: 'A4 horizontal (300 ppp)', width: 3508, height: 2480, note: 'impresión' },
-    { name: 'Foto tipo carné 35×45 mm', width: 413, height: 531, note: '300 ppp' },
+    { name: 'DNI / pasaporte España 26×32 mm', width: 307, height: 378, note: '300 ppp' },
+    { name: 'Foto tipo carné 35×45 mm', width: 413, height: 531, note: 'visados y UE · 300 ppp' },
+    { name: 'EE. UU. 2×2 pulgadas', width: 600, height: 600, note: '51×51 mm · 300 ppp' },
     { name: 'Foto de perfil / CV', width: 800, height: 800, note: '1:1' },
   ]),
 ]

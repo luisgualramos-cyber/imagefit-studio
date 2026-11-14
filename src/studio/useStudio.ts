@@ -8,6 +8,7 @@ export const DEFAULT_SETTINGS: Settings = {
   width: '',
   height: '',
   lockRatio: true,
+  noUpscale: false,
   presetId: null,
   fit: 'cover',
   background: { type: 'blur' },

@@ -192,6 +192,76 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
       a: 'Una copia reducida de tu imagen y las medidas a ampliar se envían a Stability AI a través de nuestro servidor, que no guarda nada. Antes de enviar se te pide confirmación.',
     },
   ],
+  '/comprimir-foto-a-100kb': [
+    {
+      q: '¿Cómo reduzco una foto a menos de 100 KB?',
+      a: 'Sube la foto y pulsa procesar: ya viene configurada con un peso máximo de 100 KB y un tamaño de 1280 px en el lado mayor. La herramienta prueba varias calidades y se queda con la más alta que no pasa de 100 KB.',
+    },
+    {
+      q: '¿Y si necesito 50 KB, 200 KB o 1 MB?',
+      a: 'Cambia el número en «Peso máximo (KB)». Para 1 MB escribe 1000. Si el límite es muy bajo, reduce también el ancho en píxeles: es lo que más peso ahorra.',
+    },
+    {
+      q: '¿Se va a ver mal la foto?',
+      a: 'A 1280 px y 100 KB una foto normal se ve bien en pantalla. Si la herramienta no puede llegar al límite con buena calidad, te avisará. Puedes comparar el antes y el después antes de descargar.',
+    },
+  ],
+  '/foto-carnet-dni-pasaporte': [
+    {
+      q: '¿Qué tamaño tiene la foto del DNI y del pasaporte en España?',
+      a: '32 mm de alto por 26 mm de ancho. A 300 ppp, que es la resolución habitual de impresión, equivale a 307×378 píxeles.',
+    },
+    {
+      q: '¿Esta herramienta cambia el fondo a blanco?',
+      a: 'No. Recorta y centra la foto en tu cara al tamaño exacto, pero no sustituye el fondo. Hazte la foto delante de una pared blanca o clara y con buena luz.',
+    },
+    {
+      q: '¿Me la aceptarán en la comisaría?',
+      a: 'Para el DNI y el pasaporte en España se suele exigir una foto impresa en papel fotográfico. Depende del organismo y del trámite, así que confirma siempre los requisitos oficiales. Esta herramienta te da el archivo con las medidas correctas para imprimirlo o subirlo a trámites online.',
+    },
+  ],
+  '/redimensionar-foto-whatsapp': [
+    {
+      q: '¿Por qué se corta mi foto de perfil de WhatsApp?',
+      a: 'WhatsApp recorta la foto en un cuadrado y la muestra en un círculo. Si tu foto es vertical u horizontal, la cara puede quedar fuera. Aquí se recorta en cuadrado centrado en tu cara y ves el resultado antes de subirla.',
+    },
+    {
+      q: '¿Qué tamaño tienen los estados de WhatsApp?',
+      a: '1080×1920 píxeles (9:16), igual que las Stories de Instagram. Si tu foto es horizontal, puedes recortarla o encajarla con un fondo desenfocado.',
+    },
+    {
+      q: '¿Pierde calidad al subirla a WhatsApp?',
+      a: 'WhatsApp vuelve a comprimir las imágenes. Subir una foto ya ajustada al tamaño correcto y bien comprimida reduce esa pérdida.',
+    },
+  ],
+  '/miniatura-youtube': [
+    {
+      q: '¿Qué tamaño debe tener una miniatura de YouTube?',
+      a: '1280×720 píxeles, proporción 16:9, como mínimo 640 px de ancho y como máximo 2 MB. Se admiten JPG, PNG y GIF.',
+    },
+    {
+      q: 'Mi miniatura pesa más de 2 MB, ¿qué hago?',
+      a: 'Súbela aquí: ya viene configurada en JPG con un límite de 1950 KB, así que siempre quedará por debajo de los 2 MB que exige YouTube.',
+    },
+    {
+      q: '¿Puedo usar una foto vertical?',
+      a: 'Sí. Se recorta a 16:9 manteniendo a la persona u objeto principal en el encuadre. Si prefieres no recortar, elige «Encajar» y el hueco se rellena con la propia imagen desenfocada.',
+    },
+  ],
+  '/reducir-fotos-para-email': [
+    {
+      q: '¿Cuánto pueden ocupar los adjuntos de un correo?',
+      a: 'Gmail y Outlook limitan los adjuntos a unos 20-25 MB por correo. Una foto de móvil ocupa entre 3 y 8 MB, así que con cinco fotos ya puedes pasarte.',
+    },
+    {
+      q: '¿Cuánto se reducen las fotos?',
+      a: 'Con la configuración de esta página (1600 px y un máximo de 400 KB por foto) una foto de 5 MB suele quedar en unos 250-400 KB. Así caben más de 50 fotos en un correo.',
+    },
+    {
+      q: '¿Puedo reducir muchas fotos a la vez?',
+      a: 'Sí. Arrástralas todas, pulsa procesar y descarga un ZIP. Puedes adjuntar el ZIP directamente o descomprimirlo y adjuntar las fotos.',
+    },
+  ],
 }
 
 export const faqsFor = (path: string) => (path === '/' ? HOME_FAQS : (PAGE_FAQS[path] ?? []))

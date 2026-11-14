@@ -68,6 +68,8 @@ export interface Settings {
   width: number | ''
   height: number | ''
   lockRatio: boolean
+  /** Con proporción bloqueada: nunca ampliar por encima del tamaño original. */
+  noUpscale: boolean
   presetId: string | null
   fit: FitMode
   background: BackgroundFill

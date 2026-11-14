@@ -148,6 +148,12 @@ export default function SettingsPanel({
                 <input className="field mt-1" inputMode="numeric" type="number" min={1} value={settings.height} onChange={(e) => setH(e.target.value)} placeholder="auto" />
               </label>
             </div>
+            {settings.lockRatio && (
+              <label className="mt-3 flex items-center gap-2 text-sm">
+                <input type="checkbox" className="size-4 accent-[#ff5a2c]" checked={settings.noUpscale} onChange={(e) => set({ noUpscale: e.target.checked })} />
+                No ampliar imágenes más pequeñas
+              </label>
+            )}
             <p className="mt-2 text-xs text-muted">
               {settings.lockRatio
                 ? 'Proporción bloqueada: ninguna imagen se deforma. En lotes, cada foto conserva su proporción y cabe dentro de estas medidas.'

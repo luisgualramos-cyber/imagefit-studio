@@ -4,7 +4,7 @@ import { Faq, HowItWorks, PrivacyNote, ToolsGrid, UseCases } from '../components
 import { IconShield } from '../components/Icons'
 import Studio from '../studio/Studio'
 import { HOME_FAQS, faqsFor } from '../content/faqs'
-import { TOOL_PAGES } from '../content/pages'
+import { QUICK_PAGES, TOOL_PAGES } from '../content/pages'
 import { routeMeta } from '../seo/routes'
 
 export function Home() {
@@ -45,6 +45,16 @@ export function Home() {
         <div className="mt-8">
           <ToolsGrid />
         </div>
+        <h3 className="mt-12 text-xl font-bold">Usos populares</h3>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {QUICK_PAGES.map((q) => (
+            <li key={q.to}>
+              <Link to={q.to} className="inline-block rounded-full border border-line bg-white px-4 py-2 text-sm font-medium hover:border-ink/40 hover:text-accent-dark">
+                {q.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
         <div className="mt-8">
           <AdSlot position="after-tools" format="horizontal" />
         </div>
@@ -105,6 +115,15 @@ export function ToolPage({ path }: { path: string }) {
         <div className="mt-6">
           <ToolsGrid exclude={path} />
         </div>
+        <ul className="mt-6 flex flex-wrap gap-2" aria-label="Usos populares">
+          {QUICK_PAGES.filter((q) => q.to !== path).map((q) => (
+            <li key={q.to}>
+              <Link to={q.to} className="inline-block rounded-full border border-line bg-white px-3.5 py-1.5 text-sm hover:border-ink/40 hover:text-accent-dark">
+                {q.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
         <div className="mt-8">
           <AdSlot position="after-tools" format="horizontal" />
         </div>
