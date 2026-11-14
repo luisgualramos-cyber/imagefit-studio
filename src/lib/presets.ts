@@ -72,6 +72,16 @@ export const PRESET_GROUPS: PresetGroup[] = [
     { name: 'Producto Etsy', width: 2000, height: 1500, note: '4:3' },
     { name: 'Producto eBay', width: 1600, height: 1600, note: '1:1' },
   ]),
+  g('ratios', 'Proporciones', 'web', [
+    { name: 'Cuadrado 1:1', width: 1080, height: 1080, note: '1:1' },
+    { name: 'Vertical 4:5', width: 1080, height: 1350, note: '4:5' },
+    { name: 'Vertical 3:4', width: 1200, height: 1600, note: '3:4' },
+    { name: 'Vertical 2:3', width: 1200, height: 1800, note: '2:3 · foto 10×15' },
+    { name: 'Vertical 9:16', width: 1080, height: 1920, note: '9:16' },
+    { name: 'Horizontal 3:2', width: 1800, height: 1200, note: '3:2' },
+    { name: 'Horizontal 4:3', width: 1600, height: 1200, note: '4:3' },
+    { name: 'Panorámico 16:9', width: 1920, height: 1080, note: '16:9' },
+  ]),
   g('docs', 'Documentos', 'docs', [
     { name: 'A4 vertical (300 ppp)', width: 2480, height: 3508, note: 'impresión' },
     { name: 'A4 horizontal (300 ppp)', width: 3508, height: 2480, note: 'impresión' },

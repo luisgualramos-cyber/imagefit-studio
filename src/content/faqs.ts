@@ -280,6 +280,70 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
       a: 'En el iPhone ve a Ajustes → Cámara → Formatos y elige «Más compatible». Para que al pasarlas al ordenador se conviertan solas, ve a Ajustes → Fotos y marca «Automático» en «Transferir a Mac o PC».',
     },
   ],
+  '/convertir-webp-a-jpg': [
+    {
+      q: '¿Por qué mis imágenes se descargan en WEBP?',
+      a: 'Muchas webs sirven sus imágenes en WEBP porque pesan menos que JPG. El problema es que algunos programas antiguos, formularios y redes no lo aceptan. Al convertirlas a JPG puedes usarlas en cualquier sitio.',
+    },
+    {
+      q: '¿Se pierde calidad al pasar de WEBP a JPG?',
+      a: 'Con la calidad 92 que viene configurada la diferencia no se aprecia. El JPG suele pesar algo más que el WEBP original porque es un formato menos eficiente.',
+    },
+    {
+      q: '¿Qué pasa con las zonas transparentes?',
+      a: 'JPG no admite transparencia, así que se rellenan de blanco. Si necesitas conservarla, convierte a PNG en su lugar.',
+    },
+    {
+      q: '¿Puedo convertir archivos JFIF a JPG?',
+      a: 'Sí. Un archivo .jfif es en realidad un JPEG con otra extensión: súbelo y descárgalo como JPG para que cualquier programa lo reconozca.',
+    },
+  ],
+  '/convertir-png-a-jpg': [
+    {
+      q: '¿Cuándo conviene pasar de PNG a JPG?',
+      a: 'Cuando la imagen es una foto o una captura con muchos colores y no necesitas transparencia. El JPG pesa mucho menos y es aceptado en todas partes.',
+    },
+    {
+      q: '¿Qué pasa con el fondo transparente del PNG?',
+      a: 'JPG no admite transparencia, por lo que las zonas transparentes se rellenan de blanco. Si prefieres otro color, elige «Medidas» o «Formatos», «Encajar» y el color de relleno que quieras.',
+    },
+    {
+      q: '¿Se pierde calidad?',
+      a: 'JPG comprime con pérdida, pero con calidad 90 o superior la diferencia no se ve en fotos. En logotipos con bordes nítidos o texto pequeño, PNG o WEBP siguen siendo mejores opciones.',
+    },
+  ],
+  '/recortar-imagen': [
+    {
+      q: '¿Cómo recorto una imagen a una proporción concreta?',
+      a: 'Elige una proporción en el paso 1 (cuadrado 1:1, vertical 4:5, 16:9…) o escribe medidas propias. Aparecerá un marco sobre la foto que puedes arrastrar y ampliar con el zoom para elegir la zona exacta.',
+    },
+    {
+      q: '¿Puedo recortar varias fotos a la vez?',
+      a: 'Sí. Súbelas juntas: todas se recortan con la misma proporción y cada una con su propio encuadre, que puedes ajustar una a una antes de descargar el ZIP.',
+    },
+    {
+      q: '¿Qué hace el encuadre inteligente?',
+      a: 'Detecta caras, personas y objetos con IA en tu navegador y coloca el marco a su alrededor para que no queden cortados. Si no te convence, mueve el marco a mano.',
+    },
+    {
+      q: '¿Puedo recortar en círculo?',
+      a: 'De momento el recorte es rectangular. Para fotos de perfil que se muestran en círculo (WhatsApp, Instagram), usa el formato cuadrado y deja la cara centrada.',
+    },
+  ],
+  '/redimensionar-imagen-en-cm': [
+    {
+      q: '¿Cuántos píxeles son 10 cm?',
+      a: 'Depende de la resolución. A 300 ppp, la habitual para imprimir, 10 cm son 1181 píxeles. A 150 ppp son 591 píxeles y a 72 ppp, 283. La fórmula es: píxeles = centímetros ÷ 2,54 × ppp.',
+    },
+    {
+      q: '¿Qué resolución elijo para imprimir?',
+      a: '300 ppp para fotos que se verán de cerca (álbumes, documentos). Para pósters o carteles que se ven a distancia bastan 150 ppp.',
+    },
+    {
+      q: '¿Mi foto tiene píxeles suficientes para imprimirla a ese tamaño?',
+      a: 'Compara los píxeles que necesitas con los que tiene tu foto (aparecen en su miniatura). Si necesitas muchos más, la imagen se ampliará y perderá nitidez; en ese caso, imprime más pequeño o baja a 150-200 ppp.',
+    },
+  ],
 }
 
 export const faqsFor = (path: string) => (path === '/' ? HOME_FAQS : (PAGE_FAQS[path] ?? []))

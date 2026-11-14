@@ -32,8 +32,9 @@ export function getTarget(item: Pick<ImageItem, 'width' | 'height'>, s: Settings
       return fix(p.width, p.height, 'exact')
     }
     case 'custom': {
-      const w = typeof s.width === 'number' && s.width > 0 ? s.width : null
-      const h = typeof s.height === 'number' && s.height > 0 ? s.height : null
+      const toPx = (v: number) => (s.unit === 'cm' ? (v / 2.54) * s.dpi : s.unit === 'mm' ? (v / 25.4) * s.dpi : v)
+      const w = typeof s.width === 'number' && s.width > 0 ? toPx(s.width) : null
+      const h = typeof s.height === 'number' && s.height > 0 ? toPx(s.height) : null
       if (s.lockRatio) {
         // Proporción bloqueada: cada imagen conserva su propia proporción.
         const cap = (k: number) => (s.noUpscale ? Math.min(1, k) : k)

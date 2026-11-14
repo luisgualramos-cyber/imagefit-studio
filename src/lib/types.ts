@@ -68,6 +68,9 @@ export interface Settings {
   width: number | ''
   height: number | ''
   lockRatio: boolean
+  /** Unidad de ancho/alto en el modo personalizado. cm y mm se convierten a píxeles con `dpi`. */
+  unit: 'px' | 'cm' | 'mm'
+  dpi: number
   /** Con proporción bloqueada: nunca ampliar por encima del tamaño original. */
   noUpscale: boolean
   presetId: string | null

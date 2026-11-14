@@ -17,36 +17,36 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/',
     name: 'Inicio',
-    title: 'ImageFit Studio · Redimensionar, comprimir y adaptar imágenes online gratis',
+    title: 'Redimensionar imágenes online gratis | ImageFit Studio',
     description:
-      'Cambia el tamaño, comprime, convierte y adapta tus fotos para Instagram, TikTok, YouTube o tu tienda online. Gratis, sin registro y procesadas en tu navegador.',
+      'Cambia el tamaño, comprime y convierte imágenes a JPG, PNG o WEBP gratis y sin registro. Sin perder calidad y sin subir tus fotos a ningún servidor.',
     priority: 1,
     tool: true,
   },
   {
     path: '/redimensionar-imagenes',
     name: 'Redimensionar imágenes',
-    title: 'Redimensionar imágenes online · Cambiar tamaño de imagen gratis | ImageFit Studio',
+    title: 'Cambiar tamaño de imagen online gratis | ImageFit Studio',
     description:
-      'Cambia el tamaño de una imagen en píxeles o porcentaje manteniendo la proporción. Redimensiona varias fotos a la vez sin perder calidad y sin subirlas a ningún servidor.',
+      'Redimensiona imágenes online en píxeles o porcentaje sin perder calidad y sin deformarlas. Una foto o muchas a la vez, gratis y sin registro.',
     priority: 0.9,
     tool: true,
   },
   {
     path: '/comprimir-imagenes',
     name: 'Comprimir imágenes',
-    title: 'Comprimir imágenes online sin perder calidad · JPG, PNG, WEBP | ImageFit Studio',
+    title: 'Comprimir imágenes sin perder calidad | ImageFit Studio',
     description:
-      'Reduce el peso de tus fotografías eligiendo la calidad o un tamaño máximo en KB. Compara el antes y el después y descarga al instante. Gratis y privado.',
+      'Reduce el peso de tus fotos JPG, PNG o WEBP eligiendo la calidad o un límite en KB. Compara el antes y el después. Gratis y sin subir nada.',
     priority: 0.9,
     tool: true,
   },
   {
     path: '/convertir-imagenes',
     name: 'Convertir formatos',
-    title: 'Convertir imágenes online · JPG, PNG, WEBP y AVIF | ImageFit Studio',
+    title: 'Convertir imágenes a JPG, PNG, WEBP y AVIF | ImageFit Studio',
     description:
-      'Convierte imágenes entre JPG, PNG, WEBP y AVIF generando archivos nuevos y válidos, no un simple cambio de extensión. Por lotes y en tu navegador.',
+      'Cambia el formato de tus imágenes a JPG, PNG, WEBP o AVIF con una conversión real, no un cambio de extensión. Por lotes, gratis y en tu navegador.',
     priority: 0.85,
     tool: true,
   },
@@ -62,109 +62,145 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/convertir-png-a-webp',
     name: 'PNG a WEBP',
-    title: 'Convertir PNG a WEBP online · Imágenes más ligeras para tu web | ImageFit Studio',
+    title: 'Convertir PNG a WEBP online gratis | ImageFit Studio',
     description:
-      'Convierte PNG a WEBP conservando la transparencia y reduciendo el peso hasta un 80 %. Ideal para acelerar tu página web. Gratis y sin subir archivos.',
+      'Convierte PNG a WEBP conservando la transparencia y reduciendo mucho el peso. Ideal para acelerar tu web. Gratis y sin subir archivos.',
     priority: 0.7,
     tool: true,
   },
   {
     path: '/imagenes-para-redes-sociales',
     name: 'Imágenes para redes sociales',
-    title: 'Adaptar imágenes para Instagram, TikTok y YouTube · Tamaños 2026 | ImageFit Studio',
+    title: 'Tamaño de imagen para Instagram, TikTok y YouTube | ImageFit',
     description:
-      'Adapta tus fotos al tamaño exacto de Instagram, TikTok, YouTube, Facebook, X y LinkedIn con encuadre inteligente que mantiene a las personas en la imagen.',
+      'Adapta tus fotos al tamaño exacto de Instagram, TikTok, YouTube, Facebook, X y LinkedIn sin cortar a las personas gracias al encuadre inteligente.',
     priority: 0.9,
     tool: true,
   },
   {
     path: '/fotos-para-tienda-online',
     name: 'Fotos para tienda online',
-    title: 'Fotos de producto para tienda online · Fondo blanco y centrado | ImageFit Studio',
+    title: 'Fotos de producto con fondo blanco | ImageFit Studio',
     description:
-      'Prepara fotos de producto para Shopify, Amazon, WooCommerce o Etsy: elimina el fondo con IA en tu navegador, ponlo blanco, centra el producto y optimiza el peso.',
+      'Prepara fotos de producto para Shopify, Amazon o Etsy: quita el fondo con IA en tu navegador, ponlo blanco, centra el producto y optimiza el peso.',
     priority: 0.85,
     tool: true,
   },
   {
     path: '/redimensionar-varias-imagenes',
     name: 'Procesar varias imágenes',
-    title: 'Redimensionar varias imágenes a la vez · Procesamiento por lotes | ImageFit Studio',
+    title: 'Redimensionar varias imágenes a la vez | ImageFit Studio',
     description:
-      'Aplica el mismo tamaño, formato y compresión a decenas de fotos de una vez y descárgalas juntas en un ZIP. Sin instalar programas y sin límite de cuenta.',
+      'Cambia el tamaño, el formato y el peso de muchas fotos de una vez y descárgalas juntas en un ZIP. Gratis, sin registro y sin instalar programas.',
     priority: 0.85,
     tool: true,
   },
   {
     path: '/encuadre-inteligente',
     name: 'Encuadre inteligente',
-    title: 'Recorte inteligente de fotos con IA · Encuadre automático | ImageFit Studio',
+    title: 'Recortar fotos con IA sin cortar a nadie | ImageFit Studio',
     description:
-      'Convierte fotos horizontales en verticales sin cortar a las personas: detección de rostros y objetos con IA directamente en tu navegador y ajuste manual del encuadre.',
+      'Convierte fotos horizontales en verticales sin cortar a las personas: detección de rostros y objetos con IA en tu navegador y ajuste manual.',
     priority: 0.8,
     tool: true,
   },
   {
     path: '/ampliar-imagen',
     name: 'Ampliar imagen',
-    title: 'Ampliar el fondo de una imagen · Cambiar formato sin bandas | ImageFit Studio',
+    title: 'Ampliar el fondo de una imagen online | ImageFit Studio',
     description:
-      'Convierte una foto cuadrada en horizontal o vertical ampliando el fondo: relleno local por desenfoque o espejo, y ampliación generativa con IA cuando está activada.',
+      'Convierte una foto cuadrada en horizontal o vertical ampliando el fondo con desenfoque o espejo, sin bandas negras. Gratis y en tu navegador.',
     priority: 0.7,
     tool: true,
   },
   {
     path: '/comprimir-foto-a-100kb',
     name: 'Comprimir foto a 100 KB',
-    title: 'Comprimir foto a 100 KB online (o 50, 200, 500 KB) | ImageFit Studio',
+    title: 'Comprimir foto a 100 KB online gratis | ImageFit Studio',
     description:
-      'Reduce una foto a menos de 100 KB para formularios, sedes electrónicas y webs. Elige el límite exacto en KB y la herramienta busca la mejor calidad posible. Gratis y sin subir nada.',
+      'Reduce una foto a menos de 100 KB (o 50, 200, 500 KB) para formularios y sedes electrónicas. Busca la mejor calidad posible. Gratis y privado.',
     priority: 0.8,
     tool: true,
   },
   {
     path: '/foto-carnet-dni-pasaporte',
     name: 'Foto para DNI y pasaporte',
-    title: 'Foto de carné para DNI, pasaporte o visado online · Tamaño exacto | ImageFit Studio',
+    title: 'Foto carnet online para DNI y pasaporte | ImageFit Studio',
     description:
-      'Recorta tu foto al tamaño del DNI y pasaporte español (26×32 mm), carné internacional 35×45 mm o EE. UU. 2×2", centrada en tu cara automáticamente. Lista para imprimir o subir.',
+      'Recorta tu foto al tamaño de DNI y pasaporte (26×32 mm), visado 35×45 mm o EE. UU. 2×2, centrada en tu cara. Lista para imprimir o subir.',
     priority: 0.8,
     tool: true,
   },
   {
     path: '/redimensionar-foto-whatsapp',
     name: 'Foto para WhatsApp',
-    title: 'Foto de perfil y estados de WhatsApp sin que se corte | ImageFit Studio',
+    title: 'Foto de perfil de WhatsApp sin que se corte | ImageFit Studio',
     description:
-      'Ajusta tu foto de perfil de WhatsApp para que no se corte en el círculo y prepara estados 9:16 a pantalla completa. Encuadre automático de la cara, gratis y privado.',
+      'Ajusta tu foto de perfil de WhatsApp para que no se corte en el círculo y prepara estados 9:16. Encuadre automático de la cara, gratis y privado.',
     priority: 0.75,
     tool: true,
   },
   {
     path: '/miniatura-youtube',
     name: 'Miniatura de YouTube',
-    title: 'Miniatura de YouTube 1280×720 y menos de 2 MB · Redimensionar online | ImageFit Studio',
+    title: 'Miniatura de YouTube 1280×720 (menos de 2 MB) | ImageFit',
     description:
-      'Convierte cualquier imagen en una miniatura de YouTube válida: 1280×720 px, proporción 16:9 y por debajo del límite de 2 MB, sin perder nitidez.',
+      'Convierte cualquier imagen en una miniatura válida para YouTube: 1280×720 px, 16:9 y por debajo del límite de 2 MB, sin perder nitidez.',
     priority: 0.75,
     tool: true,
   },
   {
     path: '/reducir-fotos-para-email',
     name: 'Reducir fotos para email',
-    title: 'Reducir el tamaño de fotos para enviar por email | ImageFit Studio',
+    title: 'Reducir el tamaño de fotos para email | ImageFit Studio',
     description:
-      'Reduce el peso de varias fotos a la vez para enviarlas por correo sin superar el límite de adjuntos. De 5 MB a unos 300 KB por foto, con calidad de sobra para verlas.',
+      'Reduce el peso de varias fotos a la vez para enviarlas por correo sin pasar el límite de adjuntos: de 5 MB a unos 300 KB por foto.',
     priority: 0.75,
     tool: true,
   },
   {
     path: '/convertir-heic-a-jpg',
     name: 'HEIC a JPG',
-    title: 'Convertir HEIC a JPG online · Fotos de iPhone en Windows y Android | ImageFit Studio',
+    title: 'Convertir HEIC a JPG online gratis | ImageFit Studio',
     description:
-      'Convierte fotos HEIC del iPhone a JPG en tu navegador, sin instalar nada ni subirlas a ningún servidor. Varias a la vez y descarga en ZIP. Funciona en Windows, Android y Mac.',
+      'Convierte fotos HEIC del iPhone a JPG en tu navegador, sin instalar nada ni subirlas a un servidor. Varias a la vez y descarga en ZIP.',
     priority: 0.8,
+    tool: true,
+  },
+  {
+    path: '/convertir-webp-a-jpg',
+    name: 'WEBP a JPG',
+    title: 'Convertir WEBP a JPG online gratis | ImageFit Studio',
+    description:
+      'Pasa imágenes WEBP a JPG sin perder calidad para abrirlas en cualquier programa o subirlas a webs que no aceptan WEBP. Varias a la vez, gratis y sin registro.',
+    priority: 0.8,
+    tool: true,
+  },
+  {
+    path: '/convertir-png-a-jpg',
+    name: 'PNG a JPG',
+    title: 'Convertir PNG a JPG online gratis | ImageFit Studio',
+    description:
+      'Convierte PNG a JPG y reduce mucho el peso de capturas y fotos. Elige el color de fondo para las zonas transparentes. Por lotes, gratis y en tu navegador.',
+    priority: 0.8,
+    tool: true,
+  },
+  {
+    path: '/recortar-imagen',
+    name: 'Recortar imagen',
+    title: 'Recortar imagen online: 1:1, 4:5, 16:9 y más | ImageFit Studio',
+    description:
+      'Recorta fotos online a cuadrado, vertical o panorámico con un marco que mueves y amplías a tu gusto. Encuadre automático de caras. Gratis y sin registro.',
+    priority: 0.8,
+    tool: true,
+  },
+  {
+    path: '/redimensionar-imagen-en-cm',
+    name: 'Cambiar tamaño en cm',
+    title: 'Cambiar tamaño de imagen en cm o mm para imprimir | ImageFit',
+    description:
+      'Redimensiona una imagen a centímetros o milímetros exactos eligiendo la resolución (ppp). Calcula los píxeles necesarios para imprimir con buena calidad.',
+    priority: 0.75,
     tool: true,
   },
   {

@@ -22,7 +22,12 @@ export function headHtml(path: string) {
     `<meta property="og:description" content="${esc(m.description)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${SITE_URL}/og-image.png" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="ImageFit Studio: redimensionar, comprimir y convertir imágenes online" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:title" content="${esc(m.title)}" />`,
+    `<meta name="twitter:description" content="${esc(m.description)}" />`,
     `<script type="application/ld+json">${ld}</script>`,
   ].join('\n    ')
 }

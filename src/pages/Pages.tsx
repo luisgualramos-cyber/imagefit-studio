@@ -19,7 +19,7 @@ export function Home() {
                 <IconShield size={14} /> Gratis · Sin registro · Procesado en tu navegador
               </p>
               <h1 className="text-4xl leading-[1.05] font-extrabold md:text-6xl">
-                Tus imágenes, al tamaño <span className="text-accent">exacto</span> que necesitas.
+                Redimensiona tus imágenes al tamaño <span className="text-accent">exacto</span> que necesitas
               </h1>
             </div>
             <p className="max-w-md text-[15px] text-muted md:text-right">

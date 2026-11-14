@@ -71,6 +71,10 @@ export const QUICK_PAGES = [
   { to: '/miniatura-youtube', label: 'Miniatura de YouTube' },
   { to: '/reducir-fotos-para-email', label: 'Reducir fotos para email' },
   { to: '/convertir-heic-a-jpg', label: 'Convertir HEIC a JPG' },
+  { to: '/convertir-webp-a-jpg', label: 'Convertir WEBP a JPG' },
+  { to: '/convertir-png-a-jpg', label: 'Convertir PNG a JPG' },
+  { to: '/recortar-imagen', label: 'Recortar imagen' },
+  { to: '/redimensionar-imagen-en-cm', label: 'Cambiar tamaño en cm' },
   { to: '/convertir-jpg-a-png', label: 'Convertir JPG a PNG' },
   { to: '/convertir-png-a-webp', label: 'Convertir PNG a WEBP' },
 ]
@@ -183,6 +187,140 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         </p>
         <p>
           ¿Necesitas además reducir el peso para un formulario? Mira <Link to="/comprimir-foto-a-100kb">comprimir foto a 100 KB</Link>.
+        </p>
+      </>
+    ),
+  },
+  '/convertir-webp-a-jpg': {
+    h1: 'Convertir WEBP a JPG',
+    lead: 'Pasa las imágenes WEBP que descargas de internet a JPG para abrirlas en cualquier programa o subirlas donde no aceptan WEBP.',
+    tool: <Studio initial={{ format: 'image/jpeg', quality: 92, suffix: '' }} dropTitle="Arrastra tus imágenes WEBP" />,
+    body: (
+      <>
+        <h2>Por qué tantas imágenes están en WEBP</h2>
+        <p>
+          WEBP es el formato que usan hoy la mayoría de webs porque pesa bastante menos que JPG con la misma calidad. Por eso, al guardar una imagen desde el navegador, muchas veces obtienes un archivo .webp. El problema llega después: algunos editores antiguos, formularios de la Administración, plataformas de empleo o tiendas online solo aceptan JPG o PNG.
+        </p>
+        <h2>Cómo convertir WEBP a JPG</h2>
+        <ul>
+          <li>Arrastra una o varias imágenes .webp.</li>
+          <li>La salida ya está en JPG con calidad 92, suficiente para que no se note diferencia.</li>
+          <li>Pulsa «Procesar» y descarga cada imagen o todas en un ZIP. El archivo conserva el nombre original con extensión .jpg.</li>
+        </ul>
+        <p>
+          La conversión se hace en tu navegador: las imágenes no se suben a ningún servidor. Si la imagen WEBP tiene zonas transparentes, se rellenan de blanco porque JPG no admite transparencia; si las necesitas, conviértela a PNG desde <Link to="/convertir-imagenes">convertir imágenes</Link>.
+        </p>
+        <h2>Otras conversiones habituales</h2>
+        <ul>
+          <li><Link to="/convertir-png-a-jpg">PNG a JPG</Link>, para aligerar capturas y fotos.</li>
+          <li><Link to="/convertir-heic-a-jpg">HEIC a JPG</Link>, para las fotos del iPhone.</li>
+          <li><Link to="/convertir-png-a-webp">PNG a WEBP</Link>, si lo que quieres es lo contrario: imágenes ligeras para tu web.</li>
+        </ul>
+      </>
+    ),
+  },
+  '/convertir-png-a-jpg': {
+    h1: 'Convertir PNG a JPG',
+    lead: 'Convierte capturas y fotos PNG a JPG para que pesen mucho menos, eligiendo el color con el que se rellenan las zonas transparentes.',
+    tool: <Studio initial={{ format: 'image/jpeg', quality: 90, suffix: '' }} dropTitle="Arrastra tus imágenes PNG" />,
+    body: (
+      <>
+        <h2>PNG o JPG: cuál usar</h2>
+        <p>
+          PNG guarda la imagen sin pérdida y admite transparencia, por eso es ideal para logotipos, iconos y capturas con texto. Pero en fotografías o capturas con muchos colores genera archivos muy pesados. Al pasarlos a JPG el peso suele bajar a una fracción del original, algo útil para enviar por correo, subir a una web o adjuntar en un formulario.
+        </p>
+        <h2>Cómo convertir PNG a JPG</h2>
+        <ul>
+          <li>Sube uno o varios PNG; puedes arrastrar una carpeta entera de capturas.</li>
+          <li>La salida viene configurada en JPG con calidad 90. Si necesitas que pese menos, baja la calidad o indica un peso máximo en KB.</li>
+          <li>Procesa y descarga las imágenes una a una o todas juntas en un ZIP.</li>
+        </ul>
+        <h2>Transparencia y fondo</h2>
+        <p>
+          JPG no admite transparencia: las zonas transparentes se rellenan de blanco. Si tu PNG es un logotipo y quieres otro color de fondo, elige unas medidas en el paso 1, «Encajar» en el paso 2 y el color que prefieras. Si necesitas conservar la transparencia con menos peso, usa <Link to="/convertir-png-a-webp">PNG a WEBP</Link>.
+        </p>
+        <p>
+          ¿Además quieres reducirla a un tamaño concreto? Prueba <Link to="/comprimir-foto-a-100kb">comprimir foto a 100 KB</Link> o <Link to="/redimensionar-imagenes">cambiar el tamaño de la imagen</Link>.
+        </p>
+      </>
+    ),
+  },
+  '/recortar-imagen': {
+    h1: 'Recortar imagen online',
+    lead: 'Recorta tus fotos a cuadrado, vertical o panorámico con un marco que mueves y amplías a tu gusto. Una imagen o muchas a la vez.',
+    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('ratios', 'Cuadrado 1:1'), fit: 'cover', smartCrop: true, format: 'original', quality: 90, suffix: '-recortada' }} presetFilter="web" />,
+    body: (
+      <>
+        <h2>Cómo recortar una imagen</h2>
+        <ul>
+          <li><b>Elige la proporción</b> en el paso 1, dentro de «Formatos» → «Proporciones»: cuadrado 1:1, vertical 4:5, 3:4, 2:3 o 9:16, horizontal 3:2, 4:3 o panorámico 16:9. También puedes escribir medidas propias en «Medidas» con el candado abierto.</li>
+          <li><b>Ajusta el marco</b>: arrástralo sobre la foto, usa el control de zoom o la rueda del ratón para recortar más ajustado, o las flechas del teclado para afinar.</li>
+          <li><b>Descarga</b> la imagen recortada en su formato original, o cámbialo a JPG, PNG o WEBP en el paso 3.</li>
+        </ul>
+        <h2>Proporciones más usadas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Proporción</th>
+              <th>Para qué se usa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1:1</td><td>Fotos de perfil, publicaciones cuadradas, catálogos de producto</td></tr>
+            <tr><td>4:5</td><td>Publicaciones verticales de Instagram y Facebook</td></tr>
+            <tr><td>2:3 y 3:2</td><td>Fotos impresas de 10×15 cm, la proporción de la mayoría de cámaras</td></tr>
+            <tr><td>4:3 y 3:4</td><td>Fotos de móvil, presentaciones y tiendas como Etsy</td></tr>
+            <tr><td>16:9</td><td>Miniaturas de YouTube, fondos de pantalla y cabeceras web</td></tr>
+            <tr><td>9:16</td><td>Stories, Reels, TikTok y estados de WhatsApp</td></tr>
+          </tbody>
+        </table>
+        <h2>Recorte inteligente</h2>
+        <p>
+          Con el encuadre inteligente activado, la herramienta detecta caras, personas y objetos en tu navegador y coloca el marco a su alrededor. Es especialmente útil al recortar muchas fotos a la vez: cada una sale bien encuadrada sin tener que tocarla. Más detalles en <Link to="/encuadre-inteligente">encuadre inteligente</Link>.
+        </p>
+        <p>
+          Si no quieres perder ninguna parte de la foto, en lugar de recortar puedes <Link to="/ampliar-imagen">ampliar el fondo</Link> hasta la proporción que necesitas.
+        </p>
+      </>
+    ),
+  },
+  '/redimensionar-imagen-en-cm': {
+    h1: 'Cambiar el tamaño de una imagen en cm o mm',
+    lead: 'Indica las medidas en centímetros o milímetros y la resolución de impresión: la herramienta calcula los píxeles exactos y redimensiona la imagen.',
+    tool: <Studio initial={{ sizeMode: 'custom', unit: 'cm', dpi: 300, width: 10, height: 15, lockRatio: false, fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 95, suffix: '-cm' }} />,
+    body: (
+      <>
+        <h2>Píxeles, centímetros y ppp</h2>
+        <p>
+          Una imagen digital no tiene centímetros: tiene píxeles. Su tamaño impreso depende de cuántos píxeles se colocan en cada pulgada (2,54 cm), lo que se llama resolución o ppp (puntos por pulgada). La fórmula es sencilla: <b>píxeles = centímetros ÷ 2,54 × ppp</b>.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Medida</th>
+              <th>150 ppp</th>
+              <th>300 ppp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Foto 10 × 15 cm</td><td>591 × 886 px</td><td>1181 × 1772 px</td></tr>
+            <tr><td>Foto 13 × 18 cm</td><td>768 × 1063 px</td><td>1535 × 2126 px</td></tr>
+            <tr><td>A5 (14,8 × 21 cm)</td><td>874 × 1240 px</td><td>1748 × 2480 px</td></tr>
+            <tr><td>A4 (21 × 29,7 cm)</td><td>1240 × 1754 px</td><td>2480 × 3508 px</td></tr>
+          </tbody>
+        </table>
+        <h2>Cómo usarla</h2>
+        <ul>
+          <li>En el paso 1, «Medidas», elige <b>cm</b> o <b>mm</b> y la resolución (300 ppp para fotos que se ven de cerca, 150 ppp para pósters).</li>
+          <li>Escribe el ancho y el alto. Debajo verás los píxeles equivalentes.</li>
+          <li>Con el candado cerrado, la imagen conserva su proporción y cabe dentro de esas medidas. Con el candado abierto obtienes la medida exacta: elige en el paso 2 si recortar o encajar.</li>
+        </ul>
+        <h2>Antes de imprimir</h2>
+        <p>
+          Comprueba que tu foto tiene al menos los píxeles que necesitas (aparecen en su miniatura). Si tiene muchos menos, se ampliará y perderá nitidez. Para medidas de documentos oficiales, la herramienta de <Link to="/foto-carnet-dni-pasaporte">foto de carné</Link> ya trae los tamaños de DNI, pasaporte y visado.
+        </p>
+        <p>
+          Al guardar, la imagen se exporta con los píxeles calculados. La mayoría de servicios de impresión piden el tamaño en centímetros al hacer el pedido; algunos programas pueden mostrar otra resolución nominal, pero los píxeles serán los correctos para la medida elegida.
         </p>
       </>
     ),

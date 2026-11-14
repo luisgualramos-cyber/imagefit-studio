@@ -8,6 +8,8 @@ export const DEFAULT_SETTINGS: Settings = {
   width: '',
   height: '',
   lockRatio: true,
+  unit: 'px',
+  dpi: 300,
   noUpscale: false,
   presetId: null,
   fit: 'cover',

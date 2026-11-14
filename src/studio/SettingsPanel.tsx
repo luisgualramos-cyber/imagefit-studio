@@ -38,6 +38,16 @@ const numOrEmpty = (v: string): number | '' => {
   return Number.isFinite(n) && n > 0 ? Math.min(n, 16384) : ''
 }
 
+/** Número con decimales (cm/mm), redondeado a 2 decimales. */
+const decOrEmpty = (v: string): number | '' => {
+  if (v.trim() === '') return ''
+  const n = Math.round(Number(v.replace(',', '.')) * 100) / 100
+  return Number.isFinite(n) && n > 0 ? Math.min(n, 2000) : ''
+}
+
+const UNIT_TO_INCH: Record<Settings['unit'], number> = { px: 0, cm: 2.54, mm: 25.4 }
+const DPI_OPTIONS = [72, 96, 150, 300, 600]
+
 const SWATCHES = ['#ffffff', '#000000', '#f3f1ec', '#ff5a2c', '#1d4ed8', '#0e8f6c']
 
 function AspectIcon({ w, h }: { w: number; h: number }) {
@@ -76,16 +86,27 @@ export default function SettingsPanel({
     { v: 'image/avif', l: 'AVIF' },
   ]
 
+  const isPx = settings.unit === 'px'
+  const parse = isPx ? numOrEmpty : decOrEmpty
+  const roundU = (n: number) => (isPx ? Math.max(1, Math.round(n)) : Math.max(0.01, Math.round(n * 100) / 100))
   const setW = (v: string) => {
-    const w = numOrEmpty(v)
-    if (settings.lockRatio && ratio && w !== '') set({ width: w, height: Math.max(1, Math.round(w / ratio)) })
+    const w = parse(v)
+    if (settings.lockRatio && ratio && w !== '') set({ width: w, height: roundU(w / ratio) })
     else set({ width: w })
   }
   const setH = (v: string) => {
-    const h = numOrEmpty(v)
-    if (settings.lockRatio && ratio && h !== '') set({ height: h, width: Math.max(1, Math.round(h * ratio)) })
+    const h = parse(v)
+    if (settings.lockRatio && ratio && h !== '') set({ height: h, width: roundU(h * ratio) })
     else set({ height: h })
   }
+  /** Cambia de unidad convirtiendo los valores actuales para que la medida real no cambie. */
+  const setUnit = (u: Settings['unit']) => {
+    if (u === settings.unit) return
+    const toPx = (v: number | '') => (v === '' ? '' : settings.unit === 'px' ? v : (v / UNIT_TO_INCH[settings.unit]) * settings.dpi)
+    const fromPx = (v: number | '') => (v === '' ? '' : u === 'px' ? Math.max(1, Math.round(v)) : Math.round(((v / settings.dpi) * UNIT_TO_INCH[u]) * 100) / 100)
+    set({ unit: u, width: fromPx(toPx(settings.width)), height: fromPx(toPx(settings.height)) })
+  }
+  const pxPreview = (v: number | '') => (v === '' || isPx ? null : Math.round((v / UNIT_TO_INCH[settings.unit]) * settings.dpi))
 
   return (
     <div>
@@ -101,7 +122,7 @@ export default function SettingsPanel({
           options={[
             { v: 'original', l: 'Original' },
             { v: 'percent', l: 'Escala %' },
-            { v: 'custom', l: 'Píxeles' },
+            { v: 'custom', l: 'Medidas' },
             { v: 'preset', l: 'Formatos' },
           ]}
         />
@@ -128,10 +149,31 @@ export default function SettingsPanel({
 
         {settings.sizeMode === 'custom' && (
           <div className="mt-4">
+            <div className="mb-3 flex flex-wrap items-center gap-2">
+              <div className="seg flex-1" role="group" aria-label="Unidad de medida">
+                {(['px', 'cm', 'mm'] as const).map((u) => (
+                  <button key={u} type="button" aria-pressed={settings.unit === u} onClick={() => setUnit(u)}>
+                    {u === 'px' ? 'Píxeles' : u}
+                  </button>
+                ))}
+              </div>
+              {!isPx && (
+                <label className="flex items-center gap-1.5 text-xs font-medium text-muted">
+                  Resolución
+                  <select className="field w-auto py-1.5" value={settings.dpi} onChange={(e) => set({ dpi: Number(e.target.value) })} aria-label="Resolución en ppp">
+                    {DPI_OPTIONS.map((d) => (
+                      <option key={d} value={d}>
+                        {d} ppp
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
+            </div>
             <div className="flex items-end gap-2">
               <label className="flex-1 text-xs font-medium text-muted">
-                Ancho (px)
-                <input className="field mt-1" inputMode="numeric" type="number" min={1} value={settings.width} onChange={(e) => setW(e.target.value)} placeholder="auto" />
+                Ancho ({settings.unit})
+                <input className="field mt-1" inputMode="decimal" type="number" min={isPx ? 1 : 0.01} step={isPx ? 1 : 0.01} value={settings.width} onChange={(e) => setW(e.target.value)} placeholder="auto" />
               </label>
               <button
                 type="button"
@@ -144,10 +186,15 @@ export default function SettingsPanel({
                 <span className="sr-only">{settings.lockRatio ? 'Desbloquear proporción' : 'Bloquear proporción'}</span>
               </button>
               <label className="flex-1 text-xs font-medium text-muted">
-                Alto (px)
-                <input className="field mt-1" inputMode="numeric" type="number" min={1} value={settings.height} onChange={(e) => setH(e.target.value)} placeholder="auto" />
+                Alto ({settings.unit})
+                <input className="field mt-1" inputMode="decimal" type="number" min={isPx ? 1 : 0.01} step={isPx ? 1 : 0.01} value={settings.height} onChange={(e) => setH(e.target.value)} placeholder="auto" />
               </label>
             </div>
+            {!isPx && (pxPreview(settings.width) || pxPreview(settings.height)) && (
+              <p className="mt-2 text-xs text-muted">
+                Equivale a {pxPreview(settings.width) ?? 'auto'} × {pxPreview(settings.height) ?? 'auto'} px a {settings.dpi} ppp. Para imprimir con buena calidad usa 300 ppp.
+              </p>
+            )}
             {settings.lockRatio && (
               <label className="mt-3 flex items-center gap-2 text-sm">
                 <input type="checkbox" className="size-4 accent-[#ff5a2c]" checked={settings.noUpscale} onChange={(e) => set({ noUpscale: e.target.checked })} />
