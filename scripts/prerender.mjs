@@ -11,6 +11,18 @@ const { render, routes, siteUrl } = await import(pathToFileURL(resolve('dist-ssr
 // AdSense: el script solo se inyecta si hay ID de cliente configurado.
 const env = loadEnv('production', process.cwd(), 'VITE_')
 const client = process.env.VITE_ADSENSE_CLIENT || env.VITE_ADSENSE_CLIENT
+// Google Analytics 4 (opcional): solo se inyecta si hay un ID de medición real (G-XXXXXXXXXX).
+const gaId = process.env.VITE_GA_ID || env.VITE_GA_ID
+if (gaId && !/^G-[A-Z0-9]{6,}$/.test(gaId)) {
+  console.error(`[prerender] VITE_GA_ID no parece un ID de medición de GA4 válido: ${gaId}`)
+  process.exit(1)
+}
+// Modo de consentimiento v2: todo denegado por defecto. El aviso de cookies de Google (AdSense,
+// «Privacidad y mensajes») actualiza el consentimiento cuando el visitante acepta.
+const analytics = gaId
+  ? `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','${gaId}');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${gaId}"></script>`
+  : ''
 
 // El aviso legal es obligatorio (LSSI): no se publica sin los datos del titular.
 const missing = ['VITE_OWNER_NAME', 'VITE_OWNER_NIF', 'VITE_OWNER_ADDRESS'].filter((k) => !(process.env[k] || env[k]))
@@ -25,7 +37,7 @@ const adsense = client
 
 const page = (url) => {
   const { html, head } = render(url)
-  return template.replace('<!--app-head-->', head + (adsense ? '\n    ' + adsense : '')).replace('<!--app-html-->', html)
+  return template.replace('<!--app-head-->', head + (analytics ? '\n    ' + analytics : '') + (adsense ? '\n    ' + adsense : '')).replace('<!--app-html-->', html)
 }
 
 for (const r of routes) {
