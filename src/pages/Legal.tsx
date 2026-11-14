@@ -1,3 +1,4 @@
+import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router'
 
 /** Datos del titular (LSSI-CE, art. 10). */
@@ -76,12 +77,89 @@ export function Contacto() {
             Muchas dudas están resueltas en las <Link to="/#preguntas">preguntas frecuentes</Link>.
           </li>
         </ul>
-        <h2>Datos del titular</h2>
-        <p>
-          {OWNER.name} · {OWNER.address}. Más información en el <Link to="/aviso-legal">aviso legal</Link>.
-        </p>
+        <h2>Formulario de contacto</h2>
       </article>
+      <ContactForm />
     </div>
+  )
+}
+
+type FormState = { status: 'idle' | 'sending' | 'sent' | 'error'; error?: string }
+
+/** Formulario de contacto: lo recibe /api/contacto (Cloudflare) y llega por correo al titular. No se guarda nada. */
+function ContactForm() {
+  const [startedAt] = useState(() => Date.now())
+  const [state, setState] = useState<FormState>({ status: 'idle' })
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const f = new FormData(e.currentTarget)
+    setState({ status: 'sending' })
+    try {
+      const res = await fetch('/api/contacto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: f.get('name'),
+          email: f.get('email'),
+          message: f.get('message'),
+          consent: f.get('consent') === 'on',
+          website: f.get('website'),
+          elapsed: Date.now() - startedAt,
+        }),
+      })
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string }
+      if (res.ok && data.ok) setState({ status: 'sent' })
+      else setState({ status: 'error', error: data.error })
+    } catch {
+      setState({ status: 'error' })
+    }
+  }
+
+  if (state.status === 'sent') {
+    return (
+      <p role="status" className="mt-4 rounded-xl border border-line bg-white p-5 text-sm">
+        <b>¡Mensaje enviado!</b> Gracias por escribirnos. Te responderemos al correo que has indicado, normalmente en unos días.
+      </p>
+    )
+  }
+
+  return (
+    <form onSubmit={onSubmit} className="mt-4 space-y-4 rounded-2xl border border-line bg-white p-5 md:p-6">
+      <label className="block text-sm font-medium">
+        Nombre <span className="font-normal text-muted">(opcional)</span>
+        <input className="field mt-1" name="name" autoComplete="name" maxLength={100} />
+      </label>
+      <label className="block text-sm font-medium">
+        Correo electrónico
+        <input className="field mt-1" name="email" type="email" autoComplete="email" required maxLength={200} />
+      </label>
+      <label className="block text-sm font-medium">
+        Mensaje
+        <textarea className="field mt-1 min-h-36" name="message" required minLength={10} maxLength={5000} />
+      </label>
+      {/* Campo trampa antispam: invisible para las personas. */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, overflow: 'hidden' }}>
+        <label>
+          No rellenar
+          <input name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+      <label className="flex items-start gap-2 text-sm text-muted">
+        <input type="checkbox" name="consent" required className="mt-1" />
+        <span>
+          He leído la <Link to="/privacidad" className="underline">política de privacidad</Link>. Usaremos tus datos solo para responderte.
+        </span>
+      </label>
+      {state.status === 'error' && (
+        <p role="alert" className="text-sm text-red-700">
+          {state.error ?? 'No se ha podido enviar el mensaje.'} También puedes escribirnos a <Mail />.
+        </p>
+      )}
+      <button type="submit" className="btn btn-primary" disabled={state.status === 'sending'}>
+        {state.status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
+      </button>
+    </form>
   )
 }
 
@@ -93,7 +171,7 @@ export function Privacy() {
         <p>Última actualización: {UPDATED}.</p>
         <h2>Responsable del tratamiento</h2>
         <p>
-          {OWNER.name}, NIF {OWNER.nif}, {OWNER.address}. Contacto: <Mail />.
+          {OWNER.name}. Contacto: <Mail />. El resto de datos identificativos del titular figuran en el <Link to="/aviso-legal">aviso legal</Link>.
         </p>
         <h2>Tus imágenes</h2>
         <p>
@@ -137,9 +215,9 @@ export function Privacy() {
             <b>Alojamiento y seguridad.</b> La web se sirve a través de Cloudflare, que trata datos técnicos de conexión (IP, navegador) para entregar la página y proteger el sitio.
           </li>
         </ul>
-        <h2>Correo electrónico</h2>
+        <h2>Formulario de contacto y correo electrónico</h2>
         <p>
-          Si nos escribes a <Mail />, usaremos tu dirección y tu mensaje solo para responderte, y los conservaremos el tiempo necesario para atender tu consulta.
+          Si nos escribes mediante el <Link to="/contacto">formulario de contacto</Link> o a <Mail />, tratamos tu nombre (opcional), tu dirección de correo y tu mensaje con la única finalidad de responderte. La base legal es tu consentimiento, que puedes retirar en cualquier momento. El formulario no guarda los mensajes en ninguna base de datos: se envían directamente a nuestro buzón a través de Cloudflare, que actúa como encargado del tratamiento. Conservamos la conversación el tiempo necesario para atender tu consulta y no la cedemos a terceros.
         </p>
         <h2>Tus derechos</h2>
         <p>

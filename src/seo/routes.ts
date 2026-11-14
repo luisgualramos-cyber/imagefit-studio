@@ -216,6 +216,8 @@ export const ROUTES: RouteMeta[] = [
     title: 'Aviso legal | ImageFit Studio',
     description: 'Datos del titular de ImageFit Studio y condiciones de uso del sitio web.',
     priority: 0.2,
+    // Contiene datos personales obligatorios (LSSI art. 10): accesible desde el pie, pero fuera de los buscadores.
+    noindex: true,
   },
   {
     path: '/contacto',
