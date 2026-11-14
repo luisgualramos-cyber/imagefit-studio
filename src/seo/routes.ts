@@ -174,6 +174,20 @@ export const ROUTES: RouteMeta[] = [
     description: 'Cómo trata ImageFit Studio tus imágenes y datos: qué se procesa en tu navegador, qué servicios externos se usan y qué cookies puede haber.',
     priority: 0.3,
   },
+  {
+    path: '/aviso-legal',
+    name: 'Aviso legal',
+    title: 'Aviso legal | ImageFit Studio',
+    description: 'Datos del titular de ImageFit Studio y condiciones de uso del sitio web.',
+    priority: 0.2,
+  },
+  {
+    path: '/contacto',
+    name: 'Contacto',
+    title: 'Contacto | ImageFit Studio',
+    description: 'Escríbenos para comunicar errores, sugerir formatos o resolver dudas sobre las herramientas de ImageFit Studio.',
+    priority: 0.3,
+  },
 ]
 
 export const NOT_FOUND: RouteMeta = {
