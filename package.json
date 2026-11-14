@@ -10,7 +10,8 @@
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/source-zip.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
-    "deploy:cf": "npm run build && wrangler pages deploy"
+    "deploy:cf": "npm run build && wrangler pages deploy",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@imgly/background-removal": "^1.7.0",
