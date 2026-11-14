@@ -1,14 +1,19 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 import App from './App'
 import './index.css'
 
-// El HTML de cada ruta viene prerenderizado (SEO). React lo sustituye por la versión interactiva.
-createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root')!
+const app = (
   <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )
+
+// El HTML de cada ruta viene prerenderizado (SEO). Se hidrata en lugar de volver a pintarlo,
+// así el contenido visible no se reemplaza al cargar el JavaScript (mejor LCP).
+if (container.firstElementChild) hydrateRoot(container, app)
+else createRoot(container).render(app)

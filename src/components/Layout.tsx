@@ -115,7 +115,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-7xl px-4 py-5 text-xs text-white/50 md:px-6">© {new Date().getFullYear()} ImageFit Studio · Tus imágenes no salen de tu dispositivo salvo que uses la ampliación con IA generativa.</p>
+        <p className="mx-auto max-w-7xl px-4 py-5 text-xs text-white/50 md:px-6" suppressHydrationWarning>© {new Date().getFullYear()} ImageFit Studio · Tus imágenes no salen de tu dispositivo salvo que uses la ampliación con IA generativa.</p>
       </div>
     </footer>
   )
