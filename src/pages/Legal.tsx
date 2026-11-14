@@ -112,7 +112,18 @@ export function Privacy() {
             <a href="https://adssettings.google.com" rel="noopener" target="_blank">adssettings.google.com</a>.
           </li>
         </ul>
-        <p>ImageFit Studio no usa cookies propias de análisis ni de publicidad. Solo puede guardar en tu navegador preferencias técnicas necesarias para su funcionamiento.</p>
+        {import.meta.env.VITE_GA_ID ? (
+          <>
+            <h2>Analítica (Google Analytics)</h2>
+            <p>
+              Usamos Google Analytics 4 para saber de forma agregada qué páginas se visitan y cómo se usa la web, con el fin de mejorarla. Solo se guardan cookies de análisis si las aceptas en el aviso de cookies; si no, Google Analytics funciona sin cookies y solo recibe señales anónimas sin identificadores. Google actúa como encargado del tratamiento y puede transferir datos a EE. UU. bajo el Marco de Privacidad de Datos UE-EE. UU. Más información en{' '}
+              <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">policies.google.com/privacy</a>.
+            </p>
+            <p>ImageFit Studio no usa cookies propias. Solo puede guardar en tu navegador preferencias técnicas necesarias para su funcionamiento.</p>
+          </>
+        ) : (
+          <p>ImageFit Studio no usa cookies propias de análisis ni de publicidad. Solo puede guardar en tu navegador preferencias técnicas necesarias para su funcionamiento.</p>
+        )}
         <h2>Otros servicios externos</h2>
         <ul>
           <li>
