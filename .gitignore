@@ -9,3 +9,4 @@ public/mediapipe
 .vercel
 .DS_Store
 test-output
+.wrangler

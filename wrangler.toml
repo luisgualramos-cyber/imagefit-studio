@@ -1,0 +1,7 @@
+# Cloudflare Pages: npm run build && npx wrangler pages deploy
+name = "imagefit-studio"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-11-01"
+
+[vars]
+OUTPAINT_ENABLED = "false"

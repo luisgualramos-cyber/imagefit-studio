@@ -16,7 +16,7 @@ Plataforma web de herramientas de imágenes: redimensionar, comprimir, convertir
 | Encuadre inteligente | Navegador | MediaPipe Tasks (BlazeFace + EfficientDet-Lite0) + nitidez + smartcrop.js como respaldo |
 | Eliminar fondo (tiendas) | Navegador | `@imgly/background-removal` (modelo IS-Net fp16, ONNX Runtime Web) |
 | Ampliar con desenfoque / espejo / color | Navegador | Canvas |
-| **Ampliar con IA generativa** | **Servidor → Stability AI** | Función `api/outpaint.ts` (desactivada por defecto, de pago) |
+| **Ampliar con IA generativa** | **Servidor → Stability AI** | `functions/api/outpaint.ts` (Cloudflare) o `api/outpaint.ts` (Vercel), lógica en `server/outpaint-core.ts`; desactivada por defecto, de pago |
 
 Descargas externas en el navegador (solo modelos, nunca las fotos): modelos MediaPipe desde `storage.googleapis.com`; modelo IS-Net y runtime ONNX desde `staticimgly.com` (~95 MB la primera vez, queda en caché). El WASM de MediaPipe se sirve desde el propio dominio (`/mediapipe`, copiado en `predev`/`prebuild`).
 
@@ -35,7 +35,7 @@ npm run preview    # sirve dist/
 
 Ver `.env.example`. Todas son opcionales:
 
-- `VITE_SITE_URL`: URL pública (canonical, sitemap, OG). **Cámbiala por el dominio real de Vercel** y vuelve a desplegar.
+- `VITE_SITE_URL`: URL pública (canonical, sitemap, OG). **Cámbiala por el dominio real** (por defecto `imagefit-studio.pages.dev`) y vuelve a desplegar.
 - `VITE_ADSENSE_CLIENT` y `VITE_ADSENSE_SLOT_*`: al definirlas, los huecos «ANUNCIO» pasan a ser bloques de AdSense y se inyecta el script en el HTML y `ads.txt`.
 - `OUTPAINT_ENABLED=true` + `STABILITY_API_KEY`: activan la ampliación generativa. **Servicio de pago** (créditos de Stability AI). `OUTPAINT_ALLOWED_ORIGIN` restringe las peticiones a tu dominio.
 
@@ -51,14 +51,20 @@ Huecos preparados (componente `src/components/AdSlot.tsx`), nunca dentro del edi
 
 Antes de activar AdSense en la UE hace falta un banner de consentimiento (CMP certificado por Google; AdSense ofrece uno propio en «Privacidad y mensajes») y conviene añadir un aviso legal con los datos del titular.
 
-## Despliegue en Vercel
+## Despliegue en Cloudflare Pages (recomendado)
 
-El proyecto incluye `vercel.json` (Vite, `cleanUrls`, cabeceras de caché y seguridad). Importa el repositorio en Vercel con la configuración por defecto, o desde la CLI:
+Incluye `wrangler.toml`, `public/_headers` (caché y seguridad) y la función `functions/api/outpaint.ts`. Cloudflare Pages sirve `/ruta` desde `ruta.html` y usa `404.html` automáticamente.
 
 ```bash
-npx vercel        # primer despliegue (vista previa)
-npx vercel --prod # producción en <proyecto>.vercel.app
+npx wrangler login       # una vez, autoriza en el navegador
+npm run deploy:cf        # build + despliegue en https://imagefit-studio.pages.dev
 ```
+
+Variables (Ajustes del proyecto → Variables y secretos): `VITE_*` en el build; `STABILITY_API_KEY` como **secreto** y `OUTPAINT_ENABLED=true` solo si se quiere activar la IA generativa (de pago).
+
+## Despliegue alternativo en Vercel
+
+También funciona en Vercel (`vercel.json` + `api/outpaint.ts`): `npx vercel --prod`.
 
 ## Licencias a tener en cuenta
 
