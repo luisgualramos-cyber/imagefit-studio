@@ -204,6 +204,27 @@ export const ROUTES: RouteMeta[] = [
     tool: true,
   },
   {
+    path: '/acerca-de',
+    name: 'Acerca de',
+    title: 'Acerca de ImageFit Studio | ImageFit Studio',
+    description: 'Qué es ImageFit Studio, por qué tus imágenes no se suben a ningún servidor, qué herramientas incluye, quién lo mantiene y cómo se financia.',
+    priority: 0.4,
+  },
+  {
+    path: '/guia-formatos-de-imagen',
+    name: 'Guía de formatos de imagen',
+    title: 'JPG, PNG, WEBP, AVIF o HEIC: qué formato usar | ImageFit Studio',
+    description: 'Diferencias entre JPG, PNG, WEBP, AVIF y HEIC, compresión con y sin pérdida, y qué formato elegir para web, correo, impresión, logotipos o capturas.',
+    priority: 0.6,
+  },
+  {
+    path: '/optimizar-imagenes-para-web',
+    name: 'Optimizar imágenes para la web',
+    title: 'Cómo optimizar imágenes para la web sin perder calidad | ImageFit',
+    description: 'Guía paso a paso para que las imágenes de tu web pesen menos: dimensiones, formato, compresión, metadatos, procesado por lotes y buenas prácticas.',
+    priority: 0.6,
+  },
+  {
     path: '/privacidad',
     name: 'Privacidad',
     title: 'Privacidad y cookies | ImageFit Studio',

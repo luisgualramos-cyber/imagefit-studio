@@ -106,6 +106,9 @@ function Footer() {
           </ul>
           <h2 className="mt-6 mb-3 text-sm font-bold tracking-wide text-white uppercase">Información</h2>
           <ul className="space-y-2 text-sm">
+            <li><Link to="/acerca-de" className="hover:text-white">Acerca de</Link></li>
+            <li><Link to="/guia-formatos-de-imagen" className="hover:text-white">Guía de formatos de imagen</Link></li>
+            <li><Link to="/optimizar-imagenes-para-web" className="hover:text-white">Optimizar imágenes para la web</Link></li>
             <li><Link to="/privacidad" className="hover:text-white">Privacidad y cookies</Link></li>
             <li><Link to="/aviso-legal" className="hover:text-white">Aviso legal</Link></li>
             <li><Link to="/contacto" className="hover:text-white">Contacto</Link></li>
