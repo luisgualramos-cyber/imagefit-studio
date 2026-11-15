@@ -205,6 +205,10 @@ export function Privacy() {
         <h2>Otros servicios externos</h2>
         <ul>
           <li>
+            <b>Estadísticas sin cookies.</b> Usamos Cloudflare Web Analytics para contar las visitas de forma agregada (páginas vistas, país, tipo de dispositivo y web de procedencia). No usa cookies, no guarda nada en tu dispositivo, no crea perfiles y no te identifica entre sitios web. Cloudflare actúa como encargado del tratamiento. Más información en{' '}
+            <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener" target="_blank">cloudflare.com/privacypolicy</a>.
+          </li>
+          <li>
             <b>Modelos de IA en el navegador.</b> Para el encuadre inteligente se descargan los modelos de MediaPipe desde servidores de Google (storage.googleapis.com) y, para la eliminación de fondo, el modelo IS-Net desde la CDN de IMG.LY (staticimgly.com). Solo se descargan los modelos; tus imágenes no se envían. Estos proveedores pueden registrar datos técnicos de la descarga, como la dirección IP.
           </li>
           <li>
