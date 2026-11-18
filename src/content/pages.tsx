@@ -107,6 +107,14 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           ¿Quieres hacerlo con muchas fotos? Puedes subir varias a la vez: las fotos verticales y horizontales conservan cada una su proporción. Más detalles en <Link to="/redimensionar-varias-imagenes">procesar varias imágenes</Link>.
         </p>
+        <h2>Errores típicos al cambiar el tamaño</h2>
+        <ul>
+          <li><b>Ampliar una foto pequeña esperando más nitidez.</b> Pasar de 800 a 2400 px no añade detalle: solo agranda los píxeles y la foto se ve blanda. Si la necesitas más grande para imprimir, parte siempre del original de la cámara.</li>
+          <li><b>Abrir el candado y elegir «Estirar».</b> Las caras y los círculos se deforman. Si las medidas no encajan con la proporción de la foto, usa «Recortar» o «Encajar».</li>
+          <li><b>Redimensionar una copia de una copia.</b> Cada vez que se guarda un JPG se pierde algo de calidad. Trabaja siempre desde el archivo original.</li>
+          <li><b>Confundir píxeles con kilobytes.</b> Si un formulario pide «menos de 200 KB», reducir los píxeles ayuda, pero lo que fija el peso es la compresión: usa <Link to="/comprimir-foto-a-100kb">comprimir a un peso concreto</Link>.</li>
+        </ul>
+        {/* CONTENIDO-PROPIO: captura o vídeo corto mostrando una foto de móvil de 4000 px reducida a 1600 px, con el peso antes y después (ver MEDIA-PENDIENTE.md) */}
       </>
     ),
   },
@@ -134,6 +142,29 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           Los formatos con pérdida descartan información que el ojo apenas percibe: pequeñas variaciones de color y textura fina. Además, al generar el archivo nuevo se eliminan los metadatos EXIF, incluidos los datos de ubicación GPS, lo que ahorra unos KB y protege tu privacidad.
         </p>
+        <h2>Qué calidad elegir según el uso</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Uso</th>
+              <th>Formato</th>
+              <th>Calidad orientativa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Fotos para una web o una tienda online</td><td>WEBP o JPG</td><td>75-82</td></tr>
+            <tr><td>Fotos para enviar por correo</td><td>JPG</td><td>80</td></tr>
+            <tr><td>Fotos que se van a imprimir</td><td>JPG</td><td>90-95</td></tr>
+            <tr><td>Capturas de pantalla con texto</td><td>PNG o WEBP</td><td>90 o sin pérdida</td></tr>
+          </tbody>
+        </table>
+        <p>Son puntos de partida: el comparador te deja ver el resultado en tu propia foto antes de descargarla. Si las imágenes son para tu web, sigue también la <Link to="/optimizar-imagenes-para-web">guía para optimizar imágenes para la web</Link>.</p>
+        <h2>Errores típicos al comprimir</h2>
+        <ul>
+          <li><b>Bajar la calidad por debajo de 60.</b> Aparecen bloques en cielos y degradados, y halos alrededor del texto. Si aún pesa demasiado, reduce las dimensiones en lugar de seguir bajando la calidad.</li>
+          <li><b>Guardar capturas de pantalla en JPG.</b> El texto queda rodeado de manchas. Para capturas, PNG o WEBP con calidad alta.</li>
+          <li><b>Volver a comprimir fotos ya comprimidas.</b> Una imagen que llega por WhatsApp o que descargas de una web ya está muy comprimida: comprimirla otra vez ahorra poco y empeora la calidad.</li>
+        </ul>
       </>
     ),
   },
@@ -159,6 +190,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           El navegador decodifica tu imagen (aplicando la orientación EXIF) y la dibuja en un lienzo. Después la codifica en el nuevo formato con la calidad elegida. Todo ocurre en procesos en segundo plano para que la página no se bloquee aunque conviertas decenas de fotos.
         </p>
+        <p>¿Dudas entre formatos? La <Link to="/guia-formatos-de-imagen">guía de formatos de imagen</Link> explica con ejemplos cuándo usar JPG, PNG, WEBP, AVIF o HEIC.</p>
       </>
     ),
   },
@@ -188,6 +220,13 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           ¿Necesitas además reducir el peso para un formulario? Mira <Link to="/comprimir-foto-a-100kb">comprimir foto a 100 KB</Link>.
         </p>
+        <h2>Errores típicos</h2>
+        <ul>
+          <li><b>Cambiar la extensión a mano.</b> Renombrar «IMG_1234.HEIC» a «IMG_1234.jpg» no convierte nada: el archivo sigue siendo HEIC por dentro y muchas webs lo rechazan o lo muestran roto.</li>
+          <li><b>Esperar que se conserve el movimiento de una Live Photo.</b> Se convierte la imagen fija; el pequeño vídeo de la Live Photo es un archivo aparte.</li>
+          <li><b>Exportar a calidad 100.</b> El JPG pesa bastante más sin diferencia visible. Con 90-92 es suficiente.</li>
+        </ul>
+        {/* CONTENIDO-PROPIO: vídeo corto (TikTok/Instagram) pasando fotos HEIC del iPhone a JPG en el ordenador (ver MEDIA-PENDIENTE.md) */}
       </>
     ),
   },
@@ -242,6 +281,11 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           ¿Además quieres reducirla a un tamaño concreto? Prueba <Link to="/comprimir-foto-a-100kb">comprimir foto a 100 KB</Link> o <Link to="/redimensionar-imagenes">cambiar el tamaño de la imagen</Link>.
         </p>
+        <h2>Errores típicos</h2>
+        <ul>
+          <li><b>Pasar a JPG un logotipo que va sobre un fondo de color.</b> Aparecerá un recuadro blanco alrededor. Para logotipos, mantén PNG o usa WEBP.</li>
+          <li><b>Usar calidad baja en capturas con texto pequeño.</b> El texto queda borroso y con halos. Para capturas, no bajes de 90.</li>
+        </ul>
       </>
     ),
   },
@@ -281,6 +325,12 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           Si no quieres perder ninguna parte de la foto, en lugar de recortar puedes <Link to="/ampliar-imagen">ampliar el fondo</Link> hasta la proporción que necesitas.
         </p>
+        <h2>Errores típicos al recortar</h2>
+        <ul>
+          <li><b>Recortar demasiado una foto pequeña.</b> Si la zona recortada tiene menos píxeles que el tamaño final, la imagen se amplía y pierde nitidez. Antes de descargar, comprueba las medidas del resultado.</li>
+          <li><b>Cortar por las articulaciones.</b> Un corte justo en los tobillos, las rodillas o las muñecas da sensación de «miembro amputado». Corta un poco por encima o por debajo.</li>
+          <li><b>Pegar la cabeza al borde superior.</b> Deja algo de aire por encima: con un recorte vertical para Stories, además, la parte de arriba queda tapada por el nombre de la cuenta.</li>
+        </ul>
       </>
     ),
   },
@@ -322,6 +372,12 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           Al guardar, la imagen se exporta con los píxeles calculados. La mayoría de servicios de impresión piden el tamaño en centímetros al hacer el pedido; algunos programas pueden mostrar otra resolución nominal, pero los píxeles serán los correctos para la medida elegida.
         </p>
+        <h2>Errores típicos al preparar una imagen para imprimir</h2>
+        <ul>
+          <li><b>Cambiar solo los ppp en un programa.</b> Algunos editores permiten poner «300 ppp» sin tocar los píxeles: el tamaño de impresión cambia, pero la foto no gana detalle.</li>
+          <li><b>Pedir más tamaño del que la foto da.</b> Una imagen de 1200 × 800 px a 300 ppp solo llega a unos 10 × 6,8 cm. Para un tamaño mayor, baja a 150-200 ppp o usa una foto con más resolución.</li>
+          <li><b>Olvidar el sangrado.</b> Si el diseño llega hasta el borde del papel, muchas imprentas piden unos milímetros extra por cada lado (lo habitual son 3 mm). Pregunta antes de enviar el archivo.</li>
+        </ul>
       </>
     ),
   },
@@ -385,6 +441,13 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           <li><b>YouTube:</b> la miniatura debe pesar menos de 2 MB. Pon «2000» en peso máximo si tu imagen tiene mucho detalle.</li>
           <li><b>Banner de YouTube:</b> el contenido importante debe ir en la zona central de 1546×423 px, que es lo que se ve en móviles.</li>
         </ul>
+        <h2>Errores típicos</h2>
+        <ul>
+          <li><b>Subir la misma imagen a todas las redes.</b> Una foto apaisada en el feed de Instagram o en una Story se ve pequeña o recortada. Prepara una versión para cada formato: aquí se hace en un solo paso.</li>
+          <li><b>Poner texto pegado a los bordes.</b> En Stories, Reels y TikTok los bordes superior e inferior quedan tapados por la interfaz.</li>
+          <li><b>Subir PNG enormes «para que no pierdan calidad».</b> Las redes vuelven a comprimir todo lo que subes. Un JPG de calidad alta con las medidas exactas suele verse igual o mejor.</li>
+        </ul>
+        {/* CONTENIDO-PROPIO: captura antes/después de una foto horizontal convertida a 9:16 con el encuadre inteligente (ver MEDIA-PENDIENTE.md) */}
       </>
     ),
   },
@@ -415,6 +478,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           La IA funciona mejor con el producto bien iluminado y contrastado con el fondo. Los objetos transparentes (vidrio) o con pelo muy fino pueden necesitar un repaso. Si tus fotos ya tienen fondo liso, puedes desactivar la IA: la detección de bordes centrará el producto igualmente y será instantánea.
         </p>
+        {/* CONTENIDO-PROPIO: foto antes/después de un producto real (foto de móvil y resultado con fondo blanco) (ver MEDIA-PENDIENTE.md) */}
       </>
     ),
   },
@@ -530,6 +594,12 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           Si el formulario también exige unas medidas concretas en píxeles, ajústalas en el paso 1. Para fotos de documentos oficiales, mira la herramienta de <Link to="/foto-carnet-dni-pasaporte">foto para DNI y pasaporte</Link>.
         </p>
+        <h2>Errores típicos con los límites de peso</h2>
+        <ul>
+          <li><b>Fijarse solo en el peso.</b> Algunos formularios piden también unas medidas mínimas o máximas en píxeles. Revisa las dos condiciones antes de subir la foto.</li>
+          <li><b>Convertir la foto a PNG «para no perder calidad».</b> En fotografías, PNG pesa varias veces más que JPG: es justo lo contrario de lo que necesitas.</li>
+          <li><b>Fotografiar un documento de lejos y recortarlo después.</b> Se pierden píxeles útiles. Acércate para que el documento llene la imagen, con buena luz y sin sombras.</li>
+        </ul>
       </>
     ),
   },
