@@ -145,7 +145,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <main id="contenido" className="flex-1">
         {children}
       </main>
-      <div className="mx-auto w-full max-w-7xl px-4 pt-6 md:px-6">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <AdSlot position="page-bottom" format="footer" />
       </div>
       <Footer />

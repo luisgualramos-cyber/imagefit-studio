@@ -34,7 +34,7 @@ export function Home() {
       </div>
       <HowItWorks />
       <PrivacyNote />
-      <div className="mx-auto max-w-7xl px-4 pt-10 md:px-6">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
         <AdSlot position="between-sections" format="inline" />
       </div>
       <section id="herramientas" className="mx-auto max-w-7xl scroll-mt-20 px-4 py-16 md:px-6" aria-labelledby="herr-title">
@@ -55,9 +55,7 @@ export function Home() {
             </li>
           ))}
         </ul>
-        <div className="mt-8">
-          <AdSlot position="after-tools" format="horizontal" />
-        </div>
+        <AdSlot position="after-tools" format="horizontal" />
       </section>
       <UseCases />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:px-6 lg:grid-cols-[minmax(0,1fr)_300px]">
@@ -124,9 +122,7 @@ export function ToolPage({ path }: { path: string }) {
             </li>
           ))}
         </ul>
-        <div className="mt-8">
-          <AdSlot position="after-tools" format="horizontal" />
-        </div>
+        <AdSlot position="after-tools" format="horizontal" />
       </section>
     </>
   )

@@ -2,8 +2,9 @@ import { useEffect, useRef } from 'react'
 
 /**
  * Hueco publicitario preparado para Google AdSense.
- * - Sin configuración: muestra un marcador "ANUNCIO" con el espacio reservado (evita saltos de diseño).
- * - Con VITE_ADSENSE_CLIENT y el id de bloque correspondiente: renderiza el <ins class="adsbygoogle">.
+ * - Sin configuración (sin VITE_ADSENSE_CLIENT o sin id de bloque): no pinta nada.
+ * - Con configuración: renderiza el <ins class="adsbygoogle">, que no ocupa espacio hasta que
+ *   AdSense lo rellena (data-ad-status="filled"); si queda "unfilled" se oculta (ver index.css).
  * Nunca se coloca dentro del editor ni sobre botones de carga o descarga.
  */
 export type AdFormat = 'horizontal' | 'inline' | 'rectangle' | 'footer'
@@ -15,13 +16,6 @@ const SLOTS: Record<string, string | undefined> = {
   'after-tools': import.meta.env.VITE_ADSENSE_SLOT_AFTER_TOOLS,
   'page-bottom': import.meta.env.VITE_ADSENSE_SLOT_BOTTOM,
   sidebar: import.meta.env.VITE_ADSENSE_SLOT_SIDEBAR,
-}
-
-const SIZE: Record<AdFormat, string> = {
-  horizontal: 'min-h-[90px] md:min-h-[100px]',
-  inline: 'min-h-[120px]',
-  rectangle: 'min-h-[250px]',
-  footer: 'min-h-[90px]',
 }
 
 declare global {
@@ -45,25 +39,17 @@ export default function AdSlot({ position, format = 'horizontal', className = ''
     }
   }, [live])
 
+  if (!live) return null
   return (
-    <aside aria-label="Publicidad" className={`w-full ${className}`}>
-      {live ? (
-        <ins
-          ref={ref}
-          className={`adsbygoogle block ${SIZE[format]}`}
-          data-ad-client={CLIENT}
-          data-ad-slot={slot}
-          data-ad-format={format === 'rectangle' ? 'rectangle' : 'auto'}
-          data-full-width-responsive="true"
-        />
-      ) : (
-        <div
-          className={`flex ${SIZE[format]} items-center justify-center rounded-xl border border-dashed border-[#d5d1c8] bg-[#efece6] text-[11px] font-semibold tracking-[0.25em] text-[#9a968d]`}
-          data-ad-position={position}
-        >
-          ANUNCIO
-        </div>
-      )}
+    <aside aria-label="Publicidad" className={`ad-slot w-full ${className}`}>
+      <ins
+        ref={ref}
+        className="adsbygoogle block"
+        data-ad-client={CLIENT}
+        data-ad-slot={slot}
+        data-ad-format={format === 'rectangle' ? 'rectangle' : 'auto'}
+        data-full-width-responsive="true"
+      />
     </aside>
   )
 }
