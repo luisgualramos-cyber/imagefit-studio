@@ -44,7 +44,7 @@ export function About() {
       <h2>Qué puedes hacer</h2>
       <ul>
         <li>
-          <Link to="/redimensionar-imagenes">Redimensionar imágenes</Link> en píxeles, porcentaje o <Link to="/redimensionar-imagen-en-cm">centímetros para imprimir</Link>, una o <Link to="/redimensionar-varias-imagenes">muchas a la vez</Link>.
+          <Link to="/redimensionar-imagenes">Redimensionar imágenes</Link> en píxeles, porcentaje o <Link to="/redimensionar-imagen-en-cm">centímetros para imprimir</Link>, una o <Link to="/redimensionar-imagenes">muchas a la vez</Link>.
         </li>
         <li>
           <Link to="/comprimir-imagenes">Comprimir imágenes</Link> eligiendo la calidad o un peso máximo, por ejemplo para <Link to="/comprimir-foto-a-100kb">dejar una foto en 100 KB</Link>.
@@ -53,7 +53,7 @@ export function About() {
           <Link to="/convertir-imagenes">Convertir entre JPG, PNG, WEBP y AVIF</Link>, y pasar <Link to="/convertir-heic-a-jpg">fotos HEIC del iPhone a JPG</Link>.
         </li>
         <li>
-          Adaptar fotos a <Link to="/imagenes-para-redes-sociales">redes sociales</Link> con <Link to="/encuadre-inteligente">encuadre inteligente</Link> que evita cortar a las personas.
+          Adaptar fotos a <Link to="/imagenes-para-redes-sociales">redes sociales</Link> con <Link to="/recortar-imagen">encuadre inteligente</Link> que evita cortar a las personas.
         </li>
         <li>
           Preparar <Link to="/fotos-para-tienda-online">fotos de producto para tiendas online</Link> y <Link to="/foto-carnet-dni-pasaporte">fotos de carné</Link>.
@@ -154,7 +154,7 @@ export function FormatsGuide() {
           <b>Pasar un JPG a PNG esperando que mejore.</b> La calidad perdida al guardar en JPG no se recupera; el PNG solo evitará perder más.
         </li>
         <li>
-          <b>Guardar fotos en PNG para la web.</b> Es uno de los motivos más frecuentes de páginas lentas. <Link to="/convertir-png-a-webp">Pasar de PNG a WEBP</Link> suele reducir el peso drásticamente.
+          <b>Guardar fotos en PNG para la web.</b> Es uno de los motivos más frecuentes de páginas lentas. <Link to="/convertir-imagenes">Pasar de PNG a WEBP</Link> suele reducir el peso drásticamente.
         </li>
       </ul>
       <p>
@@ -205,11 +205,11 @@ export function WebGuide() {
       </p>
       <h2>5. Recorta y encuadra con intención</h2>
       <p>
-        Una imagen bien encuadrada comunica más y permite usar un tamaño menor. <Link to="/recortar-imagen">Recorta</Link> los bordes que no aportan y usa proporciones coherentes en toda la web (por ejemplo, 16:9 para cabeceras y 1:1 para productos). El <Link to="/encuadre-inteligente">encuadre inteligente</Link> detecta personas y caras para no cortarlas al cambiar de proporción.
+        Una imagen bien encuadrada comunica más y permite usar un tamaño menor. <Link to="/recortar-imagen">Recorta</Link> los bordes que no aportan y usa proporciones coherentes en toda la web (por ejemplo, 16:9 para cabeceras y 1:1 para productos). El <Link to="/recortar-imagen">encuadre inteligente</Link> detecta personas y caras para no cortarlas al cambiar de proporción.
       </p>
       <h2>6. Procesa todas las imágenes a la vez</h2>
       <p>
-        Si vas a subir una galería o un catálogo, no hace falta repetir el proceso foto a foto. Con la opción de <Link to="/redimensionar-varias-imagenes">redimensionar varias imágenes</Link> puedes aplicar el mismo tamaño, formato y compresión a todo el lote y descargarlo en un ZIP.
+        Si vas a subir una galería o un catálogo, no hace falta repetir el proceso foto a foto. Con la opción de <Link to="/redimensionar-imagenes">redimensionar varias imágenes</Link> puedes aplicar el mismo tamaño, formato y compresión a todo el lote y descargarlo en un ZIP.
       </p>
       <h2>Buenas prácticas al publicarlas</h2>
       <ul>

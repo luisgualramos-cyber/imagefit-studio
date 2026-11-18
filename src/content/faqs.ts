@@ -49,6 +49,14 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
       q: '¿Qué tamaño debe tener una imagen para una web?',
       a: 'Para imágenes a ancho completo bastan 1600-1920 px de ancho; para imágenes dentro de un artículo, entre 800 y 1200 px. Combínalo con WEBP y calidad 75-80 para que carguen rápido.',
     },
+    {
+      q: '¿Cómo redimensiono muchas fotos a la vez?',
+      a: 'Arrastra todas las fotos juntas, elige el tamaño, el formato y la calidad una sola vez y pulsa procesar. Al terminar, descárgalas en un ZIP.',
+    },
+    {
+      q: '¿Qué pasa si las fotos tienen proporciones distintas?',
+      a: 'Con la proporción bloqueada, cada foto se escala para caber en las medidas sin deformarse. Si eliges un formato exacto, cada foto se recorta con su propio encuadre inteligente, que puedes revisar una a una.',
+    },
   ],
   '/comprimir-imagenes': [
     {
@@ -85,33 +93,13 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
       q: '¿Puedo convertir HEIC a JPG?',
       a: 'Sí. Las fotos HEIC del iPhone se abren en cualquier navegador: si el tuyo no las admite, se decodifican con libheif en WebAssembly dentro de tu dispositivo. Tienes una página específica en «Convertir HEIC a JPG».',
     },
-  ],
-  '/convertir-jpg-a-png': [
     {
       q: '¿Mejora la calidad al pasar de JPG a PNG?',
       a: 'No. PNG guarda la imagen sin añadir más pérdida, pero no recupera el detalle que ya perdió el JPG. Lo que sí consigues es que futuras ediciones no degraden más la imagen.',
     },
     {
-      q: '¿Por qué el PNG pesa más que el JPG?',
-      a: 'Porque PNG no descarta información. En fotografías el archivo puede ser de 3 a 10 veces más pesado. Si buscas ligereza con transparencia, usa WEBP.',
-    },
-    {
-      q: '¿Puedo convertir varios JPG a PNG a la vez?',
-      a: 'Sí, súbelos todos juntos, pulsa procesar y descárgalos en un único ZIP.',
-    },
-  ],
-  '/convertir-png-a-webp': [
-    {
-      q: '¿WEBP conserva la transparencia del PNG?',
-      a: 'Sí. WEBP admite canal alfa, así que logotipos y recortes mantienen su fondo transparente con un peso mucho menor.',
-    },
-    {
-      q: '¿Cuánto se reduce el peso?',
+      q: '¿Cuánto se reduce el peso al pasar de PNG a WEBP?',
       a: 'En fotografías guardadas como PNG la reducción suele superar el 70-80 %. En gráficos sencillos depende del contenido; la herramienta te muestra el porcentaje exacto de cada imagen.',
-    },
-    {
-      q: '¿Todos los navegadores muestran WEBP?',
-      a: 'Sí, todos los navegadores modernos (Chrome, Safari, Firefox y Edge) muestran WEBP desde hace años.',
     },
   ],
   '/imagenes-para-redes-sociales': [
@@ -150,34 +138,6 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
       a: 'Deja aire alrededor del producto para que no toque los bordes. Un margen del 8-12 % da un aspecto uniforme en las cuadrículas de catálogo.',
     },
   ],
-  '/redimensionar-varias-imagenes': [
-    {
-      q: '¿Cómo redimensiono muchas fotos a la vez?',
-      a: 'Arrastra todas las fotos juntas, elige el tamaño, el formato y la calidad una sola vez y pulsa procesar. Al terminar, descárgalas en un ZIP.',
-    },
-    {
-      q: '¿Qué pasa si las fotos tienen proporciones distintas?',
-      a: 'Con la proporción bloqueada, cada foto se escala para caber en las medidas sin deformarse. Si eliges un formato exacto, cada foto se recorta con su propio encuadre inteligente, que puedes revisar una a una.',
-    },
-    {
-      q: '¿Se procesan en paralelo?',
-      a: 'Sí. Las imágenes se reparten entre varios procesos en segundo plano (Web Workers) para aprovechar los núcleos de tu procesador sin bloquear la página.',
-    },
-  ],
-  '/encuadre-inteligente': [
-    {
-      q: '¿Cómo detecta el elemento principal?',
-      a: 'Usa dos modelos de IA de MediaPipe que se ejecutan en tu navegador: uno detecta rostros y otro reconoce 80 tipos de objetos, como personas, animales, vehículos o productos. Si no encuentra nada reconocible, analiza bordes, color y tonos de piel para localizar la zona más interesante.',
-    },
-    {
-      q: '¿Puedo corregir el encuadre?',
-      a: 'Sí. Arrastra el marco, usa la rueda del ratón o el control de zoom, o las flechas del teclado. El botón «Volver al encuadre inteligente» deshace tus cambios.',
-    },
-    {
-      q: '¿Qué ocurre si el elemento no cabe en el nuevo formato?',
-      a: 'La herramienta te avisa y prioriza el rostro o la parte superior del sujeto. También puedes elegir «Encajar» para no recortar nada.',
-    },
-  ],
   '/ampliar-imagen': [
     {
       q: '¿Cómo convierto una foto cuadrada en horizontal sin bandas negras?',
@@ -204,6 +164,34 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
     {
       q: '¿Se va a ver mal la foto?',
       a: 'A 1280 px y 100 KB una foto normal se ve bien en pantalla. Si la herramienta no puede llegar al límite con buena calidad, te avisará. Puedes comparar el antes y el después antes de descargar.',
+    },
+  ],
+  '/foto-dni': [
+    {
+      q: '¿Qué tamaño tiene la foto del DNI?',
+      a: '32 por 26 milímetros (32 de alto y 26 de ancho), en color, según el artículo 6.2.d del Real Decreto 255/2025. A 300 ppp equivale a 307 × 378 píxeles.',
+    },
+    {
+      q: '¿El fondo tiene que ser blanco?',
+      a: 'Sí. La norma pide un fondo uniforme blanco y liso. Esta herramienta no cambia el fondo, así que hazte la foto delante de una pared blanca y sin sombras.',
+    },
+    {
+      q: '¿Sirve la misma foto para renovar el DNI?',
+      a: 'Sí. El artículo 8.2 del Real Decreto 255/2025 pide para la renovación una fotografía con las mismas características del artículo 6.2.d.',
+    },
+  ],
+  '/foto-carnet-conducir': [
+    {
+      q: '¿Qué tamaño tiene la foto del carné de conducir?',
+      a: 'La DGT pide una fotografía original y actual de 32 × 26 mm, en color, con fondo liso, tomada de frente, con la cabeza descubierta y sin gafas de cristales oscuros.',
+    },
+    {
+      q: '¿Tengo que llevar foto si ya la presenté antes?',
+      a: 'La DGT indica que desde el 6 de noviembre de 2024 ya no es necesario volver a presentar el talón-foto o las fotografías cuando ya dispone de tu documentación. Revisa en su sede si tu trámite concreto la pide.',
+    },
+    {
+      q: '¿Se admite la foto con velo?',
+      a: 'Sí. La DGT admite fotografías con velo por motivos religiosos siempre que el óvalo de la cara quede descubierto, desde el nacimiento del pelo hasta el mentón.',
     },
   ],
   '/foto-carnet-dni-pasaporte': [
@@ -328,6 +316,14 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
     {
       q: '¿Puedo recortar en círculo?',
       a: 'De momento el recorte es rectangular. Para fotos de perfil que se muestran en círculo (WhatsApp, Instagram), usa el formato cuadrado y deja la cara centrada.',
+    },
+    {
+      q: '¿Puedo corregir el encuadre?',
+      a: 'Sí. Arrastra el marco, usa la rueda del ratón o el control de zoom, o las flechas del teclado. El botón «Volver al encuadre inteligente» deshace tus cambios.',
+    },
+    {
+      q: '¿Qué ocurre si el elemento no cabe en el nuevo formato?',
+      a: 'La herramienta te avisa y prioriza el rostro o la parte superior del sujeto. También puedes elegir «Encajar» para no recortar nada.',
     },
   ],
   '/redimensionar-imagen-en-cm': [

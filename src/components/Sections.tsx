@@ -11,8 +11,6 @@ import {
   IconShield,
   IconShop,
   IconSocial,
-  IconStack,
-  IconTarget,
   IconUpload,
   IconChevron,
 } from './Icons'
@@ -23,8 +21,6 @@ export const TOOLS = [
   { to: '/convertir-imagenes', title: 'Convertir formatos', short: 'Convertir', icon: IconConvert, text: 'JPG, PNG, WEBP y AVIF reales, no un cambio de extensión.' },
   { to: '/imagenes-para-redes-sociales', title: 'Imágenes para redes sociales', short: 'Redes sociales', icon: IconSocial, text: 'Instagram, TikTok, YouTube, Facebook, X y LinkedIn al tamaño exacto.' },
   { to: '/fotos-para-tienda-online', title: 'Fotos para tiendas online', short: 'Tiendas online', icon: IconShop, text: 'Quita el fondo con IA, ponlo blanco y centra el producto.' },
-  { to: '/redimensionar-varias-imagenes', title: 'Procesar varias imágenes', short: 'Por lotes', icon: IconStack, text: 'La misma configuración para decenas de fotos y descarga en ZIP.' },
-  { to: '/encuadre-inteligente', title: 'Encuadre inteligente', short: 'Encuadre IA', icon: IconTarget, text: 'Detecta personas y objetos para no cortarlos al cambiar de formato.' },
   { to: '/ampliar-imagen', title: 'Ampliar imagen', short: 'Ampliar', icon: IconExpand, text: 'Cambia de cuadrada a horizontal ampliando el fondo, sin bandas vacías.' },
 ]
 

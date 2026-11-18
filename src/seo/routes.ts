@@ -26,7 +26,7 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/redimensionar-imagenes',
     name: 'Redimensionar imágenes',
-    title: 'Cambiar tamaño de imagen online gratis | ImageFit Studio',
+    title: 'Cambiar tamaño de imagen online, una o varias a la vez | ImageFit Studio',
     description:
       'Redimensiona imágenes online en píxeles o porcentaje sin perder calidad y sin deformarlas. Una foto o muchas a la vez, gratis y sin registro.',
     priority: 0.9,
@@ -46,26 +46,8 @@ export const ROUTES: RouteMeta[] = [
     name: 'Convertir formatos',
     title: 'Convertir imágenes a JPG, PNG, WEBP y AVIF | ImageFit Studio',
     description:
-      'Cambia el formato de tus imágenes a JPG, PNG, WEBP o AVIF con una conversión real, no un cambio de extensión. Por lotes, gratis y en tu navegador.',
+      'Convierte imágenes a JPG, PNG, WEBP o AVIF (JPG a PNG, PNG a WEBP y más) con una conversión real, no un cambio de extensión. Gratis y en tu navegador.',
     priority: 0.85,
-    tool: true,
-  },
-  {
-    path: '/convertir-jpg-a-png',
-    name: 'JPG a PNG',
-    title: 'Convertir JPG a PNG online gratis | ImageFit Studio',
-    description:
-      'Pasa tus fotos JPG a PNG sin pérdida adicional de calidad. Conversión real en tu navegador, varias imágenes a la vez y descarga en ZIP.',
-    priority: 0.7,
-    tool: true,
-  },
-  {
-    path: '/convertir-png-a-webp',
-    name: 'PNG a WEBP',
-    title: 'Convertir PNG a WEBP online gratis | ImageFit Studio',
-    description:
-      'Convierte PNG a WEBP conservando la transparencia y reduciendo mucho el peso. Ideal para acelerar tu web. Gratis y sin subir archivos.',
-    priority: 0.7,
     tool: true,
   },
   {
@@ -87,24 +69,6 @@ export const ROUTES: RouteMeta[] = [
     tool: true,
   },
   {
-    path: '/redimensionar-varias-imagenes',
-    name: 'Procesar varias imágenes',
-    title: 'Redimensionar varias imágenes a la vez | ImageFit Studio',
-    description:
-      'Cambia el tamaño, el formato y el peso de muchas fotos de una vez y descárgalas juntas en un ZIP. Gratis, sin registro y sin instalar programas.',
-    priority: 0.85,
-    tool: true,
-  },
-  {
-    path: '/encuadre-inteligente',
-    name: 'Encuadre inteligente',
-    title: 'Recortar fotos con IA sin cortar a nadie | ImageFit Studio',
-    description:
-      'Convierte fotos horizontales en verticales sin cortar a las personas: detección de rostros y objetos con IA en tu navegador y ajuste manual.',
-    priority: 0.8,
-    tool: true,
-  },
-  {
     path: '/ampliar-imagen',
     name: 'Ampliar imagen',
     title: 'Ampliar el fondo de una imagen online | ImageFit Studio',
@@ -120,6 +84,24 @@ export const ROUTES: RouteMeta[] = [
     description:
       'Reduce una foto a menos de 100 KB (o 50, 200, 500 KB) para formularios y sedes electrónicas. Busca la mejor calidad posible. Gratis y privado.',
     priority: 0.8,
+    tool: true,
+  },
+  {
+    path: '/foto-dni',
+    name: 'Foto para el DNI',
+    title: 'Foto para el DNI 32×26 mm: requisitos oficiales | ImageFit Studio',
+    description:
+      'Recorta tu foto al tamaño oficial del DNI (32×26 mm, en color, fondo blanco liso) según el Real Decreto 255/2025. Centrada en tu cara y lista para imprimir.',
+    priority: 0.85,
+    tool: true,
+  },
+  {
+    path: '/foto-carnet-conducir',
+    name: 'Foto carné de conducir',
+    title: 'Foto para el carné de conducir (DGT) 32×26 mm | ImageFit Studio',
+    description:
+      'Prepara la foto de 32×26 mm, en color y con fondo liso, que pide la DGT para el permiso de conducir. Requisitos oficiales, encuadre automático e impresión.',
+    priority: 0.85,
     tool: true,
   },
   {
@@ -190,7 +172,7 @@ export const ROUTES: RouteMeta[] = [
     name: 'Recortar imagen',
     title: 'Recortar imagen online: 1:1, 4:5, 16:9 y más | ImageFit Studio',
     description:
-      'Recorta fotos online a cuadrado, vertical o panorámico con un marco que mueves y amplías a tu gusto. Encuadre automático de caras. Gratis y sin registro.',
+      'Recorta fotos online a cuadrado, vertical o panorámico. El encuadre inteligente con IA detecta caras y objetos para no cortarlos. Gratis y sin registro.',
     priority: 0.8,
     tool: true,
   },

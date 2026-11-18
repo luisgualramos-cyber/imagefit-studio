@@ -65,6 +65,8 @@ function FormatTable() {
 
 /** Páginas para búsquedas concretas (enlazadas desde inicio y pie). */
 export const QUICK_PAGES = [
+  { to: '/foto-dni', label: 'Foto para el DNI' },
+  { to: '/foto-carnet-conducir', label: 'Foto carné de conducir' },
   { to: '/comprimir-foto-a-100kb', label: 'Comprimir foto a 100 KB' },
   { to: '/foto-carnet-dni-pasaporte', label: 'Foto para DNI y pasaporte' },
   { to: '/redimensionar-foto-whatsapp', label: 'Foto de perfil de WhatsApp' },
@@ -75,8 +77,6 @@ export const QUICK_PAGES = [
   { to: '/convertir-png-a-jpg', label: 'Convertir PNG a JPG' },
   { to: '/recortar-imagen', label: 'Recortar imagen' },
   { to: '/redimensionar-imagen-en-cm', label: 'Cambiar tamaño en cm' },
-  { to: '/convertir-jpg-a-png', label: 'Convertir JPG a PNG' },
-  { to: '/convertir-png-a-webp', label: 'Convertir PNG a WEBP' },
 ]
 
 export const TOOL_PAGES: Record<string, ToolPageContent> = {
@@ -104,9 +104,16 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           Las reducciones grandes se hacen en varios pasos (dividiendo a la mitad sucesivamente) para evitar el efecto de dientes de sierra y el muaré que aparecen cuando una foto de 6000 px se reduce de golpe a 600 px. El resultado es más nítido que el de muchos redimensionadores rápidos.
         </p>
+        <h2>Redimensionar varias imágenes a la vez</h2>
         <p>
-          ¿Quieres hacerlo con muchas fotos? Puedes subir varias a la vez: las fotos verticales y horizontales conservan cada una su proporción. Más detalles en <Link to="/redimensionar-varias-imagenes">procesar varias imágenes</Link>.
+          Sube hasta 100 imágenes juntas, configura el tamaño, el formato y la calidad una sola vez y pulsa procesar; la barra de progreso indica cuántas van listas. Las fotos se reparten entre varios procesos en segundo plano (Web Workers), así que se aprovechan todos los núcleos del procesador sin que la página se congele.
         </p>
+        <ul>
+          <li><b>Mismas medidas para todas:</b> con el candado cerrado, cada foto cabe dentro de las medidas indicadas sin deformarse, y las verticales y las horizontales conservan su proporción.</li>
+          <li><b>Mismo formato exacto:</b> si eliges unas medidas fijas, todas salen iguales y cada una se recorta con su propio encuadre inteligente.</li>
+          <li><b>Mismo formato de archivo, compresión y sufijo</b>, incluido un peso máximo por imagen, para no confundirlas con los originales.</li>
+          <li><b>Revisión una a una:</b> haz clic en cualquier miniatura para ver o corregir su encuadre antes de descargar todo en un ZIP.</li>
+        </ul>
         <h2>Errores típicos al cambiar el tamaño</h2>
         <ul>
           <li><b>Ampliar una foto pequeña esperando más nitidez.</b> Pasar de 800 a 2400 px no añade detalle: solo agranda los píxeles y la foto se ve blanda. Si la necesitas más grande para imprimir, parte siempre del original de la cámara.</li>
@@ -179,12 +186,30 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           Para la mayoría de las webs, <b>WEBP</b> es la mejor opción hoy: lo muestran todos los navegadores actuales, admite transparencia y pesa bastante menos que JPG. <b>AVIF</b> comprime aún más, pero tarda más en codificarse; si tu navegador no puede generarlo de forma nativa, ImageFit Studio usa un codificador libavif compilado a WebAssembly, también dentro de tu navegador.
         </p>
-        <h2>Conversiones más habituales</h2>
+        <h2>Convertir JPG a PNG</h2>
+        <p>Tiene sentido en tres casos:</p>
         <ul>
-          <li><Link to="/convertir-jpg-a-png">Convertir JPG a PNG</Link>: para editar sin añadir más pérdida o para trabajar con programas que lo exigen.</li>
-          <li><Link to="/convertir-png-a-webp">Convertir PNG a WEBP</Link>: para aligerar logotipos e imágenes con transparencia en tu web.</li>
-          <li>JPG a WEBP: reduce el peso de fotos manteniendo la calidad visual.</li>
-          <li>WEBP a JPG: para subir imágenes a plataformas antiguas que no aceptan WEBP.</li>
+          <li>Vas a editar la imagen varias veces y no quieres que cada guardado degrade la calidad.</li>
+          <li>Una plataforma o un programa solo acepta PNG.</li>
+          <li>Necesitas añadir transparencia después, por ejemplo para recortar un logotipo.</li>
+        </ul>
+        <p>
+          Ten en cuenta que PNG guarda todos los píxeles tal como están: en fotografías el archivo pesa normalmente entre 3 y 10 veces más que el JPG, y la conversión no recupera el detalle que el JPG ya perdió. Elige «PNG» en el paso 3.
+        </p>
+        <h2>Convertir PNG a WEBP</h2>
+        <p>
+          WEBP admite transparencia igual que PNG, pero comprime mucho mejor: en capturas y fotos guardadas como PNG la reducción suele superar el 70 %. Es la forma más rápida de aligerar logotipos e imágenes con fondo transparente en una web. Elige «WEBP» en el paso 3 con estas calidades:
+        </p>
+        <ul>
+          <li><b>Fotos y capturas:</b> calidad 80-85.</li>
+          <li><b>Logotipos y gráficos con bordes nítidos:</b> calidad 90-100, para evitar halos en los bordes.</li>
+        </ul>
+        <h2>Otras conversiones habituales</h2>
+        <ul>
+          <li>JPG a WEBP: reduce el peso de las fotos manteniendo la calidad visual.</li>
+          <li><Link to="/convertir-webp-a-jpg">WEBP a JPG</Link>: para subir imágenes a plataformas que no aceptan WEBP.</li>
+          <li><Link to="/convertir-png-a-jpg">PNG a JPG</Link>: para aligerar capturas y fotos.</li>
+          <li><Link to="/convertir-heic-a-jpg">HEIC a JPG</Link>: para las fotos del iPhone.</li>
         </ul>
         <h2>Cómo funciona la conversión</h2>
         <p>
@@ -253,7 +278,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <ul>
           <li><Link to="/convertir-png-a-jpg">PNG a JPG</Link>, para aligerar capturas y fotos.</li>
           <li><Link to="/convertir-heic-a-jpg">HEIC a JPG</Link>, para las fotos del iPhone.</li>
-          <li><Link to="/convertir-png-a-webp">PNG a WEBP</Link>, si lo que quieres es lo contrario: imágenes ligeras para tu web.</li>
+          <li><Link to="/convertir-imagenes">PNG a WEBP</Link>, si lo que quieres es lo contrario: imágenes ligeras para tu web.</li>
         </ul>
       </>
     ),
@@ -276,7 +301,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         </ul>
         <h2>Transparencia y fondo</h2>
         <p>
-          JPG no admite transparencia: las zonas transparentes se rellenan de blanco. Si tu PNG es un logotipo y quieres otro color de fondo, elige unas medidas en el paso 1, «Encajar» en el paso 2 y el color que prefieras. Si necesitas conservar la transparencia con menos peso, usa <Link to="/convertir-png-a-webp">PNG a WEBP</Link>.
+          JPG no admite transparencia: las zonas transparentes se rellenan de blanco. Si tu PNG es un logotipo y quieres otro color de fondo, elige unas medidas en el paso 1, «Encajar» en el paso 2 y el color que prefieras. Si necesitas conservar la transparencia con menos peso, usa <Link to="/convertir-imagenes">PNG a WEBP</Link>.
         </p>
         <p>
           ¿Además quieres reducirla a un tamaño concreto? Prueba <Link to="/comprimir-foto-a-100kb">comprimir foto a 100 KB</Link> o <Link to="/redimensionar-imagenes">cambiar el tamaño de la imagen</Link>.
@@ -291,7 +316,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
   },
   '/recortar-imagen': {
     h1: 'Recortar imagen online',
-    lead: 'Recorta tus fotos a cuadrado, vertical o panorámico con un marco que mueves y amplías a tu gusto. Una imagen o muchas a la vez.',
+    lead: 'Recorta tus fotos a cuadrado, vertical o panorámico con un marco que mueves y amplías a tu gusto, o deja que el encuadre inteligente coloque el marco por ti.',
     tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('ratios', 'Cuadrado 1:1'), fit: 'cover', smartCrop: true, format: 'original', quality: 90, suffix: '-recortada' }} presetFilter="web" />,
     body: (
       <>
@@ -318,9 +343,21 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
             <tr><td>9:16</td><td>Stories, Reels, TikTok y estados de WhatsApp</td></tr>
           </tbody>
         </table>
-        <h2>Recorte inteligente</h2>
+        <h2>Recorte inteligente con IA</h2>
         <p>
-          Con el encuadre inteligente activado, la herramienta detecta caras, personas y objetos en tu navegador y coloca el marco a su alrededor. Es especialmente útil al recortar muchas fotos a la vez: cada una sale bien encuadrada sin tener que tocarla. Más detalles en <Link to="/encuadre-inteligente">encuadre inteligente</Link>.
+          Con el encuadre inteligente activado, la herramienta coloca el marco alrededor de lo importante. La foto se analiza en tres niveles, siempre dentro de tu navegador:
+        </p>
+        <ul>
+          <li><b>Rostros</b>, con el detector BlazeFace de MediaPipe. Si hay varias personas, se tienen en cuenta los rostros principales.</li>
+          <li><b>Personas y objetos</b>, con EfficientDet-Lite (80 categorías: personas, animales, vehículos, botellas, tazas, móviles…). Se elige el elemento más relevante por tamaño, confianza y posición.</li>
+          <li><b>Contenido visual</b>, si no hay nada reconocible: un análisis de bordes, saturación y tonos de piel localiza la zona de más interés.</li>
+        </ul>
+        <p>
+          La caja verde de la vista previa muestra lo que se ha detectado y con qué confianza. Si los modelos no se pueden cargar, se indica y la foto se centra para que la ajustes a mano. Es especialmente útil al recortar muchas fotos a la vez: cada una sale bien encuadrada sin tener que tocarla.
+        </p>
+        <h3>Cuando el sujeto no cabe</h3>
+        <p>
+          Si el elemento principal es más grande que el nuevo formato (una persona de cuerpo entero en un formato apaisado, por ejemplo), se prioriza el rostro y se deja algo de aire por encima de la cabeza. Aparece un aviso para que decidas si prefieres reducir el zoom o usar «Encajar», que coloca la foto completa sobre un fondo desenfocado.
         </p>
         <p>
           Si no quieres perder ninguna parte de la foto, en lugar de recortar puedes <Link to="/ampliar-imagen">ampliar el fondo</Link> hasta la proporción que necesitas.
@@ -378,46 +415,6 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           <li><b>Pedir más tamaño del que la foto da.</b> Una imagen de 1200 × 800 px a 300 ppp solo llega a unos 10 × 6,8 cm. Para un tamaño mayor, baja a 150-200 ppp o usa una foto con más resolución.</li>
           <li><b>Olvidar el sangrado.</b> Si el diseño llega hasta el borde del papel, muchas imprentas piden unos milímetros extra por cada lado (lo habitual son 3 mm). Pregunta antes de enviar el archivo.</li>
         </ul>
-      </>
-    ),
-  },
-  '/convertir-jpg-a-png': {
-    h1: 'Convertir JPG a PNG',
-    lead: 'Pasa tus JPG a PNG sin añadir más pérdida de calidad. Varias imágenes a la vez y descarga en ZIP.',
-    tool: <Studio initial={{ format: 'image/png' }} />,
-    body: (
-      <>
-        <h2>¿Cuándo tiene sentido pasar de JPG a PNG?</h2>
-        <ul>
-          <li>Vas a editar la imagen varias veces y no quieres que cada guardado degrade la calidad.</li>
-          <li>Una plataforma o un programa solo acepta PNG.</li>
-          <li>Necesitas añadir transparencia después (por ejemplo, para recortar un logotipo).</li>
-        </ul>
-        <h2>Lo que conviene saber</h2>
-        <p>
-          PNG guarda todos los píxeles tal como están, así que el archivo será más pesado que el JPG original, normalmente entre 3 y 10 veces en fotografías. La conversión no recupera el detalle que el JPG ya perdió al guardarse. Si tu objetivo es una imagen ligera para la web, te conviene más <Link to="/convertir-png-a-webp">WEBP</Link>.
-        </p>
-        <p>Si además necesitas otro tamaño, ajusta el paso 1 antes de procesar: redimensionar y convertir se hacen a la vez.</p>
-      </>
-    ),
-  },
-  '/convertir-png-a-webp': {
-    h1: 'Convertir PNG a WEBP',
-    lead: 'Convierte PNG a WEBP conservando la transparencia y reduciendo drásticamente el peso. Ideal para acelerar tu web.',
-    tool: <Studio initial={{ format: 'image/webp', quality: 85 }} />,
-    body: (
-      <>
-        <h2>Por qué usar WEBP en lugar de PNG</h2>
-        <p>
-          WEBP admite transparencia igual que PNG, pero con una compresión mucho más eficiente. En capturas de pantalla y fotos guardadas como PNG la reducción suele superar el 70 %. Imágenes más ligeras significan páginas más rápidas, mejores métricas de Core Web Vitals y menos datos móviles para tus visitantes.
-        </p>
-        <h2>Calidad recomendada</h2>
-        <ul>
-          <li><b>Fotos y capturas:</b> calidad 80-85.</li>
-          <li><b>Logotipos y gráficos con bordes nítidos:</b> calidad 90-100 para evitar halos en los bordes.</li>
-          <li><b>Límite de peso:</b> escribe un peso máximo si tu CMS o tema lo exige.</li>
-        </ul>
-        <p>¿Tu imagen no necesita transparencia? Compara también con AVIF en <Link to="/convertir-imagenes">convertir formatos</Link>.</p>
       </>
     ),
   },
@@ -479,59 +476,6 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           La IA funciona mejor con el producto bien iluminado y contrastado con el fondo. Los objetos transparentes (vidrio) o con pelo muy fino pueden necesitar un repaso. Si tus fotos ya tienen fondo liso, puedes desactivar la IA: la detección de bordes centrará el producto igualmente y será instantánea.
         </p>
         {/* CONTENIDO-PROPIO: foto antes/después de un producto real (foto de móvil y resultado con fondo blanco) (ver MEDIA-PENDIENTE.md) */}
-      </>
-    ),
-  },
-  '/redimensionar-varias-imagenes': {
-    h1: 'Redimensionar varias imágenes a la vez',
-    lead: 'Aplica el mismo tamaño, formato y compresión a decenas de fotos y descárgalas juntas en un ZIP.',
-    tool: (
-      <Studio
-        initial={{ sizeMode: 'custom', lockRatio: true, noUpscale: true, width: 1600, height: 1600, format: 'image/jpeg', quality: 82 }}
-        dropTitle="Arrastra todas tus imágenes a la vez"
-      />
-    ),
-    body: (
-      <>
-        <h2>Procesamiento por lotes, sin instalar nada</h2>
-        <p>
-          Sube hasta 100 imágenes de una vez. Configura el tamaño, el formato y la calidad una sola vez y pulsa procesar: la barra de progreso te muestra cuántas van listas. Las imágenes se reparten entre varios procesos en paralelo (Web Workers), así que se aprovechan todos los núcleos de tu procesador sin congelar la página.
-        </p>
-        <h2>Qué se aplica a todas por igual</h2>
-        <ul>
-          <li><b>Mismas dimensiones:</b> con el candado cerrado, cada foto cabe dentro de las medidas indicadas sin deformarse (las verticales y las horizontales conservan su proporción).</li>
-          <li><b>Mismas proporciones:</b> si eliges un formato exacto, todas salen con las mismas medidas y cada una se recorta con su propio encuadre inteligente.</li>
-          <li><b>Mismo formato y compresión</b>, incluido el peso máximo por imagen.</li>
-          <li><b>Mismo sufijo</b> en el nombre del archivo, para no confundirlas con los originales.</li>
-        </ul>
-        <h2>Revisar una a una antes de descargar</h2>
-        <p>
-          Haz clic en cualquier miniatura para ver su encuadre o su resultado. El encuadre manual es individual: puedes corregir solo la foto que lo necesite. Al terminar, descarga todo en un ZIP o cada imagen desde su miniatura.
-        </p>
-      </>
-    ),
-  },
-  '/encuadre-inteligente': {
-    h1: 'Encuadre inteligente con IA',
-    lead: 'Cambia la proporción de tus fotos sin cortar lo importante: detección de rostros, personas y objetos en tu navegador, con ajuste manual.',
-    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('instagram', 'Stories y Reels'), fit: 'cover', smartCrop: true }} />,
-    body: (
-      <>
-        <h2>Cómo decide dónde recortar</h2>
-        <p>Cuando subes una foto, se analiza en tres niveles, siempre dentro de tu navegador:</p>
-        <ul>
-          <li><b>Rostros</b> con el detector BlazeFace de MediaPipe. Si hay varias personas, se tienen en cuenta los rostros principales.</li>
-          <li><b>Personas y objetos</b> con EfficientDet-Lite (80 categorías: personas, animales, vehículos, botellas, tazas, móviles…). Se elige el elemento más relevante por tamaño, confianza y posición.</li>
-          <li><b>Contenido visual</b> si no hay nada reconocible: un análisis de bordes, saturación y tonos de piel localiza la zona de más interés.</li>
-        </ul>
-        <p>
-          La caja verde de la vista previa muestra exactamente lo que se ha detectado y con qué confianza. No hay resultados inventados: si los modelos no se pueden cargar, se indica y la foto se centra para que la ajustes a mano.
-        </p>
-        <h2>Cuando el sujeto no cabe</h2>
-        <p>
-          Si el elemento principal es más grande que el nuevo formato (una persona de cuerpo entero en un formato apaisado, por ejemplo), se prioriza el rostro y se deja algo de aire por encima de la cabeza. Aparece un aviso para que decidas si prefieres reducir el zoom o usar «Encajar», que coloca la foto completa sobre un fondo desenfocado.
-        </p>
-        <p>Prueba también los formatos de <Link to="/imagenes-para-redes-sociales">redes sociales</Link>, donde el encuadre inteligente viene activado.</p>
       </>
     ),
   },
@@ -624,7 +568,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
             <tr><td>Pasaporte y visado de EE. UU.</td><td>2 × 2 pulgadas (51 × 51 mm)</td><td>600 × 600 px</td></tr>
           </tbody>
         </table>
-        <p>Los tres formatos están en el paso 1, dentro de «Formatos» → «Documentos».</p>
+        <p>Los tres formatos están en el paso 1, dentro de «Formatos» → «Documentos». Para el DNI y el carné de conducir tienes páginas específicas con los requisitos oficiales: <Link to="/foto-dni">foto para el DNI</Link> y <Link to="/foto-carnet-conducir">foto para el carné de conducir (DGT)</Link>.</p>
         <h2>Cómo hacer la foto para que sirva</h2>
         <ul>
           <li><b>Fondo liso, blanco o muy claro</b>, sin sombras. Esta herramienta no cambia el fondo, así que conviene hacerse la foto delante de una pared clara.</li>
@@ -634,7 +578,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         </ul>
         <h2>Cómo encuadra tu cara</h2>
         <p>
-          El <Link to="/encuadre-inteligente">encuadre inteligente</Link> detecta tu cara con IA dentro de tu navegador y centra el recorte en ella, dejando aire por encima de la cabeza. Puedes arrastrar el marco y ajustar el zoom para que la cabeza ocupe la proporción que pide cada organismo, normalmente entre el 70 % y el 80 % del alto de la foto.
+          El <Link to="/recortar-imagen">encuadre inteligente</Link> detecta tu cara con IA dentro de tu navegador y centra el recorte en ella, dejando aire por encima de la cabeza. Puedes arrastrar el marco y ajustar el zoom para que la cabeza ocupe la proporción que pide cada organismo, normalmente entre el 70 % y el 80 % del alto de la foto.
         </p>
         <h2>Importante</h2>
         <p>
@@ -732,7 +676,113 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         </ul>
         <h2>¿Y si las quieren imprimir?</h2>
         <p>
-          Para imprimir conviene enviar más resolución. Sube el ancho a 3000 px y quita el límite de peso, o comparte los originales con un servicio de almacenamiento. Para enviarlas solo para verlas, la configuración de esta página es ideal. Más opciones en <Link to="/redimensionar-varias-imagenes">procesar varias imágenes</Link>.
+          Para imprimir conviene enviar más resolución. Sube el ancho a 3000 px y quita el límite de peso, o comparte los originales con un servicio de almacenamiento. Para enviarlas solo para verlas, la configuración de esta página es ideal. Más opciones en <Link to="/redimensionar-imagenes">redimensionar varias imágenes a la vez</Link>.
+        </p>
+      </>
+    ),
+  },
+  '/foto-dni': {
+    h1: 'Foto para el DNI: 32 × 26 mm',
+    lead: 'Recorta tu foto al tamaño oficial del DNI español, centrada en tu cara y lista para imprimir en papel fotográfico. Sin subirla a ningún servidor.',
+    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('docs', 'DNI / pasaporte España 26×32 mm'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 95, suffix: '-dni' }} dropTitle="Arrastra tu foto para el DNI" />,
+    body: (
+      <>
+        <h2>Requisitos oficiales de la foto del DNI</h2>
+        <p>
+          La norma que regula el DNI pide «una fotografía reciente del rostro de la persona solicitante en color, tamaño 32 por 26 milímetros, con fondo uniforme blanco y liso, tomada de frente, con la cabeza totalmente descubierta y sin gafas de cristales oscuros o cualquier otra prenda que pueda impedir o dificultar la identificación de la persona».
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Requisito</th>
+              <th>Qué significa en la práctica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>32 × 26 mm</td><td>32 mm de alto por 26 mm de ancho (vertical). A 300 ppp son 307 × 378 píxeles, que es lo que genera esta herramienta.</td></tr>
+            <tr><td>En color y reciente</td><td>Nada de blanco y negro ni de fotos antiguas.</td></tr>
+            <tr><td>Fondo uniforme blanco y liso</td><td>Una pared blanca sin sombras, cuadros ni texturas detrás.</td></tr>
+            <tr><td>De frente y cabeza descubierta</td><td>Mirando a la cámara, sin gorra, gorro ni capucha.</td></tr>
+            <tr><td>Sin gafas oscuras ni prendas que dificulten la identificación</td><td>La cara tiene que verse bien.</td></tr>
+          </tbody>
+        </table>
+        <p>
+          La renovación exige la misma foto: el artículo 8.2 pide «aportar una fotografía con las características señaladas en el artículo 6.2.d)».
+        </p>
+        <p className="text-sm text-muted">
+          Fuente oficial:{' '}
+          <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2025-6601" target="_blank" rel="noopener noreferrer">
+            Real Decreto 255/2025, de 1 de abril, por el que se regula el Documento Nacional de Identidad (BOE núm. 80, de 2 de abril de 2025)
+          </a>
+          , artículos 6.2.d y 8.2. Comprobado el 18/11/2026.
+        </p>
+        <h2>Cómo usar la herramienta</h2>
+        <ul>
+          <li>Sube una foto hecha delante de una pared blanca, con luz de frente y sin sombras. <b>La herramienta no cambia el fondo</b>: si la pared no es blanca, la foto no cumplirá.</li>
+          <li>El tamaño ya está en «DNI / pasaporte España 26×32 mm». El encuadre inteligente detecta tu cara y la centra; ajusta el marco y el zoom si quieres más o menos aire alrededor de la cabeza.</li>
+          <li>Descarga el JPG y encarga la impresión en una tienda de revelado indicando que la foto debe medir 32 × 26 mm.</li>
+        </ul>
+        <h2>Errores que suelen invalidar la foto</h2>
+        <ul>
+          <li><b>Fondo gris, beige o con sombra</b> detrás de la cabeza. Aléjate un paso de la pared para que tu sombra no caiga sobre ella.</li>
+          <li><b>Foto de lado o mirando hacia abajo</b>, típica de un selfi con el móvil bajo. Pide a otra persona que te haga la foto con el móvil a la altura de tus ojos.</li>
+          <li><b>Gafas de sol, gorra o capucha.</b> La norma pide la cabeza totalmente descubierta y sin gafas de cristales oscuros.</li>
+          <li><b>Imprimir con otra medida.</b> Si la tienda la imprime «tamaño carné» sin más, comprueba con una regla que mide 32 × 26 mm.</li>
+        </ul>
+        <p>
+          ¿Es para el carné de conducir? Mira la <Link to="/foto-carnet-conducir">foto para el permiso de conducir (DGT)</Link>, que tiene el mismo tamaño pero no exige fondo blanco. Otros tamaños de foto de documento están en <Link to="/foto-carnet-dni-pasaporte">foto de carné</Link>.
+        </p>
+      </>
+    ),
+  },
+  '/foto-carnet-conducir': {
+    h1: 'Foto para el carné de conducir (DGT): 32 × 26 mm',
+    lead: 'Prepara la foto de 32 × 26 mm que pide la DGT para el permiso de conducir, centrada en tu cara y lista para imprimir. En tu navegador, sin subirla a ningún servidor.',
+    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('docs', 'Permiso de conducir (DGT) 26×32 mm'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 95, suffix: '-dgt' }} dropTitle="Arrastra tu foto para el carné de conducir" />,
+    body: (
+      <>
+        <h2>Qué foto pide la DGT</h2>
+        <p>
+          En su sede electrónica, la DGT pide «una fotografía original actual de 32 x 26 mm., en color y con fondo liso, tomada de frente con la cabeza descubierta», sin gafas de cristales oscuros ni otras prendas que dificulten la identificación.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Requisito</th>
+              <th>Detalle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Tamaño</td><td>32 × 26 mm (307 × 378 píxeles a 300 ppp)</td></tr>
+            <tr><td>Color</td><td>En color, original y actual</td></tr>
+            <tr><td>Fondo</td><td>Liso (la DGT no indica que tenga que ser blanco; para el DNI, en cambio, sí)</td></tr>
+            <tr><td>Postura</td><td>De frente, con la cabeza descubierta y sin gafas de cristales oscuros</td></tr>
+            <tr><td>Velo por motivos religiosos</td><td>Se admite si el óvalo de la cara queda descubierto, desde el nacimiento del pelo hasta el mentón</td></tr>
+          </tbody>
+        </table>
+        <h2>¿Cuándo hace falta?</h2>
+        <p>
+          La DGT indica que, dentro de su proceso de modernización, «desde el 6 de noviembre 2024 ya no es necesario volver a presentar el talón-foto y/o fotografías» cuando ya tiene tu documentación. La foto aparece, por ejemplo, entre lo que hay que aportar en el duplicado del permiso por cambio de datos si el trámite se hace de forma presencial, y en el talón-foto que te entrega la autoescuela para el examen práctico cuando solicitas un permiso por primera vez. Antes de imprimirla, revisa en la sede de la DGT si tu trámite concreto la sigue pidiendo.
+        </p>
+        <p className="text-sm text-muted">
+          Fuentes oficiales (sede electrónica de la DGT):{' '}
+          <a href="https://sede.dgt.gob.es/es/permisos-de-conducir/obtencion-y-gestion-de-permisos/duplicado-de-permisos-por-cambio-de-datos/index.html" target="_blank" rel="noopener noreferrer">
+            duplicado de permisos por cambio de datos
+          </a>{' '}
+          y{' '}
+          <a href="https://sede.dgt.gob.es/es/permisos-de-conducir/obtencion-y-gestion-de-permisos/solicitud-de-prueba-de-aptitud-de-examen/" target="_blank" rel="noopener noreferrer">
+            solicitud de examen
+          </a>
+          . Comprobado el 18/11/2026.
+        </p>
+        <h2>Cómo usar la herramienta</h2>
+        <ul>
+          <li>Hazte la foto delante de una pared lisa y clara, con luz de frente. La herramienta no cambia el fondo.</li>
+          <li>El tamaño ya está seleccionado («Permiso de conducir (DGT) 26×32 mm») y el encuadre inteligente centra tu cara. Ajusta el zoom si hace falta.</li>
+          <li>Descarga el JPG e imprímelo en papel fotográfico indicando la medida de 32 × 26 mm.</li>
+        </ul>
+        <p>
+          Si además vas a renovar el DNI, la <Link to="/foto-dni">foto para el DNI</Link> tiene la misma medida, pero allí el fondo tiene que ser blanco: con una sola foto sobre fondo blanco te sirve para los dos trámites.
         </p>
       </>
     ),
