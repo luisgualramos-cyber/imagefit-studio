@@ -120,7 +120,10 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           <li><b>Redimensionar una copia de una copia.</b> Cada vez que se guarda un JPG se pierde algo de calidad. Trabaja siempre desde el archivo original.</li>
           <li><b>Confundir píxeles con kilobytes.</b> Si un formulario pide «menos de 200 KB», reducir los píxeles ayuda, pero lo que fija el peso es la compresión: usa <Link to="/comprimir-foto-a-100kb">comprimir a un peso concreto</Link>.</li>
         </ul>
-        {/* CONTENIDO-PROPIO: captura o vídeo corto mostrando una foto de móvil de 4000 px reducida a 1600 px, con el peso antes y después (ver MEDIA-PENDIENTE.md) */}
+        <figure style={{ margin: '1.5rem 0' }}>
+          <img src="/img/ejemplos/redimensionar-antes-despues.webp" width={1200} height={470} loading="lazy" decoding="async" alt="Antes y después: imagen de 4000 × 3000 px y 2,89 MB (el tamaño típico de una foto de móvil) reducida a 1600 × 1200 px y 109 KB con esta herramienta" style={{ width: '100%', height: 'auto', borderRadius: 12 }} />
+          <figcaption style={{ fontSize: 14, opacity: 0.75, marginTop: 6 }}>Ejemplo real con esta herramienta: la misma foto a 1600 px de ancho pesa unas 27 veces menos y se sigue viendo nítida en pantalla.</figcaption>
+        </figure>
       </>
     ),
   },
@@ -443,7 +446,10 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           <li><b>Poner texto pegado a los bordes.</b> En Stories, Reels y TikTok los bordes superior e inferior quedan tapados por la interfaz.</li>
           <li><b>Subir PNG enormes «para que no pierdan calidad».</b> Las redes vuelven a comprimir todo lo que subes. Un JPG de calidad alta con las medidas exactas suele verse igual o mejor.</li>
         </ul>
-        {/* CONTENIDO-PROPIO: captura antes/después de una foto horizontal convertida a 9:16 con el encuadre inteligente (ver MEDIA-PENDIENTE.md) */}
+        <figure style={{ margin: '1.5rem 0' }}>
+          <img src="/img/ejemplos/redes-antes-despues.webp" width={1200} height={560} loading="lazy" decoding="async" alt="Antes y después: imagen horizontal de un soporte de móvil sobre una mesa y el mismo soporte encuadrado en vertical 9:16 para Stories" style={{ width: '100%', height: 'auto', borderRadius: 12 }} />
+          <figcaption style={{ fontSize: 14, opacity: 0.75, marginTop: 6 }}>Ejemplo real: el encuadre inteligente detecta el objeto, aunque esté a un lado, y lo mantiene dentro del formato 9:16.</figcaption>
+        </figure>
       </>
     ),
   },
@@ -474,7 +480,10 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           La IA funciona mejor con el producto bien iluminado y contrastado con el fondo. Los objetos transparentes (vidrio) o con pelo muy fino pueden necesitar un repaso. Si tus fotos ya tienen fondo liso, puedes desactivar la IA: la detección de bordes centrará el producto igualmente y será instantánea.
         </p>
-        {/* CONTENIDO-PROPIO: foto antes/después de un producto real (foto de móvil y resultado con fondo blanco) (ver MEDIA-PENDIENTE.md) */}
+        <figure style={{ margin: '1.5rem 0' }}>
+          <img src="/img/ejemplos/tienda-antes-despues.webp" width={1200} height={470} loading="lazy" decoding="async" alt="Antes y después: soporte de móvil sobre una mesa de madera y el mismo producto recortado sobre fondo blanco con sombra suave" style={{ width: '100%', height: 'auto', borderRadius: 12 }} />
+          <figcaption style={{ fontSize: 14, opacity: 0.75, marginTop: 6 }}>Ejemplo real: fondo eliminado con la IA en el navegador, producto centrado con un 8 % de margen y sombra suave.</figcaption>
+        </figure>
       </>
     ),
   },
