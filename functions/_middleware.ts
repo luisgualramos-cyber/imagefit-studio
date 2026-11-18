@@ -13,6 +13,7 @@ export const MOVED: Record<string, string> = {
   '/encuadre-inteligente': '/recortar-imagen',
   '/convertir-jpg-a-png': '/convertir-imagenes',
   '/convertir-png-a-webp': '/convertir-imagenes',
+  '/foto-carnet-dni-pasaporte': '/foto-dni',
 }
 
 interface Ctx {

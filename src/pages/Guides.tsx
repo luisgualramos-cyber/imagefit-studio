@@ -56,7 +56,7 @@ export function About() {
           Adaptar fotos a <Link to="/imagenes-para-redes-sociales">redes sociales</Link> con <Link to="/recortar-imagen">encuadre inteligente</Link> que evita cortar a las personas.
         </li>
         <li>
-          Preparar <Link to="/fotos-para-tienda-online">fotos de producto para tiendas online</Link> y <Link to="/foto-carnet-dni-pasaporte">fotos de carné</Link>.
+          Preparar <Link to="/fotos-para-tienda-online">fotos de producto para tiendas online</Link> y <Link to="/foto-dni">fotos para el DNI</Link>.
         </li>
       </ul>
       <p>

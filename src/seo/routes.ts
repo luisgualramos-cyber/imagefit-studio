@@ -105,15 +105,6 @@ export const ROUTES: RouteMeta[] = [
     tool: true,
   },
   {
-    path: '/foto-carnet-dni-pasaporte',
-    name: 'Foto para DNI y pasaporte',
-    title: 'Foto carnet online para DNI y pasaporte | ImageFit Studio',
-    description:
-      'Recorta tu foto al tamaño de DNI y pasaporte (26×32 mm), visado 35×45 mm o EE. UU. 2×2, centrada en tu cara. Lista para imprimir o subir.',
-    priority: 0.8,
-    tool: true,
-  },
-  {
     path: '/redimensionar-foto-whatsapp',
     name: 'Foto para WhatsApp',
     title: 'Foto de perfil de WhatsApp sin que se corte | ImageFit Studio',

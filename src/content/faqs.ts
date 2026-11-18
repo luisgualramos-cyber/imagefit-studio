@@ -194,20 +194,6 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
       a: 'Sí. La DGT admite fotografías con velo por motivos religiosos siempre que el óvalo de la cara quede descubierto, desde el nacimiento del pelo hasta el mentón.',
     },
   ],
-  '/foto-carnet-dni-pasaporte': [
-    {
-      q: '¿Qué tamaño tiene la foto del DNI y del pasaporte en España?',
-      a: '32 mm de alto por 26 mm de ancho. A 300 ppp, que es la resolución habitual de impresión, equivale a 307×378 píxeles.',
-    },
-    {
-      q: '¿Esta herramienta cambia el fondo a blanco?',
-      a: 'No. Recorta y centra la foto en tu cara al tamaño exacto, pero no sustituye el fondo. Hazte la foto delante de una pared blanca o clara y con buena luz.',
-    },
-    {
-      q: '¿Me la aceptarán en la comisaría?',
-      a: 'Para el DNI y el pasaporte en España se suele exigir una foto impresa en papel fotográfico. Depende del organismo y del trámite, así que confirma siempre los requisitos oficiales. Esta herramienta te da el archivo con las medidas correctas para imprimirlo o subirlo a trámites online.',
-    },
-  ],
   '/redimensionar-foto-whatsapp': [
     {
       q: '¿Por qué se corta mi foto de perfil de WhatsApp?',

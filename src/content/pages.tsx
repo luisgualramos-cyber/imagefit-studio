@@ -68,7 +68,6 @@ export const QUICK_PAGES = [
   { to: '/foto-dni', label: 'Foto para el DNI' },
   { to: '/foto-carnet-conducir', label: 'Foto carné de conducir' },
   { to: '/comprimir-foto-a-100kb', label: 'Comprimir foto a 100 KB' },
-  { to: '/foto-carnet-dni-pasaporte', label: 'Foto para DNI y pasaporte' },
   { to: '/redimensionar-foto-whatsapp', label: 'Foto de perfil de WhatsApp' },
   { to: '/miniatura-youtube', label: 'Miniatura de YouTube' },
   { to: '/reducir-fotos-para-email', label: 'Reducir fotos para email' },
@@ -404,7 +403,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         </ul>
         <h2>Antes de imprimir</h2>
         <p>
-          Comprueba que tu foto tiene al menos los píxeles que necesitas (aparecen en su miniatura). Si tiene muchos menos, se ampliará y perderá nitidez. Para medidas de documentos oficiales, la herramienta de <Link to="/foto-carnet-dni-pasaporte">foto de carné</Link> ya trae los tamaños de DNI, pasaporte y visado.
+          Comprueba que tu foto tiene al menos los píxeles que necesitas (aparecen en su miniatura). Si tiene muchos menos, se ampliará y perderá nitidez. Para documentos oficiales tienes herramientas con las medidas exactas y su fuente: <Link to="/foto-dni">foto para el DNI</Link> y <Link to="/foto-carnet-conducir">foto para el carné de conducir</Link>.
         </p>
         <p>
           Al guardar, la imagen se exporta con los píxeles calculados. La mayoría de servicios de impresión piden el tamaño en centímetros al hacer el pedido; algunos programas pueden mostrar otra resolución nominal, pero los píxeles serán los correctos para la medida elegida.
@@ -536,7 +535,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           </tbody>
         </table>
         <p>
-          Si el formulario también exige unas medidas concretas en píxeles, ajústalas en el paso 1. Para fotos de documentos oficiales, mira la herramienta de <Link to="/foto-carnet-dni-pasaporte">foto para DNI y pasaporte</Link>.
+          Si el formulario también exige unas medidas concretas en píxeles, ajústalas en el paso 1. Para fotos de documentos oficiales, mira la <Link to="/foto-dni">foto para el DNI</Link> o la <Link to="/foto-carnet-conducir">foto para el carné de conducir</Link>.
         </p>
         <h2>Errores típicos con los límites de peso</h2>
         <ul>
@@ -544,50 +543,6 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           <li><b>Convertir la foto a PNG «para no perder calidad».</b> En fotografías, PNG pesa varias veces más que JPG: es justo lo contrario de lo que necesitas.</li>
           <li><b>Fotografiar un documento de lejos y recortarlo después.</b> Se pierden píxeles útiles. Acércate para que el documento llene la imagen, con buena luz y sin sombras.</li>
         </ul>
-      </>
-    ),
-  },
-  '/foto-carnet-dni-pasaporte': {
-    h1: 'Foto de carné para DNI, pasaporte o visado',
-    lead: 'Recorta tu foto al tamaño oficial, centrada automáticamente en tu cara, lista para imprimir o subir a un trámite online.',
-    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('docs', 'DNI / pasaporte España 26×32 mm'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 95, suffix: '-carne' }} />,
-    body: (
-      <>
-        <h2>Tamaños de foto de carné</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Documento</th>
-              <th>Medidas</th>
-              <th>Píxeles (300 ppp)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>DNI y pasaporte (España)</td><td>26 × 32 mm</td><td>307 × 378 px</td></tr>
-            <tr><td>Visado Schengen y la mayoría de países de la UE</td><td>35 × 45 mm</td><td>413 × 531 px</td></tr>
-            <tr><td>Pasaporte y visado de EE. UU.</td><td>2 × 2 pulgadas (51 × 51 mm)</td><td>600 × 600 px</td></tr>
-          </tbody>
-        </table>
-        <p>Los tres formatos están en el paso 1, dentro de «Formatos» → «Documentos». Para el DNI y el carné de conducir tienes páginas específicas con los requisitos oficiales: <Link to="/foto-dni">foto para el DNI</Link> y <Link to="/foto-carnet-conducir">foto para el carné de conducir (DGT)</Link>.</p>
-        <h2>Cómo hacer la foto para que sirva</h2>
-        <ul>
-          <li><b>Fondo liso, blanco o muy claro</b>, sin sombras. Esta herramienta no cambia el fondo, así que conviene hacerse la foto delante de una pared clara.</li>
-          <li><b>Luz de frente y uniforme</b>, mejor junto a una ventana que con flash directo.</li>
-          <li><b>Mirada a la cámara</b>, expresión neutra, boca cerrada y sin gafas de sol ni gorra.</li>
-          <li><b>Cámara a la altura de los ojos</b> y a 1-1,5 metros. Si la haces desde muy cerca, la cara se deforma.</li>
-        </ul>
-        <h2>Cómo encuadra tu cara</h2>
-        <p>
-          El <Link to="/recortar-imagen">encuadre inteligente</Link> detecta tu cara con IA dentro de tu navegador y centra el recorte en ella, dejando aire por encima de la cabeza. Puedes arrastrar el marco y ajustar el zoom para que la cabeza ocupe la proporción que pide cada organismo, normalmente entre el 70 % y el 80 % del alto de la foto.
-        </p>
-        <h2>Importante</h2>
-        <p>
-          Para el DNI, la norma vigente pide «una fotografía reciente del rostro de la persona solicitante en color, tamaño 32 por 26 milímetros, con fondo uniforme blanco y liso, tomada de frente», con la cabeza descubierta y sin gafas oscuras (
-          <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2025-6601" target="_blank" rel="noopener noreferrer">
-            Real Decreto 255/2025, artículo 6.2.d
-          </a>
-          ). Para tramitar el DNI o el pasaporte en España se suele pedir la foto impresa en papel fotográfico, y cada organismo puede tener requisitos propios. Consulta siempre los requisitos oficiales de tu trámite. Para imprimirla, descarga la imagen y encárgala en una tienda de revelado indicando el tamaño en milímetros.
-        </p>
       </>
     ),
   },
@@ -684,7 +639,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
   '/foto-dni': {
     h1: 'Foto para el DNI: 32 × 26 mm',
     lead: 'Recorta tu foto al tamaño oficial del DNI español, centrada en tu cara y lista para imprimir en papel fotográfico. Sin subirla a ningún servidor.',
-    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('docs', 'DNI / pasaporte España 26×32 mm'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 95, suffix: '-dni' }} dropTitle="Arrastra tu foto para el DNI" />,
+    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('docs', 'DNI España 26×32 mm'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 95, suffix: '-dni' }} dropTitle="Arrastra tu foto para el DNI" />,
     body: (
       <>
         <h2>Requisitos oficiales de la foto del DNI</h2>
@@ -719,8 +674,14 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <h2>Cómo usar la herramienta</h2>
         <ul>
           <li>Sube una foto hecha delante de una pared blanca, con luz de frente y sin sombras. <b>La herramienta no cambia el fondo</b>: si la pared no es blanca, la foto no cumplirá.</li>
-          <li>El tamaño ya está en «DNI / pasaporte España 26×32 mm». El encuadre inteligente detecta tu cara y la centra; ajusta el marco y el zoom si quieres más o menos aire alrededor de la cabeza.</li>
+          <li>El tamaño ya está en «DNI España 26×32 mm». El encuadre inteligente detecta tu cara y la centra; ajusta el marco y el zoom si quieres más o menos aire alrededor de la cabeza.</li>
           <li>Descarga el JPG y encarga la impresión en una tienda de revelado indicando que la foto debe medir 32 × 26 mm.</li>
+        </ul>
+        <h2>Consejos para hacer la foto en casa</h2>
+        <ul>
+          <li><b>Luz de frente y uniforme</b>, mejor junto a una ventana que con flash directo, que crea brillos y sombras en el fondo.</li>
+          <li><b>Cámara a la altura de los ojos y a 1-1,5 metros.</b> Desde muy cerca, el objetivo del móvil deforma la cara (la nariz parece más grande).</li>
+          <li><b>Pared blanca lisa detrás</b> y un paso de distancia para que tu sombra no caiga sobre ella.</li>
         </ul>
         <h2>Errores que suelen invalidar la foto</h2>
         <ul>
@@ -730,7 +691,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           <li><b>Imprimir con otra medida.</b> Si la tienda la imprime «tamaño carné» sin más, comprueba con una regla que mide 32 × 26 mm.</li>
         </ul>
         <p>
-          ¿Es para el carné de conducir? Mira la <Link to="/foto-carnet-conducir">foto para el permiso de conducir (DGT)</Link>, que tiene el mismo tamaño pero no exige fondo blanco. Otros tamaños de foto de documento están en <Link to="/foto-carnet-dni-pasaporte">foto de carné</Link>.
+          ¿Es para el carné de conducir? Mira la <Link to="/foto-carnet-conducir">foto para el permiso de conducir (DGT)</Link>, que tiene el mismo tamaño pero no exige fondo blanco.
         </p>
       </>
     ),

@@ -85,9 +85,9 @@ export const PRESET_GROUPS: PresetGroup[] = [
   g('docs', 'Documentos', 'docs', [
     { name: 'A4 vertical (300 ppp)', width: 2480, height: 3508, note: 'impresión' },
     { name: 'A4 horizontal (300 ppp)', width: 3508, height: 2480, note: 'impresión' },
-    { name: 'DNI / pasaporte España 26×32 mm', width: 307, height: 378, note: '300 ppp' },
-    { name: 'Foto tipo carné 35×45 mm', width: 413, height: 531, note: 'visados y UE · 300 ppp' },
-    { name: 'EE. UU. 2×2 pulgadas', width: 600, height: 600, note: '51×51 mm · 300 ppp' },
+    { name: 'DNI España 26×32 mm', width: 307, height: 378, note: '300 ppp' },
+    { name: 'Foto tipo carné 35×45 mm', width: 413, height: 531, note: '300 ppp' },
+    { name: 'Foto cuadrada 2×2 pulgadas', width: 600, height: 600, note: '51×51 mm · 300 ppp' },
     { name: 'Foto de perfil / CV', width: 800, height: 800, note: '1:1' },
     { name: 'Permiso de conducir (DGT) 26×32 mm', width: 307, height: 378, note: '300 ppp' },
   ]),
