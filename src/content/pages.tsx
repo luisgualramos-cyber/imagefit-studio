@@ -638,7 +638,11 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         </p>
         <h2>Importante</h2>
         <p>
-          Para tramitar el DNI o el pasaporte en España se suele pedir la foto impresa en papel fotográfico, y cada organismo puede tener requisitos propios. Consulta siempre los requisitos oficiales de tu trámite. Para imprimirla, descarga la imagen y encárgala en una tienda de revelado indicando el tamaño en milímetros.
+          Para el DNI, la norma vigente pide «una fotografía reciente del rostro de la persona solicitante en color, tamaño 32 por 26 milímetros, con fondo uniforme blanco y liso, tomada de frente», con la cabeza descubierta y sin gafas oscuras (
+          <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2025-6601" target="_blank" rel="noopener noreferrer">
+            Real Decreto 255/2025, artículo 6.2.d
+          </a>
+          ). Para tramitar el DNI o el pasaporte en España se suele pedir la foto impresa en papel fotográfico, y cada organismo puede tener requisitos propios. Consulta siempre los requisitos oficiales de tu trámite. Para imprimirla, descarga la imagen y encárgala en una tienda de revelado indicando el tamaño en milímetros.
         </p>
       </>
     ),
