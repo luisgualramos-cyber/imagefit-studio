@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import AdSlot from '../components/AdSlot'
 import { Faq, HowItWorks, PrivacyNote, ToolsGrid, UseCases } from '../components/Sections'
+import Example from '../components/Example'
 import { IconShield } from '../components/Icons'
 import Studio from '../studio/Studio'
 import { HOME_FAQS, faqsFor } from '../content/faqs'
@@ -25,6 +26,17 @@ export function Home() {
             <p className="max-w-md text-[15px] text-muted md:text-right">
               Redimensiona, comprime, convierte y adapta fotos a Instagram, TikTok, YouTube, tiendas online y webs. Una imagen o cien a la vez.
             </p>
+          </div>
+          <div className="mb-5 flex flex-col gap-2 rounded-2xl border border-local/25 bg-local-soft px-4 py-3 text-sm text-ink sm:flex-row sm:items-center sm:gap-3">
+            <span className="flex items-center gap-2 font-bold text-local">
+              <IconShield size={18} /> Tus fotos nunca salen de tu dispositivo
+            </span>
+            <span className="text-ink/80">
+              A diferencia de la mayoría de webs de imágenes, aquí no se suben a ningún servidor: todo se hace en tu navegador.{' '}
+              <Link to="/privacidad#como-comprobarlo" className="font-semibold text-local underline underline-offset-2">
+                Cómo comprobarlo
+              </Link>
+            </span>
           </div>
           <Studio />
         </div>
@@ -89,6 +101,7 @@ export function ToolPage({ path }: { path: string }) {
         </div>
         {page.tool}
       </section>
+      <Example path={path} />
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <AdSlot position="below-tool" format="horizontal" />
       </div>

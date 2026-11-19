@@ -285,7 +285,7 @@ export default function SettingsPanel({
                 <span>
                   <span className="block text-sm font-semibold">Encuadre inteligente</span>
                   <span className="block text-xs text-muted">
-                    Detecta rostros, personas y objetos con IA en tu navegador (MediaPipe) y los mantiene dentro del recorte.
+                    Detecta caras, personas y objetos automáticamente en tu dispositivo y los mantiene dentro del recorte.
                   </span>
                 </span>
               </label>
@@ -347,7 +347,7 @@ export default function SettingsPanel({
           {settings.format === 'image/jpeg' && 'JPG: máxima compatibilidad. Sin transparencia.'}
           {settings.format === 'image/png' && 'PNG: con transparencia. Calidad 95-100 = sin pérdida; por debajo se reduce la paleta a 256 colores o menos (ideal para logos y capturas).'}
           {settings.format === 'image/webp' && 'WEBP: 25-35 % más ligero que JPG con la misma calidad. Ideal para webs.'}
-          {settings.format === 'image/avif' && 'AVIF: el más eficiente. Codificación más lenta; si tu navegador no lo genera, se usa un codificador WebAssembly.'}
+          {settings.format === 'image/avif' && 'AVIF: el más eficiente. Codificación más lenta; si tu navegador no lo genera, la web usa su propio codificador.'}
         </p>
 
         <div className={`mt-4 ${lossy ? '' : 'pointer-events-none opacity-45'}`}>

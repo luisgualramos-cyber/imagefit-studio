@@ -259,7 +259,7 @@ export default function ShopTool() {
                     <IconSparkle size={15} className="text-local" /> Eliminar fondo con IA
                   </span>
                   <span className="block text-xs text-muted">
-                    Modelo IS-Net ejecutado en tu navegador. La primera vez descarga unos 95 MB (queda en caché). Tarda entre 5 y 30 s por foto según el equipo.
+                    Se hace en tu dispositivo. La primera vez descarga unos 95 MB (después ya queda guardado). Tarda entre 5 y 30 s por foto según el equipo.
                   </span>
                 </span>
               </label>

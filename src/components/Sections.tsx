@@ -125,7 +125,7 @@ export function Faq({ items, title = 'Preguntas frecuentes', id = 'preguntas' }:
 }
 
 export function PrivacyNote() {
-  const local = ['Redimensionar y recortar', 'Comprimir y convertir formatos', 'Adaptar a redes sociales', 'Procesamiento por lotes y ZIP', 'Encuadre inteligente (IA MediaPipe)', 'Eliminar fondo (IA IS-Net)', 'Ampliar con desenfoque o espejo']
+  const local = ['Redimensionar y recortar', 'Comprimir y convertir formatos', 'Adaptar a redes sociales', 'Muchas fotos a la vez y descarga en ZIP', 'Encuadre automático que detecta caras', 'Quitar el fondo automáticamente', 'Ampliar el fondo con desenfoque o espejo']
   return (
     <section className="mx-auto max-w-7xl px-4 py-6 md:px-6" aria-labelledby="privacidad-titulo">
       <div className="grid gap-4 rounded-[1.6rem] bg-ink p-6 text-white md:grid-cols-[1.1fr_1fr_1fr] md:p-10">
@@ -134,7 +134,7 @@ export function PrivacyNote() {
             Tus fotos se quedan en tu dispositivo
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-white/70">
-            Todo el procesamiento ocurre en tu navegador con WebAssembly y Web Workers. Es más rápido, más privado y no necesitamos guardar nada. Así es exactamente:
+            Tu ordenador o tu móvil hace todo el trabajo: la foto no viaja por internet. Es más rápido, más privado y no guardamos nada. Así es exactamente:
           </p>
           <Link to="/privacidad" className="mt-4 inline-block text-sm font-semibold text-accent underline underline-offset-4">
             Política de privacidad
@@ -149,16 +149,16 @@ export function PrivacyNote() {
               <li key={l}>· {l}</li>
             ))}
           </ul>
-          <p className="mt-3 text-xs text-white/50">Los modelos de IA se descargan una vez desde Google (MediaPipe) e IMG.LY; tus imágenes no se envían.</p>
+          <p className="mt-3 text-xs text-white/50">Las funciones automáticas descargan una sola vez su «cerebro» (de Google e IMG.LY) y después trabajan en tu equipo; tus imágenes no se envían.</p>
         </div>
         <div className="rounded-2xl bg-white/5 p-5">
           <p className="flex items-center gap-2 font-semibold text-[#aeb1ff]">
-            <IconCloud size={19} /> Con servicio externo
+            <IconCloud size={19} /> Solo si tú lo pides
           </p>
           <ul className="mt-3 space-y-1.5 text-sm text-white/80">
-            <li>· Ampliación con IA generativa (Stability AI)</li>
+            <li>· Ampliar una imagen inventando el fondo que falta con IA</li>
           </ul>
-          <p className="mt-3 text-xs text-white/50">Solo si está activada en el servidor, y siempre con tu confirmación previa. La imagen no se almacena.</p>
+          <p className="mt-3 text-xs text-white/50">Es la única función que necesita enviar la imagen a un servicio externo (Stability AI). Te lo preguntamos antes, y la imagen no se guarda.</p>
         </div>
       </div>
     </section>

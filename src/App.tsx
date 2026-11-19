@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from 'react-router'
 import Layout from './components/Layout'
 import { Home, NotFound, ToolPage } from './pages/Pages'
 import { AvisoLegal, Contacto, Privacy } from './pages/Legal'
-import { About, FormatsGuide, WebGuide } from './pages/Guides'
+import { About, FormatsGuide, SedeGuide, WebGuide } from './pages/Guides'
 import { TOOL_PAGES } from './content/pages'
 import { applyHead } from './seo/head'
 
@@ -22,6 +22,7 @@ export default function App() {
         <Route path="/acerca-de" element={<About />} />
         <Route path="/guia-formatos-de-imagen" element={<FormatsGuide />} />
         <Route path="/optimizar-imagenes-para-web" element={<WebGuide />} />
+        <Route path="/subir-fotos-sede-electronica" element={<SedeGuide />} />
         <Route path="/privacidad" element={<Privacy />} />
         <Route path="/aviso-legal" element={<AvisoLegal />} />
         <Route path="/contacto" element={<Contacto />} />

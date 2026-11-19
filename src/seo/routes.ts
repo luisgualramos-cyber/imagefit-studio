@@ -198,6 +198,13 @@ export const ROUTES: RouteMeta[] = [
     priority: 0.6,
   },
   {
+    path: '/subir-fotos-sede-electronica',
+    name: 'Subir fotos a una sede electrónica',
+    title: 'Cómo subir una foto a una sede electrónica sin errores | ImageFit',
+    description: 'Soluciones a «el archivo supera el tamaño máximo» y «formato no válido»: formato, peso, medidas y nombre correctos para trámites online, oposiciones y becas.',
+    priority: 0.7,
+  },
+  {
     path: '/privacidad',
     name: 'Privacidad',
     title: 'Privacidad y cookies | ImageFit Studio',

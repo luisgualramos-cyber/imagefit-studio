@@ -67,16 +67,30 @@ export function Contacto() {
         <p>
           ¿Has encontrado un error, echas de menos un formato o tienes una sugerencia? Escríbenos a <Mail />. Respondemos normalmente en unos días.
         </p>
-        <h2>Antes de escribir</h2>
+        <p>
+          Al otro lado hay una persona, no un robot: soy Luis, quien desarrolla y mantiene ImageFit Studio (puedes leer más en <Link to="/acerca-de">acerca de</Link>). Leo todos los mensajes y contesto personalmente, normalmente en 2 o 3 días laborables.
+        </p>
+        <h2>En qué te puedo ayudar</h2>
         <ul>
-          <li>Si una imagen no se procesa, indica el formato del archivo, su tamaño y el navegador que usas.</li>
+          <li><b>Errores:</b> una foto que no se abre, un formato que falla o un resultado que no es el esperado.</li>
+          <li><b>Medidas que faltan:</b> si un organismo, una plataforma o una red social te pide un tamaño que no está en las opciones predefinidas, dímelo y lo añado.</li>
+          <li><b>Ideas y herramientas nuevas:</b> muchas de las funciones actuales, como la página para <Link to="/redimensionar-imagen-en-cm">redimensionar en centímetros</Link>, salieron de sugerencias de usuarios.</li>
+          <li><b>Privacidad:</b> dudas sobre cómo se tratan tus datos o para ejercer tus derechos.</li>
+        </ul>
+        <h2>Para que pueda ayudarte antes</h2>
+        <ul>
+          <li>Si una imagen no se procesa, indica el formato del archivo (JPG, PNG, HEIC…), su peso aproximado, el navegador y si usas ordenador o móvil.</li>
+          <li>Si el problema es con un trámite, dime qué organismo o formulario es y qué requisitos te piden (medidas, peso máximo, formato).</li>
           <li>
-            No adjuntes fotos con datos personales: las herramientas funcionan en tu navegador y no necesitamos tus imágenes para ayudarte.
+            No adjuntes fotos con datos personales: las herramientas funcionan en tu navegador y no necesito tus imágenes para ayudarte.
           </li>
           <li>
-            Muchas dudas están resueltas en las <Link to="/#preguntas">preguntas frecuentes</Link>.
+            Muchas dudas ya están resueltas en las <Link to="/#preguntas">preguntas frecuentes</Link> y en la guía para <Link to="/subir-fotos-sede-electronica">subir fotos a una sede electrónica</Link>.
           </li>
         </ul>
+        <p className="text-sm">
+          ImageFit Studio no vende nada ni ofrece servicios de edición por encargo. No respondo a propuestas comerciales de enlaces o artículos patrocinados.
+        </p>
         <h2>Formulario de contacto</h2>
       </article>
       <ContactForm />
@@ -176,6 +190,16 @@ export function Privacy() {
         <h2>Tus imágenes</h2>
         <p>
           ImageFit Studio procesa las imágenes en tu navegador: redimensionar, recortar, comprimir, convertir (incluidas las fotos HEIC), procesar por lotes, crear el ZIP, el encuadre inteligente, la eliminación de fondo y los rellenos locales de ampliación se ejecutan en tu dispositivo. Las imágenes no se envían a nuestros servidores ni se almacenan, por lo que no tratamos su contenido.
+        </p>
+        <h2 id="como-comprobarlo">Cómo comprobar que tus fotos no se suben</h2>
+        <p>No hace falta que te fíes de nuestra palabra. Puedes comprobarlo tú en un ordenador en menos de un minuto:</p>
+        <ol>
+          <li>Abre cualquier herramienta (por ejemplo, <Link to="/redimensionar-imagenes">redimensionar imágenes</Link>) en Chrome, Edge o Firefox.</li>
+          <li>Pulsa <b>F12</b> (o clic derecho → «Inspeccionar») y ve a la pestaña <b>Red</b> («Network»).</li>
+          <li>Procesa una foto. Verás que no aparece ninguna petición que envíe tu imagen: el archivo resultante se crea en tu equipo y se descarga directamente desde la memoria del navegador.</li>
+        </ol>
+        <p>
+          La única excepción es la ampliación con IA generativa descrita más abajo, que siempre te pide confirmación antes de enviar nada. Además, el código fuente completo de la web es público (enlace «Código fuente» en el pie de página), así que cualquiera puede revisarlo.
         </p>
         <h2>Publicidad (Google AdSense) y cookies</h2>
         <p>

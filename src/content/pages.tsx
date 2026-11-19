@@ -520,6 +520,7 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           Muchos formularios online limitan el tamaño de las imágenes: sedes electrónicas de la Administración, portales de empleo, matrículas, oposiciones o plataformas de alquiler. Los límites más habituales son 50 KB, 100 KB, 200 KB, 500 KB y 1 MB. Una foto hecha con el móvil ocupa entre 2 y 8 MB, entre 20 y 80 veces más de lo permitido.
         </p>
+        <img src="/img/ejemplos/100kb-antes-despues.webp" width={1200} height={470} loading="lazy" decoding="async" alt="Antes y después: foto de móvil de 4000 × 3000 px y 2,89 MB reducida con esta herramienta a 1280 × 960 px y 92 KB, por debajo del límite de 100 KB" style={{ width: '100%', height: 'auto', borderRadius: 12 }} />
         <h2>Cómo lo consigue sin estropear la foto</h2>
         <p>La herramienta combina los dos ajustes que más peso ahorran:</p>
         <ul>

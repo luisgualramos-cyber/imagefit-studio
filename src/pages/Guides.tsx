@@ -36,7 +36,7 @@ export function About() {
       </p>
       <h2>Tus imágenes no se suben a ningún servidor</h2>
       <p>
-        El procesamiento se hace con tecnologías del propio navegador (Canvas, WebAssembly y modelos de IA que se ejecutan en local). Cuando redimensionas, comprimes o conviertes una foto, el resultado se calcula en tu ordenador o en tu móvil y se descarga directamente. Por eso funciona rápido incluso con lotes de muchas imágenes y por eso puedes usarlo con fotos personales o documentos sin preocuparte de dónde acaban.
+        El procesamiento lo hace tu propio navegador, igual que cuando abre una página web: con sus herramientas de dibujo y con pequeños modelos de IA que se ejecutan en tu equipo. Cuando redimensionas, comprimes o conviertes una foto, el resultado se calcula en tu ordenador o en tu móvil y se descarga directamente. Por eso funciona rápido incluso con lotes de muchas imágenes y por eso puedes usarlo con fotos personales o documentos sin preocuparte de dónde acaban.
       </p>
       <p>
         Además, las imágenes generadas no conservan los metadatos EXIF del original, como la ubicación GPS, algo útil antes de publicar fotos en internet. Lo explicamos con detalle en la <Link to="/privacidad">política de privacidad</Link>.
@@ -62,9 +62,21 @@ export function About() {
       <p>
         Si no sabes qué formato elegir, empieza por nuestra <Link to="/guia-formatos-de-imagen">guía de formatos de imagen</Link>. Si tienes una web o una tienda, te interesará la guía para <Link to="/optimizar-imagenes-para-web">optimizar imágenes para la web</Link>.
       </p>
-      <h2>Quién lo mantiene</h2>
+      <h2 id="quien">Quién hay detrás</h2>
       <p>
-        ImageFit Studio es un proyecto independiente desarrollado y mantenido por una sola persona. Los datos del titular figuran en el <Link to="/aviso-legal">aviso legal</Link>. El código fuente está publicado bajo licencia AGPL-3.0 y puede descargarse desde el pie de página.
+        Me llamo <b>Luis</b> y soy un desarrollador independiente en España. ImageFit Studio es un proyecto personal: lo diseño, lo programo, escribo sus guías y contesto yo mismo los mensajes que llegan por la página de <Link to="/contacto">contacto</Link>.
+      </p>
+      <p>
+        La idea surgió de algo muy cotidiano: cada vez que tenía que subir una foto a una sede electrónica, mandar un currículum o preparar imágenes para una web, acababa en páginas llenas de anuncios que me obligaban a subir mis fotos a servidores desconocidos, ponían marcas de agua o limitaban el número de imágenes. Me parecía absurdo enviar una foto de mi DNI a un servidor de quién sabe dónde para algo que un ordenador o un móvil actual puede hacer solo en un segundo.
+      </p>
+      <p>Así que construí la herramienta que yo quería usar, con tres reglas que sigo cumpliendo:</p>
+      <ul>
+        <li><b>Tus fotos no salen de tu dispositivo</b> (y explico <Link to="/privacidad#como-comprobarlo">cómo comprobarlo</Link>).</li>
+        <li><b>Nada de registros, marcas de agua ni límites artificiales.</b></li>
+        <li><b>Información comprobada:</b> cuando una página habla de requisitos oficiales, como la <Link to="/foto-dni">foto del DNI</Link> o la del <Link to="/foto-carnet-conducir">carné de conducir</Link>, cito la norma o la web oficial de la que sale el dato y la fecha en que lo revisé.</li>
+      </ul>
+      <p>
+        Los datos completos del titular figuran en el <Link to="/aviso-legal">aviso legal</Link>. El código fuente está publicado bajo licencia AGPL-3.0 y puede descargarse desde el pie de página.
       </p>
       <h2>Cómo se financia</h2>
       <p>
@@ -159,6 +171,83 @@ export function FormatsGuide() {
       </ul>
       <p>
         ¿Quieres aplicar todo esto? En la guía para <Link to="/optimizar-imagenes-para-web">optimizar imágenes para la web</Link> verás cómo combinar el formato con el tamaño y la compresión adecuados.
+      </p>
+    </Article>
+  )
+}
+
+export function SedeGuide() {
+  return (
+    <Article title="Cómo subir una foto o un documento a una sede electrónica sin errores">
+      <p>
+        «El archivo supera el tamaño máximo», «formato no válido», «la imagen no cumple los requisitos»… Son los mensajes que más se repiten al hacer un trámite online: solicitar una beca, presentarse a unas oposiciones, matricularse, pedir una ayuda o aportar documentación a la Administración. Casi siempre tienen una solución sencilla. En esta guía explico, paso a paso, cómo preparar la foto o el documento para que la sede electrónica lo acepte a la primera.
+      </p>
+      <h2>1. Lee bien qué te piden (y apúntalo)</h2>
+      <p>Antes de tocar la foto, busca en el formulario o en las instrucciones del trámite estos cuatro datos:</p>
+      <ul>
+        <li><b>Formato admitido:</b> lo normal es JPG (o JPEG) para fotos y PDF para documentos. Algunos admiten PNG. Casi ninguno admite HEIC ni WEBP.</li>
+        <li><b>Peso máximo:</b> suele indicarse en KB o MB (por ejemplo, 100 KB, 500 KB o 2 MB).</li>
+        <li><b>Medidas:</b> en píxeles (por ejemplo, 300 × 400 px) o en milímetros si la foto se va a imprimir en un carné.</li>
+        <li><b>Requisitos de contenido:</b> fondo, color, si la cara debe verse de frente, si el documento tiene que verse entero, etc.</li>
+      </ul>
+      <p>
+        Cada organismo fija sus propios requisitos y pueden cambiar de una convocatoria a otra, así que lo que digan las instrucciones de tu trámite manda siempre sobre cualquier recomendación general, incluida esta.
+      </p>
+      <h2>2. Si la foto es del iPhone, conviértela a JPG</h2>
+      <p>
+        Los iPhone guardan las fotos en formato HEIC. Si la subes tal cual, muchas sedes la rechazan con un «formato no válido» o, peor, la aceptan pero luego no se puede abrir. Pásala antes a JPG con la herramienta de <Link to="/convertir-heic-a-jpg">convertir HEIC a JPG</Link>. Lo mismo ocurre con las imágenes WEBP descargadas de internet: <Link to="/convertir-webp-a-jpg">conviértelas a JPG</Link>.
+      </p>
+      <h2>3. Ajusta las medidas si te las piden</h2>
+      <p>
+        Si el formulario pide unas medidas exactas en píxeles, usa <Link to="/redimensionar-imagenes">redimensionar imágenes</Link> con el modo de medida personalizada y activa el recorte para que la foto no se deforme. Si te dan la medida en milímetros (típico de las fotos de carné), la página para <Link to="/redimensionar-imagen-en-cm">redimensionar en centímetros</Link> hace la conversión a píxeles por ti. Para el DNI y el carné de conducir tienes páginas con la medida oficial ya preparada: <Link to="/foto-dni">foto para el DNI</Link> y <Link to="/foto-carnet-conducir">foto para el carné de conducir</Link>.
+      </p>
+      <h2>4. Reduce el peso, y deja un pequeño margen</h2>
+      <p>
+        Una foto del móvil pesa entre 2 y 8 MB, muy por encima de los límites habituales. Usa <Link to="/comprimir-foto-a-100kb">comprimir foto a 100 KB</Link> o la herramienta de <Link to="/comprimir-imagenes">comprimir imágenes</Link> con el peso máximo que te pidan.
+      </p>
+      <p>
+        Un detalle que provoca muchos rechazos: <b>no todos los sistemas cuentan los kilobytes igual</b>. Para unos, 100 KB son 100.000 bytes; para otros, 102.400 bytes. Y el explorador de archivos de tu ordenador puede redondear. Si el límite es 100 KB, apunta a unos 90-95 KB y no tendrás problemas.
+      </p>
+      <h2>5. Cuida el nombre del archivo</h2>
+      <p>
+        Algunas plataformas antiguas fallan con nombres que llevan tildes, eñes, espacios o símbolos. Un nombre sencillo como <code>foto-carnet.jpg</code> o <code>dni-anverso.jpg</code> evita errores raros al subirlo, y además te ayuda a saber qué es cada archivo.
+      </p>
+      <h2>Errores frecuentes y cómo solucionarlos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Mensaje o problema</th>
+            <th>Causa habitual</th>
+            <th>Solución</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>«El archivo supera el tamaño máximo»</td><td>La foto viene directa del móvil (varios MB)</td><td><Link to="/comprimir-imagenes">Comprímela</Link> por debajo del límite, con margen</td></tr>
+          <tr><td>«Formato no válido»</td><td>Foto HEIC del iPhone, WEBP o PNG donde piden JPG</td><td><Link to="/convertir-imagenes">Conviértela a JPG</Link></td></tr>
+          <tr><td>«Las dimensiones no son correctas»</td><td>La foto no tiene los píxeles exactos que piden</td><td><Link to="/redimensionar-imagenes">Redimensiónala</Link> a la medida indicada</td></tr>
+          <tr><td>La foto aparece girada</td><td>El móvil guarda la orientación aparte y algunas webs la ignoran</td><td>Procésala con ImageFit Studio: el archivo resultante sale ya girado correctamente</td></tr>
+          <tr><td>La cara sale descentrada o cortada</td><td>Recorte automático de la propia sede</td><td>Recórtala tú antes con <Link to="/recortar-imagen">recortar imagen</Link> en la proporción exacta</td></tr>
+          <tr><td>Se ve borrosa o pixelada</td><td>Se ha comprimido demasiado o ampliado una foto pequeña</td><td>Parte de la foto original y reduce menos la calidad</td></tr>
+        </tbody>
+      </table>
+      <h2>Si lo que tienes que subir es un documento</h2>
+      <p>Cuando te piden el DNI escaneado, un certificado o un título y solo tienes el móvil:</p>
+      <ul>
+        <li><b>Coloca el documento sobre una superficie oscura y lisa</b>, para que los bordes se distingan bien.</li>
+        <li><b>Usa luz natural y evita el flash</b>, que deja brillos que tapan el texto.</li>
+        <li><b>Haz la foto desde arriba, en paralelo</b>, para que el documento no salga en forma de trapecio, y <Link to="/recortar-imagen">recorta</Link> después los bordes que sobran.</li>
+        <li><b>Si piden PDF</b>, la mayoría de móviles tiene una opción para escanear documentos y guardarlos en PDF (en iPhone, desde la app Notas o Archivos; en Android, desde Google Drive). ImageFit Studio trabaja con imágenes y no genera PDF.</li>
+      </ul>
+      <h2>Lista de comprobación antes de pulsar «Enviar»</h2>
+      <ul>
+        <li>¿El formato es el que piden (normalmente JPG)?</li>
+        <li>¿Pesa menos del límite, con un pequeño margen?</li>
+        <li>¿Tiene las medidas exactas, si las piden?</li>
+        <li>¿Se ve nítida, derecha y completa?</li>
+        <li>¿El nombre del archivo es sencillo, sin tildes ni espacios?</li>
+      </ul>
+      <p>
+        Y un consejo de privacidad: estas fotos suelen contener datos personales (tu cara, tu DNI, tu firma). Por eso es importante prepararlas con herramientas que no las suban a ningún servidor, como todas las de esta web. Si tienes un caso que no aparece aquí, <Link to="/contacto">escríbeme</Link> y lo añado a la guía.
       </p>
     </Article>
   )
