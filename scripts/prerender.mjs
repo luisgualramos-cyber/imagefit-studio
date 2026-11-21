@@ -71,12 +71,19 @@ for (const r of routes) {
   const out = r.path === '/' ? resolve(dist, 'index.html') : resolve(dist, r.path.slice(1) + '.html')
   mkdirSync(dirname(out), { recursive: true })
   const html = page(r.path)
-  writeFileSync(out, html)
   const main = html.match(/<main[\s\S]*<\/main>/)?.[0] ?? html
   const hash = createHash('sha256').update(main).digest('hex').slice(0, 16)
   const prev = lastmod[r.path]
   if (!prev) lastmod[r.path] = { hash, date: firstRun ? SEED_DATE : buildDate }
   else if (prev.hash !== hash) lastmod[r.path] = { hash, date: buildDate }
+  // Artículos: la fecha de modificación (JSON-LD y Open Graph) es la misma que la del sitemap.
+  const modified = lastmod[r.path].date
+  writeFileSync(
+    out,
+    html
+      .replace(/"dateModified":"[^"]*"/, `"dateModified":"${modified}"`)
+      .replace(/(<meta property="article:modified_time" content=")[^"]*/, `$1${modified}`),
+  )
   console.log('[prerender]', r.path, '→', out.replace(dist, 'dist'), '· lastmod', lastmod[r.path].date)
 }
 writeFileSync(resolve(dist, '404.html'), page('/404'))

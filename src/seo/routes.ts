@@ -200,6 +200,7 @@ export const ROUTES: RouteMeta[] = [
     title: 'JPG, PNG, WEBP, AVIF o HEIC: qué formato usar | ImageFit',
     description: 'Diferencias entre JPG, PNG, WEBP, AVIF y HEIC, compresión con y sin pérdida, y qué formato elegir para web, correo, impresión, logotipos o capturas.',
     priority: 0.6,
+    article: { published: '2026-11-15T19:40:24+01:00', modified: '2026-11-19T10:10:49+01:00' },
   },
   {
     path: '/optimizar-imagenes-para-web',
@@ -207,6 +208,7 @@ export const ROUTES: RouteMeta[] = [
     title: 'Optimizar imágenes para la web sin perder calidad | ImageFit',
     description: 'Guía paso a paso para que las imágenes de tu web pesen menos: dimensiones, formato, compresión, metadatos, procesado por lotes y buenas prácticas.',
     priority: 0.6,
+    article: { published: '2026-11-15T19:40:24+01:00', modified: '2026-11-19T10:10:49+01:00' },
   },
   {
     path: '/subir-fotos-sede-electronica',
@@ -214,6 +216,7 @@ export const ROUTES: RouteMeta[] = [
     title: 'Subir una foto a una sede electrónica sin errores | ImageFit',
     description: 'Soluciones a «el archivo supera el tamaño máximo» y «formato no válido»: formato, peso, medidas y nombre correctos para trámites online, oposiciones y becas.',
     priority: 0.7,
+    article: { published: '2026-11-19T10:10:49+01:00', modified: '2026-11-21T10:50:25+01:00' },
   },
   {
     path: '/privacidad',
@@ -256,17 +259,27 @@ export interface FaqItem {
   a: string
 }
 
+const ORG_ID = `${SITE_URL}/#organization`
+
 /** Datos estructurados JSON-LD de cada página. */
 export function jsonLd(meta: RouteMeta, faqs: FaqItem[] = []) {
   const url = SITE_URL + (meta.path === '/' ? '/' : meta.path)
   const graph: Record<string, unknown>[] = []
   if (meta.path === '/') {
     graph.push({
+      '@type': 'Organization',
+      '@id': ORG_ID,
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo-512.png`, width: 512, height: 512 },
+    })
+    graph.push({
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
       url: `${SITE_URL}/`,
       name: SITE_NAME,
       inLanguage: 'es',
+      publisher: { '@id': ORG_ID },
     })
   }
   if (meta.tool) {
@@ -293,11 +306,11 @@ export function jsonLd(meta: RouteMeta, faqs: FaqItem[] = []) {
       datePublished: meta.article.published,
       dateModified: meta.article.modified,
       image: `${SITE_URL}/og-image.png`,
-      author: { '@type': 'Organization', name: SITE_NAME, url: `${SITE_URL}/` },
-      publisher: { '@type': 'Organization', name: SITE_NAME, url: `${SITE_URL}/`, logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo-512.png` } },
+      author: { '@type': 'Organization', '@id': ORG_ID, name: SITE_NAME, url: `${SITE_URL}/` },
+      publisher: { '@type': 'Organization', '@id': ORG_ID, name: SITE_NAME, url: `${SITE_URL}/`, logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo-512.png` } },
     })
   }
-  if (meta.path !== '/') {
+  if (meta.path !== '/' && meta.path !== NOT_FOUND.path) {
     graph.push({
       '@type': 'BreadcrumbList',
       itemListElement: [
