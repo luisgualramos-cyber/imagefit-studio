@@ -20,11 +20,11 @@ export function Home() {
                 <IconShield size={14} /> Gratis · Sin registro · Procesado en tu navegador
               </p>
               <h1 className="text-4xl leading-[1.05] font-extrabold md:text-6xl">
-                Redimensiona tus imágenes al tamaño <span className="text-accent-dark">exacto</span> que necesitas
+                Edita tus imágenes gratis y <span className="text-accent-dark">sin subirlas a internet</span>
               </h1>
             </div>
             <p className="max-w-md text-[15px] text-muted md:text-right">
-              Redimensiona, comprime, convierte y adapta fotos a Instagram, TikTok, YouTube, tiendas online y webs. Una imagen o cien a la vez.
+              Redimensiona, comprime, convierte, recorta, amplía o quita el fondo en tu propio navegador. Sin registro. Una imagen o cien a la vez.
             </p>
           </div>
           <div className="mb-5 flex flex-col gap-2 rounded-2xl border border-local/25 bg-local-soft px-4 py-3 text-sm text-ink sm:flex-row sm:items-center sm:gap-3">

@@ -17,9 +17,9 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/',
     name: 'Inicio',
-    title: 'Redimensionar imágenes online gratis | ImageFit Studio',
+    title: 'Herramientas de imagen online gratis y privadas | ImageFit',
     description:
-      'Cambia el tamaño, comprime y convierte imágenes a JPG, PNG o WEBP gratis y sin registro. Sin perder calidad y sin subir tus fotos a ningún servidor.',
+      'Redimensiona, comprime, convierte, recorta o quita el fondo de tus fotos gratis y sin registro. Todo ocurre en tu navegador: tus imágenes no se suben.',
     priority: 1,
     tool: true,
   },
