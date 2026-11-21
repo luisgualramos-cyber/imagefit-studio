@@ -11,6 +11,8 @@ export interface RouteMeta {
   /** Es una herramienta (se marca como WebApplication en los datos estructurados) */
   tool?: boolean
   noindex?: boolean
+  /** Página de contenido (guía): se marca como Article con sus fechas en ISO 8601 con zona horaria */
+  article?: { published: string; modified: string }
 }
 
 export const ROUTES: RouteMeta[] = [
@@ -103,6 +105,15 @@ export const ROUTES: RouteMeta[] = [
       'Prepara la foto de 32×26 mm, en color y con fondo liso, que pide la DGT para el permiso de conducir. Requisitos oficiales, encuadre automático e impresión.',
     priority: 0.85,
     tool: true,
+  },
+  {
+    path: '/fotos-tramites-espana',
+    name: 'Fotos para trámites',
+    title: 'Fotos para trámites oficiales en España: medidas y requisitos',
+    description:
+      'Qué foto piden el DNI, el permiso de conducir y las sedes electrónicas: medidas, fondo y peso según la fuente oficial, con la herramienta lista para prepararla.',
+    priority: 0.85,
+    article: { published: '2026-11-21T10:50:00+01:00', modified: '2026-11-21T10:50:00+01:00' },
   },
   {
     path: '/redimensionar-foto-whatsapp',
@@ -269,6 +280,21 @@ export function jsonLd(meta: RouteMeta, faqs: FaqItem[] = []) {
       description: meta.description,
       inLanguage: 'es',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    })
+  }
+  if (meta.article) {
+    graph.push({
+      '@type': 'Article',
+      headline: meta.title.length > 110 ? meta.name : meta.title,
+      description: meta.description,
+      url,
+      mainEntityOfPage: url,
+      inLanguage: 'es',
+      datePublished: meta.article.published,
+      dateModified: meta.article.modified,
+      image: `${SITE_URL}/og-image.png`,
+      author: { '@type': 'Organization', name: SITE_NAME, url: `${SITE_URL}/` },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: `${SITE_URL}/`, logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo-512.png` } },
     })
   }
   if (meta.path !== '/') {

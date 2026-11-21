@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import { Home, NotFound, ToolPage } from './pages/Pages'
 import { AvisoLegal, Contacto, Privacy } from './pages/Legal'
 import { About, FormatsGuide, SedeGuide, WebGuide } from './pages/Guides'
+import { TramitesHub } from './pages/TramitesHub'
 import { TOOL_PAGES } from './content/pages'
 import { applyHead } from './seo/head'
 
@@ -19,6 +20,7 @@ export default function App() {
         {Object.keys(TOOL_PAGES).map((p) => (
           <Route key={p} path={p} element={<ToolPage key={p} path={p} />} />
         ))}
+        <Route path="/fotos-tramites-espana" element={<TramitesHub />} />
         <Route path="/acerca-de" element={<About />} />
         <Route path="/guia-formatos-de-imagen" element={<FormatsGuide />} />
         <Route path="/optimizar-imagenes-para-web" element={<WebGuide />} />

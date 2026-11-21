@@ -70,6 +70,9 @@ h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0
 
 input[type="range"] { accent-color: var(--color-accent); width: 100%; }
 
+.prose-if { min-width: 0; }
+.prose-if .table-scroll { overflow-x: auto; }
+.prose-if .table-scroll table { min-width: 34rem; }
 .prose-if h2 { font-size: 1.6rem; font-weight: 700; margin: 2.2rem 0 .8rem; }
 .prose-if h3 { font-size: 1.15rem; font-weight: 700; margin: 1.6rem 0 .5rem; }
 .prose-if p { color: #3f3e4c; line-height: 1.7; margin: .6rem 0; }

@@ -326,6 +326,28 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
       a: 'Compara los píxeles que necesitas con los que tiene tu foto (aparecen en su miniatura). Si necesitas muchos más, la imagen se ampliará y perderá nitidez; en ese caso, imprime más pequeño o baja a 150-200 ppp.',
     },
   ],
+  '/fotos-tramites-espana': [
+    {
+      q: '¿Me sirve la misma foto para el DNI y para el carné de conducir?',
+      a: 'Sí, si la haces con fondo blanco. Los dos piden 32 × 26 mm y en color; el DNI exige además un fondo uniforme blanco y liso, mientras que la DGT pide fondo liso. Una foto con fondo blanco liso cumple ambos requisitos.',
+    },
+    {
+      q: '¿Puedo poner el fondo blanco con la herramienta de quitar fondo?',
+      a: 'Se puede, pero no lo recomendamos para documentos oficiales: el recorte automático puede dejar bordes irregulares en el pelo y una foto retocada podría no ser aceptada. Lo más seguro es hacer la foto delante de una pared blanca y lisa.',
+    },
+    {
+      q: '¿Cuántos píxeles tiene una foto de 32 × 26 mm?',
+      a: 'A 300 ppp, la resolución habitual de impresión, son 307 píxeles de ancho por 378 de alto. Al imprimirla, indica en la tienda que la foto debe medir 32 × 26 mm.',
+    },
+    {
+      q: '¿La DGT sigue pidiendo foto?',
+      a: 'Desde el 6 de noviembre de 2024 no hace falta volver a presentarla en los trámites en los que la DGT ya tiene esa documentación. Algunos trámites la siguen pidiendo, por ejemplo el duplicado por cambio de datos hecho de forma presencial: revisa la ficha de tu trámite en la sede de la DGT.',
+    },
+    {
+      q: '¿Qué peso debe tener la foto para unas oposiciones o una beca?',
+      a: 'No hay un límite común: lo fija cada convocatoria o cada formulario. Búscalo en sus instrucciones y deja el archivo un poco por debajo del máximo, por ejemplo 90-95 KB si el límite es 100 KB.',
+    },
+  ],
 }
 
 export const faqsFor = (path: string) => (path === '/' ? HOME_FAQS : (PAGE_FAQS[path] ?? []))
