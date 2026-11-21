@@ -74,27 +74,56 @@ export function ToolsGrid({ exclude }: { exclude?: string }) {
 }
 
 export function UseCases() {
+  // Casos concretos: lo que tienes → lo que necesitas → qué herramienta lo hace.
   const cases = [
-    { t: 'Creadores de contenido', d: 'Una misma foto en 4:5 para el feed, 9:16 para Stories y 16:9 para la miniatura, sin repetir el trabajo.' },
-    { t: 'YouTubers', d: 'Miniaturas de 1280×720 por debajo de 2 MB y banners de canal de 2560×1440.' },
-    { t: 'Instagram y TikTok', d: 'Convierte fotos horizontales en verticales sin cortar a las personas gracias al encuadre inteligente.' },
-    { t: 'Tiendas online', d: 'Catálogos homogéneos: fondo blanco, producto centrado, mismo tamaño y peso optimizado.' },
-    { t: 'Fotógrafos', d: 'Exporta galerías ligeras para enviar a clientes o publicar en la web, en lote y en WEBP.' },
-    { t: 'Diseñadores', d: 'Prepara recursos en PNG, WEBP o AVIF a medidas exactas para maquetas y webs.' },
-    { t: 'Pequeños negocios', d: 'Fotos para Google, redes sociales y la web del negocio sin contratar a nadie.' },
-    { t: 'Formularios y trámites', d: 'Reduce una foto a menos de 200 KB o a medidas de carné para subirla a cualquier sede electrónica.' },
+    {
+      t: 'Una foto horizontal para Stories',
+      from: 'Foto del móvil en horizontal (4:3)',
+      to: 'Vertical 1080 × 1920 px (9:16) sin cortar a las personas',
+      link: { to: '/imagenes-para-redes-sociales', label: 'Adaptar una foto a redes sociales' },
+    },
+    {
+      t: 'Diez fotos que no caben en un correo',
+      from: '10 fotos del móvil, unos 31 MB en total',
+      to: 'Unos 3 MB en total, en un solo ZIP',
+      link: { to: '/reducir-fotos-para-email', label: 'Reducir fotos para enviarlas por email' },
+    },
+    {
+      t: 'Catálogo de una tienda online',
+      from: 'Fotos de producto con fondos distintos',
+      to: 'Fondo blanco, producto centrado y todas del mismo tamaño',
+      link: { to: '/fotos-para-tienda-online', label: 'Preparar fotos de producto' },
+    },
+    {
+      t: 'Miniatura para un vídeo de YouTube',
+      from: 'Captura 4K del vídeo en PNG (unos 6,5 MB)',
+      to: '1280 × 720 px en JPG, por debajo del límite de 2 MB',
+      link: { to: '/miniatura-youtube', label: 'Crear una miniatura de YouTube' },
+    },
   ]
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16 md:px-6" aria-labelledby="usos">
-      <h2 id="usos" className="text-3xl font-bold md:text-4xl">
-        ¿Para quién es ImageFit Studio?
+    <section className="mx-auto max-w-7xl px-4 py-12 md:px-6" aria-labelledby="usos">
+      <h2 id="usos" className="text-2xl font-bold md:text-3xl">
+        Casos habituales, paso a paso
       </h2>
-      <p className="mt-2 max-w-2xl text-muted">Para cualquiera que necesite una imagen con unas medidas o un peso concretos, hoy mismo.</p>
-      <ul className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+      <p className="mt-2 max-w-2xl text-muted">Lo que tienes, lo que necesitas y qué herramienta lo hace.</p>
+      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cases.map((c) => (
-          <li key={c.t} className="border-t-2 border-ink pt-4">
+          <li key={c.t} className="flex flex-col border-t-2 border-ink pt-4">
             <h3 className="font-bold">{c.t}</h3>
-            <p className="mt-1 text-sm text-muted">{c.d}</p>
+            <dl className="mt-2 flex-1 space-y-1 text-sm">
+              <div>
+                <dt className="inline font-semibold">Tienes: </dt>
+                <dd className="inline text-muted">{c.from}</dd>
+              </div>
+              <div>
+                <dt className="inline font-semibold">Necesitas: </dt>
+                <dd className="inline text-muted">{c.to}</dd>
+              </div>
+            </dl>
+            <Link to={c.link.to} className="mt-3 text-sm font-semibold text-accent-dark underline underline-offset-2">
+              {c.link.label}
+            </Link>
           </li>
         ))}
       </ul>
