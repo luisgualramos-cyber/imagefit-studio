@@ -20,7 +20,7 @@ export function Home() {
                 <IconShield size={14} /> Gratis · Sin registro · Procesado en tu navegador
               </p>
               <h1 className="text-4xl leading-[1.05] font-extrabold md:text-6xl">
-                Redimensiona tus imágenes al tamaño <span className="text-accent">exacto</span> que necesitas
+                Redimensiona tus imágenes al tamaño <span className="text-accent-dark">exacto</span> que necesitas
               </h1>
             </div>
             <p className="max-w-md text-[15px] text-muted md:text-right">
@@ -125,7 +125,7 @@ export function ToolPage({ path }: { path: string }) {
 export function NotFound() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-24 text-center md:px-6">
-      <p className="font-display text-7xl font-extrabold text-accent">404</p>
+      <p className="font-display text-7xl font-extrabold text-accent-dark">404</p>
       <h1 className="mt-4 text-3xl font-bold">Esta página no existe</h1>
       <p className="mt-2 text-muted">Puede que el enlace esté mal escrito o que la página se haya movido.</p>
       <Link to="/" className="btn btn-primary mt-8">

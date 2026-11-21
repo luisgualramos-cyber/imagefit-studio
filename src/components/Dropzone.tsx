@@ -24,7 +24,6 @@ export default function Dropzone({ onFiles, multiple = true, compact = false, ti
     <div
       role="button"
       tabIndex={0}
-      aria-label={title ?? 'Subir imágenes'}
       onClick={() => input.current?.click()}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {

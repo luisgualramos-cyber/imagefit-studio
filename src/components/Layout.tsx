@@ -14,7 +14,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         <circle cx="32" cy="32" r="8" fill={light ? '#14131f' : '#fff'} />
       </svg>
       <span className={`font-display text-[19px] leading-none font-extrabold ${light ? 'text-white' : 'text-ink'}`}>
-        ImageFit<span className="font-semibold text-accent"> Studio</span>
+        ImageFit<span className={`font-semibold ${light ? 'text-accent' : 'text-accent-dark'}`}> Studio</span>
       </span>
     </Link>
   )

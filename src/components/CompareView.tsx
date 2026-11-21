@@ -63,7 +63,7 @@ export default function CompareView({ before, after, transparent }: { before: Si
           <div className="absolute top-1/2 left-1/2 grid size-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-xs font-bold text-ink shadow-md">⇆</div>
         </div>
         <span className="absolute top-2 left-2 rounded-md bg-ink/75 px-2 py-1 text-[11px] font-semibold text-white">{before.label}</span>
-        <span className="absolute top-2 right-2 rounded-md bg-accent px-2 py-1 text-[11px] font-semibold text-white">{after.label}</span>
+        <span className="absolute top-2 right-2 rounded-md bg-accent-dark px-2 py-1 text-[11px] font-semibold text-white">{after.label}</span>
       </div>
       <input
         type="range"

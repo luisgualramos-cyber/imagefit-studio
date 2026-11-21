@@ -117,7 +117,7 @@ function Frame({ s, scale, accent }: { s: Side; scale: number; accent?: boolean 
         <span className="mt-1 block font-bold">
           {fmtPx(s.w)} × {fmtPx(s.h)} px
         </span>
-        <span className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-sm font-semibold ${accent ? 'bg-accent text-white' : 'bg-paper text-ink'}`}>
+        <span className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-sm font-semibold ${accent ? 'bg-accent-dark text-white' : 'bg-paper text-ink'}`}>
           {s.size} · {s.fmt}
         </span>
       </figcaption>
@@ -140,7 +140,7 @@ export default function Example({ path }: { path: string }) {
         </h2>
         <div className="mt-5 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-10">
           <Frame s={ex.before} scale={maxB / top} />
-          <span className="text-3xl font-bold text-accent" aria-hidden>
+          <span className="text-3xl font-bold text-accent-dark" aria-hidden>
             →
           </span>
           <Frame s={ex.after} scale={maxA / top} accent />
