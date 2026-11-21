@@ -16,12 +16,12 @@ import {
 } from './Icons'
 
 export const TOOLS = [
-  { to: '/redimensionar-imagenes', title: 'Redimensionar imágenes', short: 'Redimensionar', icon: IconResize, text: 'Cambia el ancho y el alto en píxeles o porcentaje sin deformar la foto.' },
-  { to: '/comprimir-imagenes', title: 'Comprimir fotografías', short: 'Comprimir', icon: IconCompress, text: 'Reduce el peso eligiendo la calidad o un tamaño máximo en KB.' },
-  { to: '/convertir-imagenes', title: 'Convertir formatos', short: 'Convertir', icon: IconConvert, text: 'JPG, PNG, WEBP y AVIF reales, no un cambio de extensión.' },
-  { to: '/imagenes-para-redes-sociales', title: 'Imágenes para redes sociales', short: 'Redes sociales', icon: IconSocial, text: 'Instagram, TikTok, YouTube, Facebook, X y LinkedIn al tamaño exacto.' },
-  { to: '/fotos-para-tienda-online', title: 'Fotos para tiendas online', short: 'Tiendas online', icon: IconShop, text: 'Quita el fondo con IA, ponlo blanco y centra el producto.' },
-  { to: '/ampliar-imagen', title: 'Ampliar imagen', short: 'Ampliar', icon: IconExpand, text: 'Cambia de cuadrada a horizontal ampliando el fondo, sin bandas vacías.' },
+  { to: '/redimensionar-imagenes', cta: 'Redimensionar una imagen', title: 'Redimensionar imágenes', short: 'Redimensionar', icon: IconResize, text: 'Cambia el ancho y el alto en píxeles o porcentaje sin deformar la foto.' },
+  { to: '/comprimir-imagenes', cta: 'Comprimir una foto', title: 'Comprimir fotografías', short: 'Comprimir', icon: IconCompress, text: 'Reduce el peso eligiendo la calidad o un tamaño máximo en KB.' },
+  { to: '/convertir-imagenes', cta: 'Convertir una imagen', title: 'Convertir formatos', short: 'Convertir', icon: IconConvert, text: 'JPG, PNG, WEBP y AVIF reales, no un cambio de extensión.' },
+  { to: '/imagenes-para-redes-sociales', cta: 'Adaptar una foto a redes', title: 'Imágenes para redes sociales', short: 'Redes sociales', icon: IconSocial, text: 'Instagram, TikTok, YouTube, Facebook, X y LinkedIn al tamaño exacto.' },
+  { to: '/fotos-para-tienda-online', cta: 'Preparar fotos de producto', title: 'Fotos para tiendas online', short: 'Tiendas online', icon: IconShop, text: 'Quita el fondo con IA, ponlo blanco y centra el producto.' },
+  { to: '/ampliar-imagen', cta: 'Ampliar el fondo de una imagen', title: 'Ampliar imagen', short: 'Ampliar', icon: IconExpand, text: 'Cambia de cuadrada a horizontal ampliando el fondo, sin bandas vacías.' },
 ]
 
 export function HowItWorks() {
@@ -64,7 +64,7 @@ export function ToolsGrid({ exclude }: { exclude?: string }) {
             <h3 className="mt-4 text-[17px] font-bold">{t.title}</h3>
             <p className="mt-1 flex-1 text-sm text-muted">{t.text}</p>
             <span className="mt-3 flex items-center gap-1 text-sm font-semibold text-accent-dark">
-              Abrir herramienta <IconChevron size={15} />
+              {t.cta} <IconChevron size={15} />
             </span>
           </Link>
         </li>

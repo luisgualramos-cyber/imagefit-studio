@@ -91,7 +91,7 @@ export function ToolPage({ path }: { path: string }) {
       <section className="mx-auto max-w-7xl px-4 pt-6 pb-6 md:px-6 md:pt-10">
         <nav aria-label="Migas de pan" className="mb-4 text-xs text-muted">
           <Link to="/" className="hover:text-ink">
-            Inicio
+            ImageFit Studio
           </Link>{' '}
           / <span className="text-ink">{meta.name}</span>
         </nav>

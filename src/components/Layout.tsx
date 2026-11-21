@@ -47,7 +47,7 @@ function Header() {
             </NavLink>
           ))}
           <Link to="/#herramientas" className="rounded-lg px-3 py-2 text-sm font-medium text-ink-2 hover:bg-black/5">
-            Más
+            Todas las herramientas
           </Link>
         </nav>
         <button type="button" className="grid size-10 place-items-center rounded-lg lg:hidden" onClick={() => setOpen(!open)} aria-expanded={open} aria-label="Menú">

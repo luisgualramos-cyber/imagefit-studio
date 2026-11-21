@@ -275,7 +275,7 @@ export function jsonLd(meta: RouteMeta, faqs: FaqItem[] = []) {
     graph.push({
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
         { '@type': 'ListItem', position: 2, name: meta.name, item: url },
       ],
     })
