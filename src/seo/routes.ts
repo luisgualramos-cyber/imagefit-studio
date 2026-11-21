@@ -28,7 +28,7 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/redimensionar-imagenes',
     name: 'Redimensionar imágenes',
-    title: 'Cambiar tamaño de imagen online, una o varias a la vez | ImageFit Studio',
+    title: 'Cambiar tamaño de imagen online, una o varias | ImageFit',
     description:
       'Redimensiona imágenes online en píxeles o porcentaje sin perder calidad y sin deformarlas. Una foto o muchas a la vez, gratis y sin registro.',
     priority: 0.9,
@@ -91,7 +91,7 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/foto-dni',
     name: 'Foto para el DNI',
-    title: 'Foto para el DNI 32×26 mm: requisitos oficiales | ImageFit Studio',
+    title: 'Foto para el DNI 32×26 mm: requisitos oficiales | ImageFit',
     description:
       'Recorta tu foto al tamaño oficial del DNI (32×26 mm, en color, fondo blanco liso) según el Real Decreto 255/2025. Centrada en tu cara y lista para imprimir.',
     priority: 0.85,
@@ -100,7 +100,7 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/foto-carnet-conducir',
     name: 'Foto carné de conducir',
-    title: 'Foto para el carné de conducir (DGT) 32×26 mm | ImageFit Studio',
+    title: 'Foto carné de conducir (DGT) 32×26 mm | ImageFit Studio',
     description:
       'Prepara la foto de 32×26 mm, en color y con fondo liso, que pide la DGT para el permiso de conducir. Requisitos oficiales, encuadre automático e impresión.',
     priority: 0.85,
@@ -172,7 +172,7 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/recortar-imagen',
     name: 'Recortar imagen',
-    title: 'Recortar imagen online: 1:1, 4:5, 16:9 y más | ImageFit Studio',
+    title: 'Recortar imagen online: 1:1, 4:5, 16:9 y más | ImageFit',
     description:
       'Recorta fotos online a cuadrado, vertical o panorámico. El encuadre inteligente con IA detecta caras y objetos para no cortarlos. Gratis y sin registro.',
     priority: 0.8,
@@ -190,28 +190,28 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/acerca-de',
     name: 'Acerca de',
-    title: 'Acerca de ImageFit Studio | ImageFit Studio',
+    title: 'Acerca de ImageFit Studio: quién lo hace y cómo funciona',
     description: 'Qué es ImageFit Studio, por qué tus imágenes no se suben a ningún servidor, qué herramientas incluye, quién lo mantiene y cómo se financia.',
     priority: 0.4,
   },
   {
     path: '/guia-formatos-de-imagen',
     name: 'Guía de formatos de imagen',
-    title: 'JPG, PNG, WEBP, AVIF o HEIC: qué formato usar | ImageFit Studio',
+    title: 'JPG, PNG, WEBP, AVIF o HEIC: qué formato usar | ImageFit',
     description: 'Diferencias entre JPG, PNG, WEBP, AVIF y HEIC, compresión con y sin pérdida, y qué formato elegir para web, correo, impresión, logotipos o capturas.',
     priority: 0.6,
   },
   {
     path: '/optimizar-imagenes-para-web',
     name: 'Optimizar imágenes para la web',
-    title: 'Cómo optimizar imágenes para la web sin perder calidad | ImageFit',
+    title: 'Optimizar imágenes para la web sin perder calidad | ImageFit',
     description: 'Guía paso a paso para que las imágenes de tu web pesen menos: dimensiones, formato, compresión, metadatos, procesado por lotes y buenas prácticas.',
     priority: 0.6,
   },
   {
     path: '/subir-fotos-sede-electronica',
     name: 'Subir fotos a una sede electrónica',
-    title: 'Cómo subir una foto a una sede electrónica sin errores | ImageFit',
+    title: 'Subir una foto a una sede electrónica sin errores | ImageFit',
     description: 'Soluciones a «el archivo supera el tamaño máximo» y «formato no válido»: formato, peso, medidas y nombre correctos para trámites online, oposiciones y becas.',
     priority: 0.7,
   },
