@@ -1,7 +1,13 @@
 import { faqsFor } from '../content/faqs'
-import { jsonLd, routeMeta, SITE_NAME, SITE_URL } from './routes'
+import { jsonLd, routeMeta, SITE_NAME, SITE_URL, type RouteMeta } from './routes'
+import { SOCIAL } from './social'
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+const OG_ALT = 'ImageFit Studio: redimensionar, comprimir y convertir imágenes online'
+
+/** Texto para redes sociales: el propio de la página o, si no tiene, su meta description. */
+const socialText = (m: RouteMeta) => SOCIAL[m.path] ?? m.description
 
 const norm = (path: string) => (path.length > 1 ? path.replace(/\/+$/, '') : path)
 
@@ -15,19 +21,24 @@ export function headHtml(path: string) {
     `<title>${esc(m.title)}</title>`,
     `<meta name="description" content="${esc(m.description)}" />`,
     m.noindex ? '<meta name="robots" content="noindex" />' : `<link rel="canonical" href="${url}" />`,
-    `<meta property="og:type" content="website" />`,
+    `<meta property="og:type" content="${m.article ? 'article' : 'website'}" />`,
     `<meta property="og:site_name" content="${SITE_NAME}" />`,
     `<meta property="og:locale" content="es_ES" />`,
     `<meta property="og:title" content="${esc(m.title)}" />`,
-    `<meta property="og:description" content="${esc(m.description)}" />`,
+    `<meta property="og:description" content="${esc(socialText(m))}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${SITE_URL}/og-image.png" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="ImageFit Studio: redimensionar, comprimir y convertir imágenes online" />`,
+    `<meta property="og:image:alt" content="${OG_ALT}" />`,
+    ...(m.article
+      ? [`<meta property="article:published_time" content="${m.article.published}" />`, `<meta property="article:modified_time" content="${m.article.modified}" />`]
+      : []),
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(m.title)}" />`,
-    `<meta name="twitter:description" content="${esc(m.description)}" />`,
+    `<meta name="twitter:description" content="${esc(socialText(m))}" />`,
+    `<meta name="twitter:image" content="${SITE_URL}/og-image.png" />`,
+    `<meta name="twitter:image:alt" content="${OG_ALT}" />`,
     `<script type="application/ld+json">${ld}</script>`,
   ].join('\n    ')
 }
@@ -45,7 +56,9 @@ export function applyHead(path: string) {
   set('meta[name="description"]', 'content', m.description)
   set('link[rel="canonical"]', 'href', url)
   set('meta[property="og:title"]', 'content', m.title)
-  set('meta[property="og:description"]', 'content', m.description)
+  set('meta[property="og:description"]', 'content', socialText(m))
+  set('meta[name="twitter:title"]', 'content', m.title)
+  set('meta[name="twitter:description"]', 'content', socialText(m))
   set('meta[property="og:url"]', 'content', url)
   const ld = document.head.querySelector('script[type="application/ld+json"]')
   if (ld) ld.textContent = JSON.stringify(jsonLd(m, faqsFor(m.path)))
