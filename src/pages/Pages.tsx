@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import AdSlot from '../components/AdSlot'
 import { Faq, HowItWorks, PrivacyNote, ToolsGrid, UseCases } from '../components/Sections'
 import Example from '../components/Example'
+import { TramitesBlock } from '../components/Tramites'
 import { IconShield } from '../components/Icons'
 import Studio from '../studio/Studio'
 import { HOME_FAQS, faqsFor } from '../content/faqs'
@@ -59,6 +60,7 @@ export function Home() {
         </div>
         <AdSlot position="after-tools" format="horizontal" />
       </section>
+      <TramitesBlock />
       <UseCases />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:px-6 lg:grid-cols-[minmax(0,1fr)_300px]">
         <Faq items={HOME_FAQS} />
