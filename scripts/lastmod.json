@@ -1,7 +1,7 @@
 {
   "/": {
-    "hash": "983dfbe57459054f",
-    "date": "2026-11-21T10:46:33+01:00"
+    "hash": "c79f9d67f8012117",
+    "date": "2026-11-21T10:50:25+01:00"
   },
   "/redimensionar-imagenes": {
     "hash": "93487dc098995b58",
@@ -12,8 +12,8 @@
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/convertir-imagenes": {
-    "hash": "a346ac26dc53ed79",
-    "date": "2026-11-21T10:42:41+01:00"
+    "hash": "2b0bfec4c5c8e4df",
+    "date": "2026-11-21T10:52:06+01:00"
   },
   "/imagenes-para-redes-sociales": {
     "hash": "6d61f2abecf9098b",
@@ -28,16 +28,16 @@
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/comprimir-foto-a-100kb": {
-    "hash": "ad008943b504945e",
-    "date": "2026-11-21T10:42:41+01:00"
+    "hash": "5dc9969fc95bc22f",
+    "date": "2026-11-21T10:50:25+01:00"
   },
   "/foto-dni": {
-    "hash": "ebe2b14a3eb6394a",
-    "date": "2026-11-21T10:42:41+01:00"
+    "hash": "b687dcd8f6ccf7f9",
+    "date": "2026-11-21T10:50:25+01:00"
   },
   "/foto-carnet-conducir": {
-    "hash": "7f24f2aa6deca324",
-    "date": "2026-11-21T10:42:41+01:00"
+    "hash": "acf5805a79e61bc5",
+    "date": "2026-11-21T10:50:25+01:00"
   },
   "/redimensionar-foto-whatsapp": {
     "hash": "7734a5294f1312c2",
@@ -84,8 +84,8 @@
     "date": "2026-11-19T10:10:49+01:00"
   },
   "/subir-fotos-sede-electronica": {
-    "hash": "d75264d701cbc59c",
-    "date": "2026-11-19T10:10:49+01:00"
+    "hash": "ef3b0fe843b3bc09",
+    "date": "2026-11-21T10:50:25+01:00"
   },
   "/privacidad": {
     "hash": "5409560b03fff884",
@@ -98,5 +98,9 @@
   "/contacto": {
     "hash": "24b7ec04cfd77011",
     "date": "2026-11-19T10:10:49+01:00"
+  },
+  "/fotos-tramites-espana": {
+    "hash": "bca36b7880c6db14",
+    "date": "2026-11-21T10:51:31+01:00"
   }
 }
