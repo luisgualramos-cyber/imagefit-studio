@@ -34,6 +34,9 @@ export function TramitesBlock() {
             </li>
           ))}
         </ul>
+        <Link to="/fotos-tramites-espana" className="btn btn-dark mt-8">
+          Ver todos los trámites y sus requisitos
+        </Link>
       </div>
     </section>
   )

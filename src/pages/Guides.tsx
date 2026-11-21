@@ -182,6 +182,9 @@ export function SedeGuide() {
       <p>
         «El archivo supera el tamaño máximo», «formato no válido», «la imagen no cumple los requisitos»… Son los mensajes que más se repiten al hacer un trámite online: solicitar una beca, presentarse a unas oposiciones, matricularse, pedir una ayuda o aportar documentación a la Administración. Casi siempre tienen una solución sencilla. En esta guía explico, paso a paso, cómo preparar la foto o el documento para que la sede electrónica lo acepte a la primera.
       </p>
+      <p>
+        Si lo que necesitas es la foto de un documento oficial con medidas fijas (DNI, permiso de conducir), consulta los requisitos oficiales en <Link to="/fotos-tramites-espana">fotos para trámites oficiales en España</Link>.
+      </p>
       <h2>1. Lee bien qué te piden (y apúntalo)</h2>
       <p>Antes de tocar la foto, busca en el formulario o en las instrucciones del trámite estos cuatro datos:</p>
       <ul>

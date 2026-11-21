@@ -44,6 +44,7 @@ function SocialSizesTable() {
 
 function FormatTable() {
   return (
+    <div className="table-scroll" role="region" aria-label="Comparativa de formatos de imagen" tabIndex={0}>
     <table>
       <thead>
         <tr>
@@ -60,11 +61,13 @@ function FormatTable() {
         <tr><td><b>AVIF</b></td><td>Con pérdida (muy eficiente)</td><td>Sí</td><td>Webs que buscan el mínimo peso posible</td></tr>
       </tbody>
     </table>
+    </div>
   )
 }
 
 /** Páginas para búsquedas concretas (enlazadas desde inicio y pie). */
 export const QUICK_PAGES = [
+  { to: '/fotos-tramites-espana', label: 'Fotos para trámites oficiales' },
   { to: '/foto-dni', label: 'Foto para el DNI' },
   { to: '/foto-carnet-conducir', label: 'Foto carné de conducir' },
   { to: '/comprimir-foto-a-100kb', label: 'Comprimir foto a 100 KB' },
@@ -520,6 +523,9 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <p>
           Muchos formularios online limitan el tamaño de las imágenes: sedes electrónicas de la Administración, portales de empleo, matrículas, oposiciones o plataformas de alquiler. Los límites más habituales son 50 KB, 100 KB, 200 KB, 500 KB y 1 MB. Una foto hecha con el móvil ocupa entre 2 y 8 MB, entre 20 y 80 veces más de lo permitido.
         </p>
+        <p>
+          Si es para un documento oficial (DNI, permiso de conducir…), mira antes qué medida y fondo te piden en <Link to="/fotos-tramites-espana">fotos para trámites oficiales en España</Link>.
+        </p>
         <img src="/img/ejemplos/100kb-antes-despues.webp" width={1200} height={470} loading="lazy" decoding="async" alt="Antes y después: foto de móvil de 4000 × 3000 px y 2,89 MB reducida con esta herramienta a 1280 × 960 px y 92 KB, por debajo del límite de 100 KB" style={{ width: '100%', height: 'auto', borderRadius: 12 }} />
         <h2>Cómo lo consigue sin estropear la foto</h2>
         <p>La herramienta combina los dos ajustes que más peso ahorran:</p>
@@ -679,7 +685,10 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2025-6601" target="_blank" rel="noopener noreferrer">
             Real Decreto 255/2025, de 1 de abril, por el que se regula el Documento Nacional de Identidad (BOE núm. 80, de 2 de abril de 2025)
           </a>
-          , artículos 6.2.d y 8.2. Comprobado el 18/11/2026.
+          , artículos 6.2.d y 8.2. Última revisión: 21/11/2026.
+        </p>
+        <p>
+          ¿Necesitas la foto para otro trámite? Consulta el resumen de <Link to="/fotos-tramites-espana">fotos para trámites oficiales en España</Link>.
         </p>
         <h2>Cómo usar la herramienta</h2>
         <ul>
@@ -728,12 +737,12 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
             <tr><td>Color</td><td>En color, original y actual</td></tr>
             <tr><td>Fondo</td><td>Liso (la DGT no indica que tenga que ser blanco; para el DNI, en cambio, sí)</td></tr>
             <tr><td>Postura</td><td>De frente, con la cabeza descubierta y sin gafas de cristales oscuros</td></tr>
-            <tr><td>Velo por motivos religiosos</td><td>Se admite si el óvalo de la cara queda descubierto, desde el nacimiento del pelo hasta el mentón</td></tr>
+            <tr><td>Velo por motivos religiosos</td><td>Se admite si el óvalo de la cara queda totalmente descubierto, desde el nacimiento del pelo hasta el mentón (indicado en la ficha de solicitud de examen)</td></tr>
           </tbody>
         </table>
         <h2>¿Cuándo hace falta?</h2>
         <p>
-          La DGT indica que, dentro de su proceso de modernización, «desde el 6 de noviembre 2024 ya no es necesario volver a presentar el talón-foto y/o fotografías» cuando ya tiene tu documentación. La foto aparece, por ejemplo, entre lo que hay que aportar en el duplicado del permiso por cambio de datos si el trámite se hace de forma presencial, y en el talón-foto que te entrega la autoescuela para el examen práctico cuando solicitas un permiso por primera vez. Antes de imprimirla, revisa en la sede de la DGT si tu trámite concreto la sigue pidiendo.
+          La DGT indica que, dentro de su proceso de modernización, «desde el 6 de noviembre 2024 ya no es necesario volver a presentar el talón-foto y/o fotografías» en los trámites en los que ya tiene esa documentación. Según su sede, la foto se sigue pidiendo, por ejemplo, en el duplicado del permiso por cambio de datos si el trámite se hace de forma presencial, y en el talón-foto de la solicitud de examen cuando es para obtener una licencia de vehículo de movilidad reducida, solo la primera vez que solicitas ese permiso. Antes de imprimirla, revisa en la sede de la DGT si tu trámite concreto la pide.
         </p>
         <p className="text-sm text-muted">
           Fuentes oficiales (sede electrónica de la DGT):{' '}
@@ -744,7 +753,10 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
           <a href="https://sede.dgt.gob.es/es/permisos-de-conducir/obtencion-y-gestion-de-permisos/solicitud-de-prueba-de-aptitud-de-examen/" target="_blank" rel="noopener noreferrer">
             solicitud de examen
           </a>
-          . Comprobado el 18/11/2026.
+          . Última revisión: 21/11/2026.
+        </p>
+        <p>
+          Tienes un resumen de todos los trámites en <Link to="/fotos-tramites-espana">fotos para trámites oficiales en España</Link>.
         </p>
         <h2>Cómo usar la herramienta</h2>
         <ul>
