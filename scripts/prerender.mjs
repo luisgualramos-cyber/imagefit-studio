@@ -1,5 +1,6 @@
 // Genera HTML estático por ruta (SEO), sitemap.xml y robots.txt a partir del build de SSR.
-import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs'
+import { createHash } from 'node:crypto'
 import { resolve, dirname } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { loadEnv } from 'vite'
@@ -45,18 +46,46 @@ const page = (url) => {
   return template.replace('<!--app-head-->', head + (analytics ? '\n    ' + analytics : '') + (adsense ? '\n    ' + adsense : '')).replace('<!--app-html-->', html)
 }
 
+// Fecha real de última modificación de cada página (para el <lastmod> del sitemap).
+// Se guarda una huella del contenido principal (<main>) en scripts/lastmod.json: si el contenido cambia,
+// la fecha pasa a ser la de este build; si no cambia, se conserva la fecha anterior.
+// Ese archivo se versiona en git: después de compilar con cambios de contenido, haz commit de él.
+const LASTMOD_FILE = resolve('scripts/lastmod.json')
+const SEED_DATE = '2026-11-19T10:10:49+01:00' // último cambio de contenido antes de llevar este registro
+const lastmod = existsSync(LASTMOD_FILE) ? JSON.parse(readFileSync(LASTMOD_FILE, 'utf8')) : {}
+const firstRun = !existsSync(LASTMOD_FILE)
+/** Fecha y hora actual en ISO 8601 con la zona horaria de Madrid, p. ej. 2026-11-21T10:00:00+01:00 */
+function nowMadrid() {
+  const d = new Date()
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23', timeZoneName: 'longOffset' })
+      .formatToParts(d)
+      .map((p) => [p.type, p.value]),
+  )
+  const off = parts.timeZoneName.replace('GMT', '') || '+00:00'
+  return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}${off}`
+}
+const buildDate = nowMadrid()
+
 for (const r of routes) {
   const out = r.path === '/' ? resolve(dist, 'index.html') : resolve(dist, r.path.slice(1) + '.html')
   mkdirSync(dirname(out), { recursive: true })
-  writeFileSync(out, page(r.path))
-  console.log('[prerender]', r.path, '→', out.replace(dist, 'dist'))
+  const html = page(r.path)
+  writeFileSync(out, html)
+  const main = html.match(/<main[\s\S]*<\/main>/)?.[0] ?? html
+  const hash = createHash('sha256').update(main).digest('hex').slice(0, 16)
+  const prev = lastmod[r.path]
+  if (!prev) lastmod[r.path] = { hash, date: firstRun ? SEED_DATE : buildDate }
+  else if (prev.hash !== hash) lastmod[r.path] = { hash, date: buildDate }
+  console.log('[prerender]', r.path, '→', out.replace(dist, 'dist'), '· lastmod', lastmod[r.path].date)
 }
 writeFileSync(resolve(dist, '404.html'), page('/404'))
+for (const k of Object.keys(lastmod)) if (!routes.some((r) => r.path === k)) delete lastmod[k]
+writeFileSync(LASTMOD_FILE, JSON.stringify(lastmod, null, 2) + '\n')
 
-const today = new Date().toISOString().slice(0, 10)
 const urls = routes
   .filter((r) => !r.noindex)
-  .map((r) => `  <url><loc>${siteUrl}${r.path === '/' ? '/' : r.path}</loc><lastmod>${today}</lastmod><priority>${r.priority.toFixed(1)}</priority></url>`)
+  .map((r) => `  <url><loc>${siteUrl}${r.path === '/' ? '/' : r.path}</loc><lastmod>${lastmod[r.path].date}</lastmod></url>`)
 writeFileSync(
   resolve(dist, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`,
