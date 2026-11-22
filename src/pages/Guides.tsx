@@ -1,17 +1,21 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import AdSlot from '../components/AdSlot'
+import { RelatedLinks } from '../components/Tramites'
 
 const UPDATED = 'noviembre de 2026'
 
-function Article({ title, children }: { title: string; children: ReactNode }) {
+function Article({ title, children, after }: { title: string; children: ReactNode; after?: ReactNode }) {
   return (
     <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:px-6 lg:grid-cols-[minmax(0,1fr)_300px]">
-      <article className="prose-if max-w-3xl">
-        <h1 className="text-4xl font-extrabold">{title}</h1>
-        <p>Última actualización: {UPDATED}.</p>
-        {children}
-      </article>
+      <div className="min-w-0 max-w-3xl">
+        <article className="prose-if">
+          <h1 className="text-4xl font-extrabold">{title}</h1>
+          <p>Última actualización: {UPDATED}.</p>
+          {children}
+        </article>
+        {after}
+      </div>
       <aside className="hidden lg:block">
         <div className="sticky top-24">
           <AdSlot position="sidebar" format="rectangle" />
@@ -178,7 +182,7 @@ export function FormatsGuide() {
 
 export function SedeGuide() {
   return (
-    <Article title="Cómo subir una foto o un documento a una sede electrónica sin errores">
+    <Article title="Cómo subir una foto o un documento a una sede electrónica sin errores" after={<RelatedLinks path="/subir-fotos-sede-electronica" />}>
       <p>
         «El archivo supera el tamaño máximo», «formato no válido», «la imagen no cumple los requisitos»… Son los mensajes que más se repiten al hacer un trámite online: solicitar una beca, presentarse a unas oposiciones, matricularse, pedir una ayuda o aportar documentación a la Administración. Casi siempre tienen una solución sencilla. En esta guía explico, paso a paso, cómo preparar la foto o el documento para que la sede electrónica lo acepte a la primera.
       </p>

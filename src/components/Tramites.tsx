@@ -1,5 +1,28 @@
 import { Link } from 'react-router'
-import { TRAMITES } from '../content/tramites'
+import { RELATED, TRAMITES } from '../content/tramites'
+
+/** Enlaces a herramientas y trámites relacionados con la página actual (sin listas, para no heredar el estilo de los artículos). */
+export function RelatedLinks({ path }: { path: string }) {
+  const block = RELATED[path]
+  if (!block) return null
+  return (
+    <nav aria-labelledby="relacionados-titulo" className="not-prose mt-10 rounded-2xl border border-line bg-white p-5 md:p-6">
+      <h2 id="relacionados-titulo" className="text-xl font-bold md:text-2xl">
+        {block.title}
+      </h2>
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        {block.links.map((l) => (
+          <div key={l.to} className="rounded-xl bg-paper p-4">
+            <Link to={l.to} className="font-semibold text-accent-dark underline underline-offset-2">
+              {l.label}
+            </Link>
+            <p className="mt-1 text-sm text-muted">{l.why}</p>
+          </div>
+        ))}
+      </div>
+    </nav>
+  )
+}
 import { IconChevron } from './Icons'
 
 /** Bloque destacado de la portada: fotos para trámites oficiales en España. */

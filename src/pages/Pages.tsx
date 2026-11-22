@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import AdSlot from '../components/AdSlot'
 import { Faq, HowItWorks, PrivacyNote, ToolsGrid, UseCases } from '../components/Sections'
 import Example from '../components/Example'
-import { TramitesBlock } from '../components/Tramites'
+import { RelatedLinks, TramitesBlock } from '../components/Tramites'
 import { IconShield } from '../components/Icons'
 import Studio from '../studio/Studio'
 import { HOME_FAQS, faqsFor } from '../content/faqs'
@@ -98,7 +98,10 @@ export function ToolPage({ path }: { path: string }) {
         <AdSlot position="below-tool" format="horizontal" />
       </div>
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:px-6 lg:grid-cols-[minmax(0,1fr)_300px]">
-        <article className="prose-if max-w-3xl">{page.body}</article>
+        <div className="min-w-0 max-w-3xl">
+          <article className="prose-if">{page.body}</article>
+          <RelatedLinks path={path} />
+        </div>
         <aside className="hidden lg:block">
           <div className="sticky top-24">
             <AdSlot position="sidebar" format="rectangle" />
