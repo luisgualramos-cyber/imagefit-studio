@@ -102,7 +102,9 @@ export function buildJob(item: ImageItem, s: Settings): RenderJob {
     background: s.background,
     format,
     quality: Math.min(1, Math.max(0.01, s.quality / 100)),
-    maxBytes: typeof s.maxKB === 'number' && s.maxKB > 0 ? s.maxKB * 1024 : undefined,
+    // 1 KB = 1.000 bytes: así el archivo cumple tanto con las sedes que cuentan 100 KB como 100.000 bytes
+    // como con las que cuentan 102.400 (1 KB = 1.024).
+    maxBytes: typeof s.maxKB === 'number' && s.maxKB > 0 ? s.maxKB * 1000 : undefined,
   }
   if (mode === 'cover') {
     job.crop = computeCrop(item.width, item.height, t.w, t.h, item.crop, s.smartCrop ? item.focus : null)

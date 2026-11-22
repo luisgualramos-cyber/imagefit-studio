@@ -94,7 +94,7 @@ export default function ShopTool() {
       shadow,
       format,
       quality: quality / 100,
-      maxBytes: typeof maxKB === 'number' && maxKB > 0 ? maxKB * 1024 : undefined,
+      maxBytes: typeof maxKB === 'number' && maxKB > 0 ? maxKB * 1000 : undefined, // 1 KB = 1.000 bytes (cumple con ambos criterios)
     }),
     [size, bg, margin, autoCenter, shadow, format, quality, maxKB],
   )
