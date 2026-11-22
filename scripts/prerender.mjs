@@ -71,11 +71,20 @@ for (const r of routes) {
   const out = r.path === '/' ? resolve(dist, 'index.html') : resolve(dist, r.path.slice(1) + '.html')
   mkdirSync(dirname(out), { recursive: true })
   const html = page(r.path)
-  const main = html.match(/<main[\s\S]*<\/main>/)?.[0] ?? html
-  const hash = createHash('sha256').update(main).digest('hex').slice(0, 16)
+  // Solo cuenta el texto y los enlaces del contenido principal: un cambio de diseño (clases, maquetación) no es una modificación.
+  const mainHtml = html.match(/<main[\s\S]*<\/main>/)?.[0] ?? html
+  const main = mainHtml
+    .replace(/<a [^>]*?href="([^"]*)"[^>]*>/g, ' [$1] ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+  const sha = (s) => createHash('sha256').update(s).digest('hex').slice(0, 16)
+  const hash = sha(main)
   const prev = lastmod[r.path]
-  if (!prev) lastmod[r.path] = { hash, date: firstRun ? SEED_DATE : buildDate }
-  else if (prev.hash !== hash) lastmod[r.path] = { hash, date: buildDate }
+  if (!prev) lastmod[r.path] = { hash, v: 2, date: firstRun ? SEED_DATE : buildDate }
+  else if (prev.v !== 2) {
+    // Registro antiguo (huella del HTML completo): si ese HTML no ha cambiado, se conserva la fecha.
+    lastmod[r.path] = { hash, v: 2, date: prev.hash === sha(mainHtml) ? prev.date : buildDate }
+  } else if (prev.hash !== hash) lastmod[r.path] = { hash, v: 2, date: buildDate }
   // Artículos: la fecha de modificación (JSON-LD y Open Graph) es la misma que la del sitemap.
   const modified = lastmod[r.path].date
   writeFileSync(

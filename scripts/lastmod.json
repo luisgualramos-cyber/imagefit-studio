@@ -1,106 +1,132 @@
 {
   "/": {
-    "hash": "c79f9d67f8012117",
+    "hash": "1a34db33700e5b99",
+    "v": 2,
     "date": "2026-11-21T10:50:25+01:00"
   },
   "/redimensionar-imagenes": {
-    "hash": "93487dc098995b58",
+    "hash": "a9ac996f8bbc5cb8",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/comprimir-imagenes": {
-    "hash": "153ea2b9f9d0af59",
+    "hash": "1f22179dcef0d522",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/convertir-imagenes": {
-    "hash": "2b0bfec4c5c8e4df",
+    "hash": "55602e614876826d",
+    "v": 2,
     "date": "2026-11-21T10:52:06+01:00"
   },
   "/imagenes-para-redes-sociales": {
-    "hash": "6d61f2abecf9098b",
+    "hash": "b9941174bdbc4af1",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/fotos-para-tienda-online": {
-    "hash": "7fb00bb92ae32043",
+    "hash": "e0a1109c1a60cc03",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/ampliar-imagen": {
-    "hash": "8ff9bad4145f3c38",
+    "hash": "2a691be0fe3142c7",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/comprimir-foto-a-100kb": {
-    "hash": "5dc9969fc95bc22f",
+    "hash": "227d8bca5e5575db",
+    "v": 2,
     "date": "2026-11-21T10:50:25+01:00"
   },
   "/foto-dni": {
-    "hash": "b687dcd8f6ccf7f9",
+    "hash": "965a18bbcfccd564",
+    "v": 2,
     "date": "2026-11-21T10:50:25+01:00"
   },
   "/foto-carnet-conducir": {
-    "hash": "acf5805a79e61bc5",
+    "hash": "4e9a9d1d4548ff71",
+    "v": 2,
     "date": "2026-11-21T10:50:25+01:00"
   },
   "/redimensionar-foto-whatsapp": {
-    "hash": "7734a5294f1312c2",
+    "hash": "a4e820f51647e1f7",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/miniatura-youtube": {
-    "hash": "eabc73cd4776dfd2",
+    "hash": "82b83d7734dbe401",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/reducir-fotos-para-email": {
-    "hash": "ca91b6f994b60df3",
+    "hash": "bb8f0dc1ef8a7f32",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/convertir-heic-a-jpg": {
-    "hash": "c3522b99cb772593",
+    "hash": "8b442137dc18306b",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/convertir-webp-a-jpg": {
-    "hash": "651660f9c4aba093",
+    "hash": "25ff6b600d39761b",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/convertir-png-a-jpg": {
-    "hash": "43c436d264b131bb",
+    "hash": "8d1bb35cf6c1559c",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/recortar-imagen": {
-    "hash": "b34a69f7b72f221d",
+    "hash": "c471d118fb9f6483",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/redimensionar-imagen-en-cm": {
-    "hash": "81ec612b3743874b",
+    "hash": "6e283322839c6aa6",
+    "v": 2,
     "date": "2026-11-21T10:42:41+01:00"
   },
   "/acerca-de": {
-    "hash": "cb9fda48c8a91955",
+    "hash": "7211478015a8be43",
+    "v": 2,
     "date": "2026-11-19T10:10:49+01:00"
   },
   "/guia-formatos-de-imagen": {
-    "hash": "fa83967d6b1d4c3b",
+    "hash": "0df04ab3dcba4637",
+    "v": 2,
     "date": "2026-11-19T10:10:49+01:00"
   },
   "/optimizar-imagenes-para-web": {
-    "hash": "012bc5463de1a831",
+    "hash": "bc80a890941e4ec7",
+    "v": 2,
     "date": "2026-11-19T10:10:49+01:00"
   },
   "/subir-fotos-sede-electronica": {
-    "hash": "ef3b0fe843b3bc09",
+    "hash": "dbaf6661fbd7f88a",
+    "v": 2,
     "date": "2026-11-21T10:50:25+01:00"
   },
   "/privacidad": {
-    "hash": "5409560b03fff884",
+    "hash": "36b66b66ebf24b1c",
+    "v": 2,
     "date": "2026-11-19T10:10:49+01:00"
   },
   "/aviso-legal": {
-    "hash": "a1ee38c2a9a1d74f",
+    "hash": "e1392ab855bc52c7",
+    "v": 2,
     "date": "2026-11-19T10:10:49+01:00"
   },
   "/contacto": {
-    "hash": "24b7ec04cfd77011",
+    "hash": "8cab3849e180f8e2",
+    "v": 2,
     "date": "2026-11-19T10:10:49+01:00"
   },
   "/fotos-tramites-espana": {
-    "hash": "bca36b7880c6db14",
+    "hash": "0ba2253014f9c627",
+    "v": 2,
     "date": "2026-11-21T10:51:31+01:00"
   }
 }
