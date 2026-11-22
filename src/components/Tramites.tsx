@@ -35,7 +35,7 @@ export function TramitesBlock() {
           Fotos para trámites oficiales en España
         </h2>
         <p className="mt-2 max-w-3xl text-muted">
-          La herramienta ya viene configurada con la medida de cada trámite, y los requisitos están sacados de la fuente oficial (BOE y sede de la DGT), con su enlace y la fecha en que los revisamos. Tu foto no sale de tu dispositivo.
+          La herramienta ya viene configurada con la medida de cada trámite, y los requisitos están sacados de la fuente oficial (BOE, Ministerio del Interior, Policía Nacional y DGT), con su enlace y la fecha en que los revisamos. Tu foto no sale de tu dispositivo.
         </p>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {TRAMITES.map((t) => (

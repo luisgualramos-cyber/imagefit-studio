@@ -8,6 +8,7 @@ const PATH = '/fotos-tramites-espana'
 const dni = TRAMITES.find((t) => t.to === '/foto-dni')!
 const dgt = TRAMITES.find((t) => t.to === '/foto-carnet-conducir')!
 const pas = TRAMITES.find((t) => t.to === '/foto-pasaporte')!
+const tie = TRAMITES.find((t) => t.to === '/foto-tie')!
 const INTERIOR_PASAPORTE = 'https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/pasaporte/procedimiento-de-expedicion/'
 const DGT_EXAMEN = 'https://sede.dgt.gob.es/es/permisos-de-conducir/obtencion-y-gestion-de-permisos/solicitud-de-prueba-de-aptitud-de-examen/'
 
@@ -41,7 +42,7 @@ export function TramitesHub() {
             Una foto mal preparada es uno de los motivos más habituales para que te devuelvan un trámite o para que la sede electrónica no te deje continuar: medida incorrecta, fondo que no es el pedido, un archivo que pesa demasiado o un formato que el formulario no acepta. En esta página reunimos qué foto pide cada trámite, con la herramienta ya configurada para prepararla.
           </p>
           <p>
-            Nuestra regla es sencilla: <b>solo publicamos un requisito si lo hemos leído en la fuente oficial</b> (el BOE, el Ministerio o la sede electrónica del organismo), lo enlazamos y anotamos cuándo lo revisamos. Si una norma cambia, manda siempre lo que diga la fuente oficial en ese momento.
+            Nuestra regla es sencilla: <b>solo publicamos un requisito si lo hemos leído en la fuente oficial</b> (el BOE, el Ministerio, la Policía Nacional o la sede electrónica del organismo), lo enlazamos y anotamos cuándo lo revisamos. Si una norma cambia, manda siempre lo que diga la fuente oficial en ese momento.
           </p>
 
           <h2>Resumen: qué foto pide cada trámite</h2>
@@ -80,6 +81,19 @@ export function TramitesHub() {
                 <td>
                   <a href={pas.source!.url} target="_blank" rel="noopener noreferrer">
                     BOE
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Link to="/foto-tie">TIE (extranjeros)</Link>
+                </td>
+                <td>32 × 26 mm, en color</td>
+                <td>Blanco, uniforme y liso</td>
+                <td>Impresa, en la cita con la Policía</td>
+                <td>
+                  <a href={tie.source!.url} target="_blank" rel="noopener noreferrer">
+                    Policía
                   </a>
                 </td>
               </tr>
@@ -132,6 +146,15 @@ export function TramitesHub() {
           </p>
           <Source url={pas.source!.url} label="Real Decreto 896/2003, artículo 4.1.c (BOE)" reviewed={pas.reviewed} />
           <Source url={INTERIOR_PASAPORTE} label="Ministerio del Interior: procedimiento de expedición del pasaporte" reviewed={pas.reviewed} />
+
+          <h2>Foto para la TIE (Tarjeta de Identidad de Extranjero)</h2>
+          <p>
+            La Policía Nacional indica que para la TIE se usa una fotografía reciente en color, del rostro, de 32 × 26 mm, con fondo uniforme blanco y liso y tomada de frente. Se admite una foto de hasta dos años de antigüedad, siempre que refleje tu imagen actual. La piden en la solicitud inicial, en la renovación, en los duplicados y en los cambios de datos de la tarjeta, que se tramitan en persona y con cita previa.
+          </p>
+          <p>
+            <Link to="/foto-tie">Preparar la foto de la TIE (32 × 26 mm)</Link>
+          </p>
+          <Source url={tie.source!.url} label="Policía Nacional: ciudadanos extranjeros (documentación y preguntas frecuentes de la TIE)" reviewed={tie.reviewed} />
 
           <h2>Foto para el permiso de conducir (DGT)</h2>
           <p>
@@ -199,7 +222,7 @@ export function TramitesHub() {
 
           <h2>Otros trámites</h2>
           <p>
-            Iremos añadiendo trámites (tarjetas de residencia y otros) a medida que podamos comprobar sus requisitos en la fuente oficial. Mientras tanto, si el trámite te da unas medidas en milímetros, puedes prepararlas con <Link to="/redimensionar-imagen-en-cm">cambiar el tamaño de una imagen en cm</Link>, y si te da un peso máximo, con <Link to="/comprimir-imagenes">comprimir imágenes</Link>.
+            Iremos añadiendo otros trámites a medida que podamos comprobar sus requisitos en la fuente oficial. Mientras tanto, si el trámite te da unas medidas en milímetros, puedes prepararlas con <Link to="/redimensionar-imagen-en-cm">cambiar el tamaño de una imagen en cm</Link>, y si te da un peso máximo, con <Link to="/comprimir-imagenes">comprimir imágenes</Link>.
           </p>
         </article>
         <aside className="hidden lg:block">

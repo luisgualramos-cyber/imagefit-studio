@@ -344,6 +344,24 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
       a: 'La norma prohíbe las gafas de cristales oscuros y cualquier prenda que impida la identificación. Si usas gafas graduadas, asegúrate de que no hay reflejos y de que los ojos se ven con claridad.',
     },
   ],
+  '/foto-tie': [
+    {
+      q: '¿Qué medida tiene la foto de la TIE?',
+      a: 'La Policía Nacional indica que se utiliza una fotografía reciente en color, del rostro, de 32 × 26 milímetros, con fondo uniforme blanco y liso y tomada de frente. En la lista de documentación aparece como «tamaño carné»: es la misma foto.',
+    },
+    {
+      q: '¿Puedo usar una foto que me hice hace un año?',
+      a: 'Sí, si sigue pareciéndose a ti. Según la Policía Nacional, la foto tiene que representar fielmente tu imagen y se admite una antigüedad de hasta dos años, siempre que refleje tu imagen actual.',
+    },
+    {
+      q: '¿Necesito foto para renovar la TIE o pedir un duplicado?',
+      a: 'Sí. En la documentación de la renovación, del duplicado por robo, pérdida o deterioro y del cambio de datos de la tarjeta, la Policía Nacional incluye una fotografía reciente, en color, con fondo blanco y tamaño carné.',
+    },
+    {
+      q: '¿Me sirve la foto de mi pasaporte?',
+      a: 'Si es reciente, mide 32 × 26 mm, está en color y tiene el fondo blanco y liso, cumple los mismos requisitos. Lleva siempre una copia impresa en papel fotográfico a la cita.',
+    },
+  ],
   '/fotos-tramites-espana': [
     {
       q: '¿Me sirve la misma foto para el DNI y para el carné de conducir?',

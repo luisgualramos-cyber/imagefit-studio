@@ -116,6 +116,15 @@ export const ROUTES: RouteMeta[] = [
     tool: true,
   },
   {
+    path: '/foto-tie',
+    name: 'Foto para la TIE',
+    title: 'Foto para la TIE (extranjeros) 32×26 mm | ImageFit',
+    description:
+      'Prepara la foto de la TIE para extranjeros: 32 × 26 mm, en color y con fondo blanco liso, como pide la Policía Nacional. Centrada y lista para imprimir.',
+    priority: 0.8,
+    tool: true,
+  },
+  {
     path: '/fotos-tramites-espana',
     name: 'Fotos para trámites',
     title: 'Fotos para trámites oficiales en España: medidas y requisitos',

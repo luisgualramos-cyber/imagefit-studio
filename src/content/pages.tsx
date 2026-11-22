@@ -70,6 +70,7 @@ export const QUICK_PAGES = [
   { to: '/fotos-tramites-espana', label: 'Fotos para trámites oficiales' },
   { to: '/foto-dni', label: 'Foto para el DNI' },
   { to: '/foto-pasaporte', label: 'Foto para el pasaporte' },
+  { to: '/foto-tie', label: 'Foto para la TIE' },
   { to: '/foto-carnet-conducir', label: 'Foto carné de conducir' },
   { to: '/comprimir-foto-a-100kb', label: 'Comprimir foto a 100 KB' },
   { to: '/redimensionar-foto-whatsapp', label: 'Foto de perfil de WhatsApp' },
@@ -836,6 +837,73 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         <h2>Pasaporte y DNI: la misma foto</h2>
         <p>
           La foto del pasaporte tiene la misma medida y el mismo fondo que la del DNI. Si ya tienes una <Link to="/foto-dni">foto para el DNI</Link> reciente, te sirve también para el pasaporte. Tienes el resumen de todos los trámites en <Link to="/fotos-tramites-espana">fotos para trámites oficiales en España</Link>.
+        </p>
+      </>
+    ),
+  },
+  '/foto-tie': {
+    h1: 'Foto para la TIE (Tarjeta de Identidad de Extranjero): 32 × 26 mm',
+    lead: 'Prepara la foto que pide la Policía Nacional para la TIE, centrada en tu cara y lista para imprimir. En tu navegador, sin subirla a ningún servidor.',
+    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('docs', 'TIE extranjeros 26×32 mm'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 95, suffix: '-tie' }} dropTitle="Arrastra tu foto para la TIE" />,
+    body: (
+      <>
+        <h2>Qué foto pide la Policía Nacional para la TIE</h2>
+        <p>
+          En sus preguntas frecuentes sobre la Tarjeta de Identidad de Extranjero, la Policía Nacional indica que «se utilizará una fotografía reciente en color, del rostro, tamaño 32 por 26 milímetros, con fondo uniforme blanco y liso, tomada de frente». Añade que la foto tiene que representar fielmente la imagen de la persona interesada y que se admite una antigüedad de hasta dos años, siempre que refleje la imagen actual.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Requisito</th>
+              <th>Qué significa en la práctica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>32 × 26 mm</td><td>32 mm de alto por 26 mm de ancho (vertical). A 300 ppp son 307 × 378 píxeles, que es lo que genera esta herramienta. En la lista de documentos aparece como «tamaño carné».</td></tr>
+            <tr><td>En color y del rostro</td><td>Nada de blanco y negro; la cara es la protagonista de la foto.</td></tr>
+            <tr><td>Fondo uniforme, blanco y liso</td><td>Una pared blanca sin sombras, puertas, cuadros ni texturas detrás.</td></tr>
+            <tr><td>Tomada de frente</td><td>Mirando a la cámara, con la cara recta, sin girar la cabeza.</td></tr>
+            <tr><td>Hasta dos años de antigüedad</td><td>Solo si te sigue representando fielmente: si has cambiado mucho (barba, peso, peinado muy distinto), hazte una nueva.</td></tr>
+          </tbody>
+        </table>
+        <h2>En qué trámites de la TIE se pide</h2>
+        <p>La Policía Nacional incluye «una fotografía reciente, en color, en fondo blanco, tamaño carné» en la documentación de estos supuestos:</p>
+        <ul>
+          <li><b>Solicitud inicial</b> de la tarjeta, una vez concedida la autorización de residencia o estancia.</li>
+          <li><b>Renovación</b> de la tarjeta.</li>
+          <li><b>Duplicado</b> por robo, extravío, destrucción o inutilización.</li>
+          <li><b>Modificación de la situación o cambio de datos</b> de la tarjeta.</li>
+        </ul>
+        <p>
+          La solicitud se presenta en persona, con cita previa, en la Unidad de Documentación de la Policía Nacional (Oficina de Extranjeros o Comisaría) de la provincia en la que vives. Lleva la foto ya impresa a la cita.
+        </p>
+        <p className="text-sm text-muted">
+          Fuente oficial:{' '}
+          <a href="https://www.policia.es/_es/extranjeria_extranjeros.php" target="_blank" rel="noopener noreferrer">
+            Policía Nacional: ciudadanos extranjeros (documentación de la Tarjeta de Identidad de Extranjero y preguntas frecuentes, n.º 11)
+          </a>
+          . Última revisión: 22/11/2026.
+        </p>
+        <h2>Cómo preparar la foto con esta herramienta</h2>
+        <ol>
+          <li>Hazte la foto delante de una pared blanca y lisa, con luz de frente y sin sombras. <b>La herramienta no cambia el fondo</b>: si la pared no es blanca, la foto no cumplirá.</li>
+          <li>Sube la foto. El tamaño ya está en «TIE extranjeros 26×32 mm» y el encuadre inteligente detecta tu cara y la centra.</li>
+          <li>Revisa el encuadre y, si hace falta, ajusta el marco y el zoom para que la cara se vea entera y centrada.</li>
+          <li>Descarga el JPG e imprímelo en papel fotográfico indicando que la foto debe medir 32 × 26 mm. Comprueba la copia con una regla antes de ir a la cita.</li>
+        </ol>
+        <p>
+          La foto se procesa en tu propio móvil u ordenador: no se envía a ningún servidor, algo importante cuando se trata de una imagen de tu cara para un documento de identidad.
+        </p>
+        <h2>Errores que hacen repetir la foto</h2>
+        <ul>
+          <li><b>Fondo que no es blanco liso:</b> pared de color, azulejos, una puerta o tu sombra detrás de la cabeza. Sepárate un paso de la pared.</li>
+          <li><b>Foto antigua en la que ya no te pareces:</b> aunque tenga menos de dos años, tiene que reflejar tu imagen actual.</li>
+          <li><b>Selfi desde abajo o de lado:</b> la cara sale girada o deformada. Mejor que te la haga otra persona, con el móvil a la altura de tus ojos.</li>
+          <li><b>Imprimir «tamaño carné» sin indicar la medida:</b> pide expresamente 32 × 26 mm y compruébalo con una regla.</li>
+          <li><b>Llevar la foto solo en el móvil:</b> la documentación se presenta en persona en la cita, así que lleva la foto ya impresa.</li>
+        </ul>
+        <p>
+          Si además tienes que hacer otros trámites en España, consulta el resumen de <Link to="/fotos-tramites-espana">fotos para trámites oficiales en España</Link>.
         </p>
       </>
     ),

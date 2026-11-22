@@ -51,6 +51,12 @@ export const EXAMPLES: Record<string, ExampleData> = {
     after: { w: 307, h: 378, size: '≈ 60 KB', fmt: 'JPG 95 %', label: '32 × 26 mm a 300 ppp' },
     note: 'Imprímela en papel fotográfico de buena calidad, a 32 × 26 mm. Si haces el DNI el mismo día, no hace falta llevarla.',
   },
+  '/foto-tie': {
+    title: 'De foto de móvil a foto para la TIE',
+    before: { w: 3024, h: 4032, size: '2,9 MB', fmt: 'JPG', label: 'Foto hecha con el móvil' },
+    after: { w: 307, h: 378, size: '≈ 60 KB', fmt: 'JPG 95 %', label: '32 × 26 mm a 300 ppp' },
+    note: 'Imprímela a 32 × 26 mm. El fondo tiene que ser blanco y liso desde el principio: la herramienta no lo cambia.',
+  },
   '/foto-carnet-conducir': {
     title: 'De foto de móvil a foto para la DGT',
     before: { w: 3024, h: 4032, size: '2,9 MB', fmt: 'JPG', label: 'Foto hecha con el móvil' },
