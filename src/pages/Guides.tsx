@@ -213,7 +213,7 @@ export function SedeGuide() {
         Una foto del móvil pesa entre 2 y 8 MB, muy por encima de los límites habituales. Usa <Link to="/comprimir-foto-a-100kb">comprimir foto a 100 KB</Link> o la herramienta de <Link to="/comprimir-imagenes">comprimir imágenes</Link> con el peso máximo que te pidan.
       </p>
       <p>
-        Un detalle que provoca muchos rechazos: <b>no todos los sistemas cuentan los kilobytes igual</b>. Para unos, 100 KB son 100.000 bytes; para otros, 102.400 bytes. Y el explorador de archivos de tu ordenador puede redondear. Si el límite es 100 KB, apunta a unos 90-95 KB y no tendrás problemas.
+        Un detalle que provoca muchos rechazos: <b>no todos los sistemas cuentan los kilobytes igual</b>. Para unos, 100 KB son 100.000 bytes; para otros, 102.400 bytes. Y el explorador de archivos de tu ordenador puede redondear. Con nuestras herramientas no tienes que preocuparte: cuentan 1 KB como 1.000 bytes, así que una foto «de 100 KB» nunca pasa de 100.000 bytes y vale en los dos casos. Si usas otro programa, apunta a unos 90-95 KB para ir sobre seguro.
       </p>
       <h2>5. Cuida el nombre del archivo</h2>
       <p>

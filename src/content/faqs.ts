@@ -381,7 +381,7 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
     },
     {
       q: '¿Qué peso debe tener la foto para unas oposiciones o una beca?',
-      a: 'No hay un límite común: lo fija cada convocatoria o cada formulario. Búscalo en sus instrucciones y deja el archivo un poco por debajo del máximo, por ejemplo 90-95 KB si el límite es 100 KB.',
+      a: 'No hay un límite común: lo fija cada convocatoria o cada formulario. Búscalo en sus instrucciones y escribe ese límite en la herramienta: cuenta 1 KB como 1.000 bytes, así que el archivo nunca lo supera, cuente como cuente la sede. Si usas otro programa, deja un margen (por ejemplo, 90-95 KB para un límite de 100 KB).',
     },
   ],
 }

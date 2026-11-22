@@ -183,7 +183,7 @@ export function TramitesHub() {
           </p>
           <ul>
             <li>
-              Si el problema es el peso, <Link to="/comprimir-foto-a-100kb">comprime la foto a 100 KB</Link> o al límite que te indiquen. Apunta un poco por debajo (por ejemplo, 90-95 KB para un límite de 100 KB), porque no todos los sistemas cuentan los kilobytes igual.
+              Si el problema es el peso, <Link to="/comprimir-foto-a-100kb">comprime la foto a 100 KB</Link> o al límite que te indiquen. No todos los sistemas cuentan los kilobytes igual (100 KB pueden ser 100.000 o 102.400 bytes); nuestras herramientas cuentan 1 KB como 1.000 bytes, así que el resultado cumple con los dos. Si usas otro programa, apunta a unos 90-95 KB.
             </li>
             <li>
               Si la foto es del iPhone (HEIC), <Link to="/convertir-heic-a-jpg">pásala a JPG</Link>: casi ninguna sede acepta HEIC.
