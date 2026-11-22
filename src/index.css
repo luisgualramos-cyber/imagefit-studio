@@ -77,11 +77,12 @@ input[type="range"] { accent-color: var(--color-accent); width: 100%; }
 .prose-if h3 { font-size: 1.15rem; font-weight: 700; margin: 1.6rem 0 .5rem; }
 .prose-if p { color: #3f3e4c; line-height: 1.7; margin: .6rem 0; }
 .prose-if ul { list-style: disc; padding-left: 1.3rem; color: #3f3e4c; line-height: 1.7; }
+.prose-if ol { list-style: decimal; padding-left: 1.3rem; color: #3f3e4c; line-height: 1.7; }
 .prose-if li { margin: .25rem 0; }
 .prose-if table { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 1rem 0; background: #fff; border-radius: .75rem; overflow: hidden; }
-.prose-if th, .prose-if td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--color-line); }
+.prose-if th, .prose-if td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--color-line); overflow-wrap: anywhere; hyphens: auto; }
 .prose-if th { background: #f1eee8; font-weight: 600; }
-.prose-if a { color: var(--color-accent-dark); text-decoration: underline; text-underline-offset: 2px; }
+.prose-if a { color: var(--color-accent-dark); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
 
 @keyframes ifpulse { 0%,100% { opacity: .55 } 50% { opacity: 1 } }
 .pulse { animation: ifpulse 1.4s ease-in-out infinite; }
