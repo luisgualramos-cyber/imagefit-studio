@@ -37,7 +37,7 @@ export function TramitesBlock() {
         <p className="mt-2 max-w-3xl text-muted">
           La herramienta ya viene configurada con la medida de cada trámite, y los requisitos están sacados de la fuente oficial (BOE y sede de la DGT), con su enlace y la fecha en que los revisamos. Tu foto no sale de tu dispositivo.
         </p>
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {TRAMITES.map((t) => (
             <li key={t.to} className="flex flex-col rounded-2xl border border-line bg-paper p-5">
               <h3 className="text-[17px] font-bold">{t.name}</h3>

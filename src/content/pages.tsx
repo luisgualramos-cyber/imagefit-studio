@@ -69,6 +69,7 @@ function FormatTable() {
 export const QUICK_PAGES = [
   { to: '/fotos-tramites-espana', label: 'Fotos para trámites oficiales' },
   { to: '/foto-dni', label: 'Foto para el DNI' },
+  { to: '/foto-pasaporte', label: 'Foto para el pasaporte' },
   { to: '/foto-carnet-conducir', label: 'Foto carné de conducir' },
   { to: '/comprimir-foto-a-100kb', label: 'Comprimir foto a 100 KB' },
   { to: '/redimensionar-foto-whatsapp', label: 'Foto de perfil de WhatsApp' },
@@ -766,6 +767,75 @@ export const TOOL_PAGES: Record<string, ToolPageContent> = {
         </ul>
         <p>
           Si además vas a renovar el DNI, la <Link to="/foto-dni">foto para el DNI</Link> tiene la misma medida, pero allí el fondo tiene que ser blanco: con una sola foto sobre fondo blanco te sirve para los dos trámites.
+        </p>
+      </>
+    ),
+  },
+  '/foto-pasaporte': {
+    h1: 'Foto para el pasaporte español: 32 × 26 mm',
+    lead: 'Prepara la foto que pide el pasaporte ordinario, centrada en tu cara y lista para imprimir en papel fotográfico. En tu navegador, sin subirla a ningún servidor.',
+    tool: <Studio initial={{ sizeMode: 'preset', presetId: preset('docs', 'Pasaporte España 26×32 mm'), fit: 'cover', smartCrop: true, format: 'image/jpeg', quality: 95, suffix: '-pasaporte' }} dropTitle="Arrastra tu foto para el pasaporte" />,
+    body: (
+      <>
+        <h2>Requisitos oficiales de la foto del pasaporte</h2>
+        <p>
+          El Real Decreto 896/2003, que regula el pasaporte ordinario, pide en su artículo 4.1.c «una fotografía reciente en color del rostro del solicitante, tamaño 32 x 26 milímetros, con fondo uniforme blanco y liso, tomada de frente y sin gafas de cristales oscuros o cualquier otra prenda que pueda impedir la identificación de la persona».
+        </p>
+        <p>
+          El Ministerio del Interior añade en su información del trámite que la foto debe mostrar claramente el óvalo de la cara (cejas, ojos, nariz, boca y mentón), tener alta resolución y estar impresa en papel fotográfico de buena calidad.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Requisito</th>
+              <th>Qué significa en la práctica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>32 × 26 mm</td><td>32 mm de alto por 26 mm de ancho (vertical). A 300 ppp son 307 × 378 píxeles, que es lo que genera esta herramienta.</td></tr>
+            <tr><td>Reciente y en color</td><td>Nada de blanco y negro ni de fotos antiguas en las que ya no te pareces.</td></tr>
+            <tr><td>Fondo uniforme, blanco y liso</td><td>Una pared blanca sin sombras, dibujos ni texturas detrás de ti.</td></tr>
+            <tr><td>De frente, con la cara bien visible</td><td>Cejas, ojos, nariz, boca y mentón tienen que verse con claridad.</td></tr>
+            <tr><td>Sin gafas oscuras ni prendas que impidan identificarte</td><td>Fuera gafas de sol, gorras o cualquier cosa que tape la cara.</td></tr>
+            <tr><td>Alta resolución y buen papel</td><td>Imprímela en papel fotográfico de calidad, no en papel normal de impresora.</td></tr>
+          </tbody>
+        </table>
+        <h2>¿Cuándo no hace falta llevar foto?</h2>
+        <p>
+          Según el Ministerio del Interior, no es necesario aportar fotografía si has obtenido o renovado el DNI ese mismo día. Si vas a hacer los dos documentos, pide cita para el mismo día y te ahorras la foto del pasaporte.
+        </p>
+        <p className="text-sm text-muted">
+          Fuentes oficiales:{' '}
+          <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2003-13978" target="_blank" rel="noopener noreferrer">
+            Real Decreto 896/2003, de 11 de julio, por el que se regula la expedición del pasaporte ordinario (BOE), artículo 4.1.c
+          </a>{' '}
+          y{' '}
+          <a href="https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/pasaporte/procedimiento-de-expedicion/" target="_blank" rel="noopener noreferrer">
+            Ministerio del Interior: procedimiento de expedición del pasaporte
+          </a>
+          . Última revisión: 22/11/2026.
+        </p>
+        <h2>Cómo preparar la foto con esta herramienta</h2>
+        <ol>
+          <li>Hazte la foto delante de una pared blanca y lisa, con luz de frente y sin sombras. <b>La herramienta no cambia el fondo</b>: si la pared no es blanca, la foto no cumplirá.</li>
+          <li>Sube la foto. El tamaño ya está en «Pasaporte España 26×32 mm» y el encuadre inteligente detecta tu cara y la centra.</li>
+          <li>Revisa el encuadre: la cara tiene que verse entera, de las cejas al mentón. Si quieres más o menos aire alrededor de la cabeza, ajusta el marco y el zoom.</li>
+          <li>Descarga el JPG y encarga la impresión en papel fotográfico indicando que la foto debe medir 32 × 26 mm. Comprueba la copia con una regla.</li>
+        </ol>
+        <p>
+          Todo el proceso ocurre en tu propio móvil u ordenador: la foto de tu cara no se envía a ningún servidor.
+        </p>
+        <h2>Errores que suelen hacer repetir la foto</h2>
+        <ul>
+          <li><b>Fondo que no es blanco liso:</b> paredes beige o grises, puertas, azulejos o tu propia sombra detrás de la cabeza. Sepárate un paso de la pared.</li>
+          <li><b>Selfi con el brazo estirado:</b> la cara sale girada o desde abajo y el objetivo la deforma. Que te la haga otra persona con el móvil a la altura de tus ojos, a 1-1,5 metros.</li>
+          <li><b>Cara cortada o demasiado pequeña:</b> si se ve el pelo pero el mentón queda fuera, o si la cara ocupa muy poco espacio, no se aprecia bien el óvalo de la cara.</li>
+          <li><b>Imprimir en papel normal:</b> el Ministerio pide papel fotográfico de buena calidad. Una impresión doméstica en folio no sirve.</li>
+          <li><b>Imprimir a otra medida:</b> «tamaño carné» no siempre significa 32 × 26 mm. Indícalo expresamente en la tienda.</li>
+        </ul>
+        <h2>Pasaporte y DNI: la misma foto</h2>
+        <p>
+          La foto del pasaporte tiene la misma medida y el mismo fondo que la del DNI. Si ya tienes una <Link to="/foto-dni">foto para el DNI</Link> reciente, te sirve también para el pasaporte. Tienes el resumen de todos los trámites en <Link to="/fotos-tramites-espana">fotos para trámites oficiales en España</Link>.
         </p>
       </>
     ),

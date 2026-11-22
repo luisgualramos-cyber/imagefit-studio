@@ -45,6 +45,12 @@ export const EXAMPLES: Record<string, ExampleData> = {
     after: { w: 307, h: 378, size: '≈ 60 KB', fmt: 'JPG 95 %', label: '32 × 26 mm a 300 ppp' },
     note: 'La cara queda centrada con el encuadre inteligente. Recuerda que el fondo tiene que ser blanco desde el principio.',
   },
+  '/foto-pasaporte': {
+    title: 'De foto de móvil a foto de pasaporte',
+    before: { w: 3024, h: 4032, size: '2,9 MB', fmt: 'JPG', label: 'Foto hecha con el móvil' },
+    after: { w: 307, h: 378, size: '≈ 60 KB', fmt: 'JPG 95 %', label: '32 × 26 mm a 300 ppp' },
+    note: 'Imprímela en papel fotográfico de buena calidad, a 32 × 26 mm. Si haces el DNI el mismo día, no hace falta llevarla.',
+  },
   '/foto-carnet-conducir': {
     title: 'De foto de móvil a foto para la DGT',
     before: { w: 3024, h: 4032, size: '2,9 MB', fmt: 'JPG', label: 'Foto hecha con el móvil' },

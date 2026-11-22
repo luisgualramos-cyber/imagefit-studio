@@ -326,6 +326,24 @@ export const PAGE_FAQS: Record<string, FaqItem[]> = {
       a: 'Compara los píxeles que necesitas con los que tiene tu foto (aparecen en su miniatura). Si necesitas muchos más, la imagen se ampliará y perderá nitidez; en ese caso, imprime más pequeño o baja a 150-200 ppp.',
     },
   ],
+  '/foto-pasaporte': [
+    {
+      q: '¿Me sirve la misma foto que para el DNI?',
+      a: 'Sí. El pasaporte y el DNI piden la misma foto: 32 × 26 mm, en color, de frente y con fondo uniforme blanco y liso. Además, si haces o renuevas el DNI el mismo día que el pasaporte, no hace falta llevar foto para el pasaporte.',
+    },
+    {
+      q: '¿Puedo imprimir la foto en casa?',
+      a: 'El Ministerio del Interior pide que la foto sea de alta resolución y esté en papel fotográfico de buena calidad. Una impresora doméstica con papel normal no cumple; con papel fotográfico y buena calidad de impresión, comprueba con una regla que mide 32 × 26 mm.',
+    },
+    {
+      q: '¿Cuántos píxeles tiene una foto de pasaporte?',
+      a: 'La norma la define en milímetros (32 × 26). Para imprimirla a 300 ppp, la resolución habitual, son 307 píxeles de ancho por 378 de alto, que es lo que genera esta herramienta.',
+    },
+    {
+      q: '¿Se puede llevar gafas en la foto del pasaporte?',
+      a: 'La norma prohíbe las gafas de cristales oscuros y cualquier prenda que impida la identificación. Si usas gafas graduadas, asegúrate de que no hay reflejos y de que los ojos se ven con claridad.',
+    },
+  ],
   '/fotos-tramites-espana': [
     {
       q: '¿Me sirve la misma foto para el DNI y para el carné de conducir?',

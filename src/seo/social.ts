@@ -14,6 +14,7 @@ export const SOCIAL: Record<string, string> = {
   '/comprimir-foto-a-100kb': '¿El formulario dice que tu foto pesa demasiado? Déjala por debajo de 100 KB con la mejor calidad posible.',
   '/foto-dni': 'Prepara la foto del DNI a 32 × 26 mm siguiendo lo que pide el BOE, centrada en tu cara y lista para imprimir.',
   '/foto-carnet-conducir': 'La foto de 32 × 26 mm que pide la DGT, preparada en tu móvil. Y cuándo ya no hace falta presentarla.',
+  '/foto-pasaporte': 'La foto del pasaporte, a 32 × 26 mm y con fondo blanco como pide el BOE. Y si haces el DNI el mismo día, ni la necesitas.',
   '/fotos-tramites-espana': 'DNI, carné de conducir y sedes electrónicas: qué foto piden según la fuente oficial y cómo prepararla gratis.',
   '/redimensionar-foto-whatsapp': 'Que tu foto de perfil de WhatsApp no se corte en el círculo: encuadre automático de la cara.',
   '/miniatura-youtube': 'Convierte cualquier captura en una miniatura de YouTube válida: 1280 × 720 y por debajo de 2 MB.',

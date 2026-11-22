@@ -107,6 +107,15 @@ export const ROUTES: RouteMeta[] = [
     tool: true,
   },
   {
+    path: '/foto-pasaporte',
+    name: 'Foto para el pasaporte',
+    title: 'Foto para el pasaporte 32×26 mm: requisitos | ImageFit',
+    description:
+      'Prepara la foto del pasaporte español: 32 × 26 mm, en color y con fondo blanco liso, según el Real Decreto 896/2003. Centrada en tu cara y lista para imprimir.',
+    priority: 0.85,
+    tool: true,
+  },
+  {
     path: '/fotos-tramites-espana',
     name: 'Fotos para trámites',
     title: 'Fotos para trámites oficiales en España: medidas y requisitos',

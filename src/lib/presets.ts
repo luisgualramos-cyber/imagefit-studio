@@ -90,6 +90,7 @@ export const PRESET_GROUPS: PresetGroup[] = [
     { name: 'Foto cuadrada 2×2 pulgadas', width: 600, height: 600, note: '51×51 mm · 300 ppp' },
     { name: 'Foto de perfil / CV', width: 800, height: 800, note: '1:1' },
     { name: 'Permiso de conducir (DGT) 26×32 mm', width: 307, height: 378, note: '300 ppp' },
+    { name: 'Pasaporte España 26×32 mm', width: 307, height: 378, note: '300 ppp' },
   ]),
 ]
 

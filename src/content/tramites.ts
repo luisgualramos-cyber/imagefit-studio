@@ -48,7 +48,18 @@ export const RELATED: Record<string, RelatedBlock> = {
       { to: '/recortar-imagen', label: 'Recortar una imagen', why: 'Si quieres ajustar el encuadre a mano antes de preparar la foto.' },
       { to: '/redimensionar-imagen-en-cm', label: 'Cambiar el tamaño en cm', why: 'Si necesitas otra medida exacta en milímetros para imprimir.' },
       { to: '/foto-carnet-conducir', label: 'Foto para el carné de conducir', why: 'Misma medida; con fondo blanco te sirve la misma foto.' },
+      { to: '/foto-pasaporte', label: 'Foto para el pasaporte', why: 'Misma medida y mismo fondo blanco: te vale la misma foto.' },
       { to: '/subir-fotos-sede-electronica', label: 'Subir una foto a una sede electrónica', why: 'Si el trámite es online y la foto no se acepta.' },
+      HUB,
+    ],
+  },
+  '/foto-pasaporte': {
+    title: 'Herramientas y trámites relacionados',
+    links: [
+      { to: '/recortar-imagen', label: 'Recortar una imagen', why: 'Si quieres ajustar el encuadre a mano antes de preparar la foto.' },
+      { to: '/redimensionar-imagen-en-cm', label: 'Cambiar el tamaño en cm', why: 'Si necesitas otra medida exacta en milímetros para imprimir.' },
+      { to: '/foto-dni', label: 'Foto para el DNI', why: 'Misma medida y mismo fondo; y si lo haces el mismo día, no necesitas foto para el pasaporte.' },
+      { to: '/foto-carnet-conducir', label: 'Foto para el carné de conducir', why: 'También de 32 × 26 mm, con fondo liso.' },
       HUB,
     ],
   },
@@ -90,6 +101,7 @@ export const RELATED: Record<string, RelatedBlock> = {
     links: [
       { to: '/foto-dni', label: 'Foto para el DNI', why: 'Recorte de 32 × 26 mm centrado en la cara, ya configurado.' },
       { to: '/foto-carnet-conducir', label: 'Foto para el carné de conducir', why: 'La misma medida que pide la DGT.' },
+      { to: '/foto-pasaporte', label: 'Foto para el pasaporte', why: 'Recorte de 32 × 26 mm según el Real Decreto 896/2003.' },
       HUB,
     ],
   },
@@ -98,6 +110,7 @@ export const RELATED: Record<string, RelatedBlock> = {
     links: [
       { to: '/foto-dni', label: 'Foto para el DNI', why: 'Tiene ya preparada la medida de 32 × 26 mm a 300 ppp.' },
       { to: '/foto-carnet-conducir', label: 'Foto para el carné de conducir', why: 'Misma medida de impresión.' },
+      { to: '/foto-pasaporte', label: 'Foto para el pasaporte', why: 'La misma medida de impresión que el DNI.' },
       HUB,
     ],
   },
@@ -156,6 +169,14 @@ export const TRAMITES: Tramite[] = [
     foto: '32 × 26 mm, en color, con fondo uniforme blanco y liso, de frente y con la cabeza descubierta.',
     source: { label: 'BOE · Real Decreto 255/2025, art. 6.2.d', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-2025-6601' },
     reviewed: '21/11/2026',
+  },
+  {
+    to: '/foto-pasaporte',
+    name: 'Foto para el pasaporte',
+    cta: 'Preparar la foto del pasaporte',
+    foto: '32 × 26 mm, en color, con fondo uniforme blanco y liso. No hace falta si haces el DNI el mismo día.',
+    source: { label: 'BOE · Real Decreto 896/2003, art. 4.1.c', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-2003-13978' },
+    reviewed: '22/11/2026',
   },
   {
     to: '/foto-carnet-conducir',
