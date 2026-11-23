@@ -239,9 +239,16 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/privacidad',
     name: 'Privacidad',
-    title: 'Privacidad y cookies | ImageFit Studio',
-    description: 'Cómo trata ImageFit Studio tus imágenes y datos: qué se procesa en tu navegador, qué servicios externos se usan y qué cookies puede haber.',
+    title: 'Política de privacidad | ImageFit Studio',
+    description: 'Cómo trata ImageFit Studio tus imágenes y datos: qué se procesa en tu navegador, qué servicios externos se usan y cuáles son tus derechos.',
     priority: 0.3,
+  },
+  {
+    path: '/politica-cookies',
+    name: 'Política de cookies',
+    title: 'Política de cookies | ImageFit Studio',
+    description: 'Qué cookies usa ImageFit Studio (Google Analytics y Google AdSense, solo si las aceptas), para qué sirven, cuánto duran y cómo cambiar tu elección.',
+    priority: 0.2,
   },
   {
     path: '/aviso-legal',

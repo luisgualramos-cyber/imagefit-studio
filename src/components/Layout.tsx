@@ -110,7 +110,12 @@ function Footer() {
             <li><Link to="/guia-formatos-de-imagen" className="hover:text-white">Guía de formatos de imagen</Link></li>
             <li><Link to="/optimizar-imagenes-para-web" className="hover:text-white">Optimizar imágenes para la web</Link></li>
             <li><Link to="/subir-fotos-sede-electronica" className="hover:text-white">Subir fotos a una sede electrónica</Link></li>
-            <li><Link to="/privacidad" className="hover:text-white">Privacidad y cookies</Link></li>
+            <li><Link to="/privacidad" className="hover:text-white">Política de privacidad</Link></li>
+            <li><Link to="/politica-cookies" className="hover:text-white">Política de cookies</Link></li>
+            <li>
+              {/* Lo abre public/cookies/consentimiento.js (o, en el futuro, la herramienta de consentimiento de Google). */}
+              <button type="button" data-cookie-settings className="cursor-pointer text-left hover:text-white">Configurar cookies</button>
+            </li>
             <li><Link to="/aviso-legal" className="hover:text-white">Aviso legal</Link></li>
             <li><Link to="/contacto" className="hover:text-white">Contacto</Link></li>
             <li><Link to="/#preguntas" className="hover:text-white">Preguntas frecuentes</Link></li>

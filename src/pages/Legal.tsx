@@ -181,7 +181,7 @@ export function Privacy() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 md:px-6">
       <article className="prose-if">
-        <h1 className="text-4xl font-extrabold">Privacidad y cookies</h1>
+        <h1 className="text-4xl font-extrabold">Política de privacidad</h1>
         <p>Última actualización: {UPDATED}.</p>
         <h2>Responsable del tratamiento</h2>
         <p>
@@ -203,11 +203,12 @@ export function Privacy() {
         </p>
         <h2>Publicidad (Google AdSense) y cookies</h2>
         <p>
-          Este sitio se financia con anuncios de Google AdSense. Google, como proveedor externo, utiliza cookies y tecnologías similares para mostrar anuncios, limitar su repetición, medir su rendimiento y, si lo aceptas, personalizarlos según tus visitas a este y otros sitios. La base legal es tu consentimiento, que se solicita mediante el aviso de cookies de Google (plataforma de gestión del consentimiento certificada) al entrar en la web desde el Espacio Económico Europeo, el Reino Unido o Suiza.
+          Este sitio se financia con anuncios de Google AdSense. Google, como proveedor externo, utiliza cookies y tecnologías similares para mostrar anuncios, limitar su repetición, medir su rendimiento y, si lo aceptas, personalizarlos según tus visitas a este y otros sitios. La base legal es tu consentimiento, que te pedimos con nuestro aviso de cookies al entrar en la web. Hasta que no aceptes las cookies de publicidad, no se instalan.
         </p>
         <ul>
-          <li>Puedes aceptar, rechazar o configurar las cookies en ese aviso y cambiar tu elección en cualquier momento desde el enlace de preferencias de privacidad que aparece en la web.</li>
-          <li>Si rechazas las cookies de personalización, Google puede mostrar anuncios no personalizados, que usan cookies o identificadores solo para limitar la frecuencia, generar informes agregados y prevenir el fraude.</li>
+          <li>Puedes aceptar, rechazar o configurar las cookies en ese aviso y cambiar tu elección o retirar tu consentimiento en cualquier momento desde el enlace «Configurar cookies» del pie de página.</li>
+          <li>Si no aceptas las cookies de publicidad, la web no pide anuncios a Google y no se guarda ninguna cookie publicitaria en tu navegador.</li>
+          <li>El detalle de cada cookie (nombre, proveedor, finalidad y duración) está en la <Link to="/politica-cookies">política de cookies</Link>.</li>
           <li>
             Más información sobre cómo usa Google los datos:{' '}
             <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">policies.google.com/technologies/partner-sites</a>. Puedes gestionar la personalización en{' '}
@@ -221,10 +222,10 @@ export function Privacy() {
               Usamos Google Analytics 4 para saber de forma agregada qué páginas se visitan y cómo se usa la web, con el fin de mejorarla. Solo se guardan cookies de análisis si las aceptas en el aviso de cookies; si no, Google Analytics funciona sin cookies y solo recibe señales anónimas sin identificadores. Google actúa como encargado del tratamiento y puede transferir datos a EE. UU. bajo el Marco de Privacidad de Datos UE-EE. UU. Más información en{' '}
               <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">policies.google.com/privacy</a>.
             </p>
-            <p>ImageFit Studio no usa cookies propias. Solo puede guardar en tu navegador preferencias técnicas necesarias para su funcionamiento.</p>
+            <p>Aparte de las cookies de Google que aceptes, ImageFit Studio solo guarda en tu navegador tu elección sobre las cookies, para no preguntarte en cada página. Más detalles en la <Link to="/politica-cookies">política de cookies</Link>.</p>
           </>
         ) : (
-          <p>ImageFit Studio no usa cookies propias de análisis ni de publicidad. Solo puede guardar en tu navegador preferencias técnicas necesarias para su funcionamiento.</p>
+          <p>Aparte de las cookies de Google que aceptes, ImageFit Studio solo guarda en tu navegador tu elección sobre las cookies. Más detalles en la <Link to="/politica-cookies">política de cookies</Link>.</p>
         )}
         <h2>Otros servicios externos</h2>
         <ul>

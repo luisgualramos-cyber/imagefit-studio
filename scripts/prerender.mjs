@@ -23,10 +23,17 @@ if (gaId && !/^G-[A-Z0-9]{6,}$/.test(gaId)) {
   console.error(`[prerender] VITE_GA_ID no parece un ID de medición de GA4 válido: ${gaId}`)
   process.exit(1)
 }
-// Modo de consentimiento v2: todo denegado por defecto. El aviso de cookies de Google (AdSense,
-// «Privacidad y mensajes») actualiza el consentimiento cuando el visitante acepta.
+// Consentimiento de cookies (LSSI art. 22.2, guía de la AEPD) con Google Consent Mode v2.
+// Va SIEMPRE el primero del <head>, antes de Google Analytics y de AdSense: todo denegado por defecto
+// AdSense no pide anuncios (pauseAdRequests) hasta que se acepta la publicidad,
+// y, si el visitante ya eligió (localStorage «cookie-consent», 12 meses), se aplica su elección al momento.
+// El aviso y el panel están en public/cookies/consentimiento.js. Al pasar a la herramienta de Google
+// (AdSense → «Privacidad y mensajes», IAB TCF) se quita este bloque y ese archivo.
+const consent = `<!-- consentimiento-cookies --><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);var adsbygoogle=window.adsbygoogle=window.adsbygoogle||[];adsbygoogle.pauseAdRequests=1;(function(){try{var c=JSON.parse(localStorage.getItem('cookie-consent')||'null');if(c&&c.v===1&&Date.now()-c.t<31536e6){var a=c.publicidad?'granted':'denied';if(c.publicidad)adsbygoogle.pauseAdRequests=0;gtag('consent','update',{analytics_storage:c.analiticas?'granted':'denied',ad_storage:a,ad_user_data:a,ad_personalization:a})}}catch(e){}})();</script>
+    <script src="/cookies/consentimiento.js?v=1" defer data-politica="/politica-cookies"></script><!-- /consentimiento-cookies -->`
+// Google Analytics 4: el consentimiento ya lo fija el bloque anterior.
 const analytics = gaId
-  ? `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','${gaId}');</script>
+  ? `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${gaId}');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=${gaId}"></script>`
   : ''
 
@@ -43,7 +50,7 @@ const adsense = client
 
 const page = (url) => {
   const { html, head } = render(url)
-  return template.replace('<!--app-head-->', head + (analytics ? '\n    ' + analytics : '') + (adsense ? '\n    ' + adsense : '')).replace('<!--app-html-->', html)
+  return template.replace('<!--app-head-->', consent + '\n    ' + head + (analytics ? '\n    ' + analytics : '') + (adsense ? '\n    ' + adsense : '')).replace('<!--app-html-->', html)
 }
 
 // Fecha real de última modificación de cada página (para el <lastmod> del sitemap).

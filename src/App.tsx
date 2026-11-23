@@ -5,6 +5,7 @@ import { Home, NotFound, ToolPage } from './pages/Pages'
 import { AvisoLegal, Contacto, Privacy } from './pages/Legal'
 import { About, FormatsGuide, SedeGuide, WebGuide } from './pages/Guides'
 import { TramitesHub } from './pages/TramitesHub'
+import { CookiePolicy } from './pages/Cookies'
 import { TOOL_PAGES } from './content/pages'
 import { applyHead } from './seo/head'
 
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/optimizar-imagenes-para-web" element={<WebGuide />} />
         <Route path="/subir-fotos-sede-electronica" element={<SedeGuide />} />
         <Route path="/privacidad" element={<Privacy />} />
+        <Route path="/politica-cookies" element={<CookiePolicy />} />
         <Route path="/aviso-legal" element={<AvisoLegal />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="*" element={<NotFound />} />
