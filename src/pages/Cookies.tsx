@@ -13,6 +13,13 @@ const NECESARIAS: Fila[] = [
     duracion: '12 meses',
     tipo: 'Propia',
   },
+  {
+    nombre: 'FCCDCF',
+    proveedor: 'Google (sistema de consentimiento que carga el código de AdSense)',
+    finalidad: 'Uso técnico: guarda el estado del sistema de gestión del consentimiento de Google. No sirve para publicidad ni para medir visitas.',
+    duracion: '13 meses',
+    tipo: 'Propia, gestionada por Google',
+  },
 ]
 
 const ANALITICAS: Fila[] = [
